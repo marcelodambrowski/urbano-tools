@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Urbano Tools — Automatize seu trabalho no AutoCAD</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.19.0/dist/tabler-icons.min.css">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html {
+    scroll-behavior: smooth; /* Ativa a rolagem suave na página */
+  }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: #F2F4F7;
+    color: #1A1A2E;
+    line-height: 1.6;
+  }
+
+  .page {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 24px 16px 80px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  /* HERO */
+  .hero {
+    background: #1B2A3B;
+    padding: 48px 32px 40px;
+    border-radius: 16px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: #E8A020;
+  }
+  
+  /* Banner WPP incorporado no topo do Hero */
+  .hero-top-badge {
+    background: rgba(37, 211, 102, 0.12);
+    border: 1px solid rgba(37, 211, 102, 0.25);
+    color: #25D366;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 8px 16px;
+    border-radius: 8px;
+    margin-bottom: 24px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .hero-top-badge strong { font-weight: 600; }
+
+  .hero-logo {
+    font-size: 34px;
+    font-weight: 600;
+    color: #fff;
+    line-height: 1.1;
+    margin-bottom: 24px;
+  }
+  .hero-logo span { color: #6EB5E0; display: block; font-weight: 400; }
+  .hero-headline {
+    font-size: 22px;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 12px;
+    line-height: 1.4;
+  }
+  .hero-sub {
+    font-size: 15px;
+    color: #9BB8CC;
+    line-height: 1.7;
+    margin-bottom: 28px;
+    max-width: 480px;
+  }
+  .hero-buttons { display: flex; flex-wrap: wrap; align-items: center; gap: 16px; }
+
+  .btn-wpp {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #25D366;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 600;
+    padding: 14px 24px;
+    border-radius: 100px;
+    text-decoration: none;
+    transition: opacity .2s;
+  }
+  .btn-wpp:hover { opacity: .9; }
+  .btn-wpp i { font-size: 20px; }
+
+  .btn-assinar {
+    color: #9BB8CC;
+    font-size: 14px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    padding: 0;
+    transition: color .2s;
+  }
+  .btn-assinar:hover { color: #fff; }
+
+  /* DOR */
+  .dor {
+    background: #FFF8F0;
+    border: 1px solid #F5C890;
+    border-radius: 16px;
+    padding: 28px;
+  }
+  .dor-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: #7A4A0A;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .dor-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: #8B5E1A;
+    line-height: 1.5;
+  }
+  .dor-item:last-child { margin-bottom: 0; }
+  .dor-item i { color: #C0601A; font-size: 17px; margin-top: 2px; flex-shrink: 0; }
+
+  /* SECTION */
+  .section-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: #8A96A8;
+    margin-bottom: 4px;
+    padding: 0 4px;
+  }
+  .section-title {
+    font-size: 20px;
+    font-weight: 600;
+    color: #1A1A2E;
+    margin-bottom: 6px;
+    line-height: 1.3;
+    padding: 0 4px;
+  }
+  .section-sub {
+    font-size: 14px;
+    color: #5A6577;
+    margin-bottom: 14px;
+    line-height: 1.6;
+    padding: 0 4px;
+  }
+
+  /* MEMORIAL DESTAQUE */
+  .memorial-highlight {
+    background: #1B2A3B;
+    border-radius: 16px;
+    padding: 28px;
+  }
+  .mh-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: #E8A020;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 4px 12px;
+    border-radius: 100px;
+    margin-bottom: 12px;
+  }
+  .mh-title {
+    font-size: 17px;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .mh-desc {
+    font-size: 14px;
+    color: #9BB8CC;
+    line-height: 1.7;
+    margin-bottom: 16px;
+  }
+  .mh-checks { display: flex; flex-direction: column; gap: 10px; }
+  .mh-check {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+    color: #C8DAEB;
+  }
+  .mh-check i { color: #6EB5E0; font-size: 16px; flex-shrink: 0; }
+
+  /* FEATURE CARDS */
+  .features { display: flex; flex-direction: column; gap: 12px; }
+  .feat-card {
+    background: #fff;
+    border: 1px solid #E2E8F0;
+    border-radius: 16px;
+    padding: 20px 22px;
+    display: flex;
+    gap: 18px;
+    align-items: flex-start;
+  }
+  .feat-icon {
+    width: 46px;
+    height: 46px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 22px;
+  }
+  .feat-icon.blue   { background: #E6F1FB; color: #185FA5; }
+  .feat-icon.teal   { background: #E1F5EE; color: #0F6E56; }
+  .feat-icon.amber  { background: #FAEEDA; color: #854F0B; }
+  .feat-icon.purple { background: #EEEDFE; color: #534AB7; }
+  .feat-icon.coral  { background: #FAECE7; color: #993C1D; }
+  .feat-body { flex: 1; }
+  .feat-title { font-size: 15px; font-weight: 600; color: #1A1A2E; margin-bottom: 5px; }
+  .feat-desc { font-size: 13px; color: #5A6577; line-height: 1.6; }
+  .feat-tag {
+    display: inline-block;
+    background: #E1F5EE;
+    color: #0A5C43;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 2px 10px;
+    border-radius: 100px;
+    margin-top: 8px;
+  }
+  .feat-tag.amber { background: #FAEEDA; color: #6B3E08; }
+
+  /* PARA QUEM */
+  .audience-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+  .aud-card {
+    background: #fff;
+    border: 1px solid #E2E8F0;
+    border-radius: 12px;
+    padding: 18px 14px;
+    text-align: center;
+  }
+  .aud-card i { font-size: 26px; color: #185FA5; margin-bottom: 10px; display: block; }
+  .aud-card strong { color: #1A1A2E; font-weight: 600; display: block; margin-bottom: 5px; font-size: 14px; }
+  .aud-card p { font-size: 12px; color: #5A6577; line-height: 1.5; }
+
+  /* PRICING */
+  .pricing-card {
+    background: #fff;
+    border: 2px solid #185FA5;
+    border-radius: 16px;
+    padding: 28px;
+  }
+  .pricing-badge {
+    display: inline-block;
+    background: #185FA5;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 4px 14px;
+    border-radius: 100px;
+    margin-bottom: 14px;
+  }
+  .pricing-name { font-size: 22px; font-weight: 700; color: #1A1A2E; margin-bottom: 4px; }
+  .pricing-sub { font-size: 13px; color: #5A6577; margin-bottom: 4px; }
+  .pricing-price {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+    margin: 14px 0 22px;
+  }
+  .pricing-price .currency { font-size: 16px; color: #5A6577; }
+  .pricing-price .amount { font-size: 48px; font-weight: 700; color: #185FA5; line-height: 1; }
+  .pricing-price .period { font-size: 14px; color: #5A6577; }
+  .pricing-includes { margin-bottom: 22px; border-top: 1px solid #E2E8F0; padding-top: 16px; }
+  .pi-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+    color: #3A4557;
+    padding: 7px 0;
+    border-bottom: 1px solid #F0F4F8;
+  }
+  .pi-item:last-child { border-bottom: none; }
+  .pi-item i { color: #0F6E56; font-size: 17px; flex-shrink: 0; }
+
+  .pricing-cta-wpp {
+    width: 100%;
+    background: #25D366;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 600;
+    padding: 16px;
+    border-radius: 100px;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    text-decoration: none;
+    transition: opacity .2s;
+  }
+  .pricing-cta-wpp:hover { opacity: .9; }
+  .pricing-cta-wpp i { font-size: 22px; }
+
+  .pricing-cta-assinar {
+    width: 100%;
+    background: transparent;
+    color: #185FA5;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 13px;
+    border-radius: 100px;
+    border: 1px solid #185FA5;
+    cursor: pointer;
+    text-align: center;
+    display: block;
+    margin-top: 10px;
+    text-decoration: none;
+    transition: background .2s, color .2s;
+  }
+  .pricing-cta-assinar:hover { background: #185FA5; color: #fff; }
+
+  .pricing-guarantee {
+    font-size: 12px;
+    color: #8A96A8;
+    text-align: center;
+    margin-top: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+  }
+
+  /* FOOTER */
+  .footer {
+    background: #1B2A3B;
+    padding: 24px 28px;
+    border-radius: 16px;
+    text-align: center;
+  }
+  .footer p { font-size: 12px; color: #6B8499; }
+  .footer strong { color: #9BB8CC; }
+  .footer p + p { margin-top: 6px; }
+
+  /* RIBBON SECTION */
+  .ribbon-section {
+    background: #fff;
+    border: 1px solid #E2E8F0;
+    border-radius: 16px;
+    padding: 28px;
+  }
+  .ribbon-img-wrap {
+    background: #0F1C28;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 20px;
+    border: 1px solid #2A3E52;
+    position: relative;
+  }
+  /* Simulated ribbon bar */
+  .ribbon-mockup {
+    width: 100%;
+    background: #1E3A50;
+    padding: 10px 14px 0;
+  }
+  .ribbon-tabs {
+    display: flex;
+    gap: 2px;
+    margin-bottom: 0;
+  }
+  .r-tab {
+    background: #16303F;
+    color: #9BB8CC;
+    font-size: 10px;
+    font-weight: 600;
+    padding: 5px 12px;
+    border-radius: 4px 4px 0 0;
+    letter-spacing: .04em;
+    opacity: .6;
+  }
+  .r-tab.active {
+    background: #2C5070;
+    color: #E8A020;
+    opacity: 1;
+  }
+  .ribbon-bar {
+    background: #2C5070;
+    padding: 10px 14px;
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    border-bottom: 2px solid #E8A020;
+  }
+  .r-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 6px;
+    padding: 8px 10px 6px;
+    min-width: 52px;
+    cursor: pointer;
+  }
+  .r-btn i { font-size: 20px; color: #6EB5E0; }
+  .r-btn span { font-size: 9px; color: #C8DAEB; text-align: center; line-height: 1.3; font-weight: 500; }
+  .r-btn.highlight { background: rgba(232,160,32,0.15); border-color: rgba(232,160,32,0.4); }
+  .r-btn.highlight i { color: #E8A020; }
+  .ribbon-callout {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    background: #F0F6FB;
+    border-left: 3px solid #185FA5;
+    border-radius: 0 8px 8px 0;
+    padding: 14px 16px;
+    margin-top: 0;
+  }
+  .ribbon-callout i { color: #185FA5; font-size: 20px; margin-top: 2px; flex-shrink: 0; }
+  .ribbon-callout p { font-size: 13px; color: #2A3E52; line-height: 1.6; margin: 0; }
+  .ribbon-callout p strong { color: #185FA5; }
+  .ribbon-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+  .ribbon-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: #E6F1FB;
+    color: #185FA5;
+    font-size: 12px;
+    font-weight: 500;
+    padding: 5px 12px;
+    border-radius: 100px;
+  }
+  .ribbon-chip i { font-size: 14px; }
+
+  /* CONTATO / SUGESTÕES */
+  .contact-section {
+    background: #1B2A3B;
+    border-radius: 16px;
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .contact-block {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+  }
+  .contact-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 22px;
+  }
+  .contact-icon.amber  { background: rgba(232,160,32,0.18); color: #E8A020; }
+  .contact-icon.teal   { background: rgba(37,211,102,0.15); color: #25D366; }
+  .contact-body {}
+  .contact-title { font-size: 15px; font-weight: 600; color: #fff; margin-bottom: 6px; }
+  .contact-desc { font-size: 13px; color: #9BB8CC; line-height: 1.6; }
+  .contact-divider { border: none; border-top: 1px solid rgba(255,255,255,0.08); margin: 0; }
+  .contact-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #25D366;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 13px 22px;
+    border-radius: 100px;
+    text-decoration: none;
+    transition: opacity .2s;
+    align-self: flex-start;
+  }
+  .contact-cta:hover { opacity: .9; }
+
+  /* RESPONSIVE */
+  @media (max-width: 480px) {
+    .hero { padding: 36px 22px 32px; }
+    .hero-headline { font-size: 19px; }
+    .audience-grid { grid-template-columns: 1fr; }
+    .pricing-price .amount { font-size: 40px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <div class="hero">
+    <div class="hero-logo">urbano<span>tools</span></div>
+    <div class="hero-headline">Chega de retrabalho e erros manuais no AutoCAD.</div>
+    <div class="hero-sub">Automatize a criação de memoriais descritivos, inserção de tabelas, conversão de coordenadas, divisão de áreas e muito mais — direto no seu desenho, em segundos.</div>
+    
+    <div class="hero-buttons">
+      <a class="btn-wpp" href="https://wa.me/55981446647?text=Ol%C3%A1%2C%20quero%20testar%20o%20Urbano%20Tools%20por%203%20dias%20gr%C3%A1tis!" target="_blank">
+        <i class="ti ti-brand-whatsapp"></i>
+        Quero 3 dias grátis
+      </a>
+      <a class="btn-assinar" href="#pricing">Já quero assinar →</a>
+    <div class="hero-top-badge">
+      <i class="ti ti-gift"></i>
+      <span><strong>Teste grátis por 3 dias!</strong> Sem cartão de crédito · Suporte completo</span>
+    </div>
+    </div>
+  </div>
+
+  <div class="section-label">Para quem é</div>
+  <div class="audience-grid">
+    <div class="aud-card">
+      <i class="ti ti-map-2"></i>
+      <strong>Topógrafos</strong>
+      <p>Memorial descritivo, numeração de vértices e contagem automática de todos os segmentos do polígono</p>
+    </div>
+    <div class="aud-card">
+      <i class="ti ti-building"></i>
+      <strong>Engenheiros civis</strong>
+      <p>Divisão de área, locação de obras e arbóreas com precisão</p>
+    </div>
+    <div class="aud-card">
+      <i class="ti ti-vector-bezier-2"></i>
+      <strong>Projetistas CAD</strong>
+      <p>Menos cliques, menos erro — mais tempo para o que importa</p>
+    </div>
+  </div>
+
+  <div class="dor">
+    <div class="dor-title"><i class="ti ti-alert-triangle"></i> Você ainda faz isso manualmente?</div>
+    <div class="dor-item"><i class="ti ti-x"></i> Copiar vértice a vértice para montar o memorial descritivo</div>
+    <div class="dor-item"><i class="ti ti-x"></i> Digitar coordenadas de vértice a vértice em tabelas extensas</div>
+    <div class="dor-item"><i class="ti ti-x"></i> Calcular divisão de área na mão e depois redesenhar</div>
+    <div class="dor-item"><i class="ti ti-x"></i> Inserir vértices e cotas um por um em cada segmento do polígono</div>
+    <div class="dor-item"><i class="ti ti-x"></i> Inserir as árvores do levantamento uma por uma, bloco a bloco no AutoCAD</div>
+  </div>
+
+  <div class="memorial-highlight">
+    <div class="mh-badge"><i class="ti ti-star"></i> Destaque da assinatura</div>
+    <div class="mh-title"><i class="ti ti-file-description"></i> Memorial Descritivo automático</div>
+    <div class="mh-desc">Selecione os dados da tabela de coordenadas (gerada pelo Urbano Tools) no desenho e o script gera o memorial descritivo completo em HTML — com tabela analítica, distâncias, ângulos internos, confrontantes, quadrantes, perímetro e área total, além da descrição textual formatada para retificação ou remembramento.</div>
+    <div class="mh-checks">
+      <div class="mh-check"><i class="ti ti-check"></i> Tabela analítica dos dados</div>
+      <div class="mh-check"><i class="ti ti-check"></i> Quadrantes calculados automaticamente</div>
+      <div class="mh-check"><i class="ti ti-check"></i> Texto descritivo gerado para Retificação ou Remembramento de área</div>
+      <div class="mh-check"><i class="ti ti-check"></i> Exportação em HTML — abre no navegador</div>
+    </div>
+  </div>
+
+<div class="section-label">O que está incluído</div>
+  <div class="section-title">Mais de 20 ferramentas LISP com menus Ribbon instalados no AutoCAD, prontos para uso.</div>
+  <div class="section-sub">Cada ferramenta resolve uma tarefa específica do seu fluxo de trabalho — da numeração automática do polígono a descrição completa do memorial descritivo.</div>
+
+  <div class="features">
+    <div class="feat-card">
+      <div class="feat-icon teal"><i class="ti ti-table"></i></div>
+      <div class="feat-body">
+        <div class="feat-title">Tabela de confrontantes</div>
+        <div class="feat-desc">Gera automaticamente a tabela de confrontantes a partir da seleção do polígono no desenho — com os nomes dos lindeiros preenchidos pelo usuário e inserção direta no layer correto. Sem digitação de vértice por vértice, sem erro.</div>
+        <span class="feat-tag">Inserção no desenho</span>
+      </div>
+    </div>
+
+    <div class="feat-card">
+      <div class="feat-icon teal"><i class="ti ti-map-pin"></i></div>
+      <div class="feat-body">
+        <div class="feat-title">Tabela de coordenadas</div>
+        <div class="feat-desc">Gera a tabela de coordenadas dos vértices do polígono e insere direto no desenho. As coordenadas podem ser exibidas em UTM ou convertidas para geodésicas (Graus, Minutos e Segundos) — compatível atualmente com <strong>Fuso 21S e Fuso 22S</strong>. Se o seu projeto estiver em outro fuso, é só avisar que atualizo o Urbano Tools.</div>
+        <span class="feat-tag">UTM · Geodésicas</span>
+      </div>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon blue"><i class="ti ti-certificate"></i></div>
+      <div class="feat-body">
+        <div class="feat-title">Tabela padrão SIGEF</div>
+        <div class="feat-desc">Gera a tabela de vértices no padrão exigido pelo SIGEF a partir do memorial certificado pelo sistema, diretamente no desenho. Colunas de estação, vante, azimute, distância e coordenadas geodésicas.</div>
+        <span class="feat-tag amber">Certificação rural</span>
+      </div>
+    </div>
+
+    <div class="feat-card">
+      <div class="feat-icon amber"><i class="ti ti-slice"></i></div>
+      <div class="feat-body">
+        <div class="feat-title">Divisão de área</div>
+        <div class="feat-desc">Divide uma área por paralela a um segmento ou por pivô, calculando automaticamente o ponto de corte e desenhando as novas polilinhas com as áreas corretas.</div>
+        <span class="feat-tag amber">Cálculo + desenho</span>
+      </div>
+    </div>
+
+    <div class="feat-card">
+      <div class="feat-icon purple"><i class="ti ti-location"></i></div>
+      <div class="feat-body">
+        <div class="feat-title">Sistema de locação de obras</div>
+        <div class="feat-desc">Ferramenta completa para criar, editar, listar, buscar, importar e exportar pontos de locação. Identificação de pontos sobre eixos e auditoria de erros.</div>
+        <span class="feat-tag">Locação completa</span>
+      </div>
+    </div>
+
+    <div class="feat-card">
+      <div class="feat-icon coral"><i class="ti ti-tree"></i></div>
+      <div class="feat-body">
+        <div class="feat-title">Inserção de níveis e arbóreas + tabela automática</div>
+        <div class="feat-desc">Importa árvores de arquivo TXT (ID, coordenadas, código, copa, tronco, altura), insere os blocos georreferenciados no desenho e gera a <strong>tabela de arbóreas</strong> completa — com cabeçalho, convenção do bloco e rodapé de observação. Disponível em formato normal, compacto e em 2 colunas para grandes quantidades.</div>
+        <span class="feat-tag">Levantamento arbóreo completo</span>
+      </div>
+    </div>
+
+    <div class="feat-card">
+      <div class="feat-icon blue"><i class="ti ti-dimensions"></i></div>
+      <div class="feat-body">
+        <div class="feat-title">Vértices e cotas de segmentos</div>
+        <div class="feat-desc">Insere automaticamente os blocos de vértice numerados e cotas de distância em todos os segmentos da polilinha, com posicionamento inteligente. Compatível com polilinha e polígono fechado.</div>
+        <span class="feat-tag">Numeração automática</span>
+      </div>
+    </div>
+
+    <div class="feat-card">
+      <div class="feat-icon teal"><i class="ti ti-vector-bezier-arc"></i></div>
+      <div class="feat-body">
+        <div class="feat-title">Redução de polilinha</div>
+        <div class="feat-desc">Simplifica polilinhas com muitos vértices usando o algoritmo Douglas-Peucker com tolerância informável. Ideal para otimizar geometrias importadas de GPS ou drones sem perda visual de precisão.</div>
+        <span class="feat-tag">Otimização de geometria</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-label">Interface integrada</div>
+  <div class="section-title">Menus Ribbon dedicados — sem digitar um único comando.</div>
+  <div class="section-sub">Todas as ferramentas ficam acessíveis direto na faixa de opções do AutoCAD / Civil 3D. Clique e execute — sem precisar lembrar nenhum comando.</div>
+
+  <div class="ribbon-section">
+    <div class="ribbon-img-wrap">
+      <div class="ribbon-mockup">
+        <div class="ribbon-tabs">
+          <div class="r-tab">Home</div>
+          <div class="r-tab">Annotate</div>
+          <div class="r-tab active">Urbano Tools</div>
+          <div class="r-tab">View</div>
+        </div>
+        <div class="ribbon-bar">
+          <div class="r-btn highlight">
+            <i class="ti ti-file-description"></i>
+            <span>Memorial<br>Descritivo</span>
+          </div>
+          <div class="r-btn">
+            <i class="ti ti-table"></i>
+            <span>Tabela<br>Confrontantes</span>
+          </div>
+          <div class="r-btn">
+            <i class="ti ti-map-pin"></i>
+            <span>Tabela<br>Coordenadas</span>
+          </div>
+          <div class="r-btn">
+            <i class="ti ti-slice"></i>
+            <span>Divisão<br>de Área</span>
+          </div>
+          <div class="r-btn">
+            <i class="ti ti-dimensions"></i>
+            <span>Vértices<br>e Cotas</span>
+          </div>
+          <div class="r-btn">
+            <i class="ti ti-location"></i>
+            <span>Locação<br>de Obras</span>
+          </div>
+          <div class="r-btn">
+            <i class="ti ti-tree"></i>
+            <span>Inserir<br>Arbóreas</span>
+          </div>
+          <div class="r-btn">
+            <i class="ti ti-certificate"></i>
+            <span>Tabela<br>SIGEF</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="ribbon-callout">
+      <i class="ti ti-info-circle"></i>
+      <p><strong>Nada para memorizar.</strong> Após a instalação, uma aba <strong>"Urbano Tools"</strong> aparece automaticamente no Ribbon do AutoCAD. Cada ferramenta tem seu botão próprio com ícone — é só clicar e seguir as instruções na tela. A seção de arbóreas conta com botões para inserção dos blocos <em>e</em> geração da tabela, tudo integrado.</p>
+    </div>
+    <div class="ribbon-chips">
+      <div class="ribbon-chip"><i class="ti ti-check"></i> AutoCAD</div>
+      <div class="ribbon-chip"><i class="ti ti-check"></i> Civil 3D</div>
+      <div class="ribbon-chip"><i class="ti ti-check"></i> Instalação com 1 clique</div>
+      <div class="ribbon-chip"><i class="ti ti-check"></i> Aba exclusiva no Ribbon</div>
+    </div>
+  </div>
+
+  <div class="section-label">Plano</div>
+  <div id="pricing" class="pricing-card">
+    <div class="pricing-badge">Acesso completo</div>
+    <div class="pricing-name">Urbano Tools</div>
+    <div class="pricing-sub">Todas as ferramentas. Suporte incluído. Atualizações contínuas.</div>
+    <div class="pricing-price">
+      <span class="currency">R$</span>
+      <span class="amount">15</span>
+      <span class="period">/mês</span>
+    </div>
+    <div class="pricing-includes">
+      <div class="pi-item"><i class="ti ti-check"></i> Memorial Descritivo automático com exportação HTML</div>
+      <div class="pi-item"><i class="ti ti-check"></i> Tabela de confrontantes</div>
+      <div class="pi-item"><i class="ti ti-check"></i> Tabela de coordenadas UTM e geodésicas (Fuso 21S e 22S)</div>
+      <div class="pi-item"><i class="ti ti-check"></i> Divisão de área por paralela ou pivô</div>
+      <div class="pi-item"><i class="ti ti-check"></i> Sistema completo de locação de obras</div>
+      <div class="pi-item"><i class="ti ti-check"></i> Vértices, cotas, níveis, arbóreas e tabela de arbóreas</div>
+      <div class="pi-item"><i class="ti ti-check"></i> Mais de 20 ferramentas LISP com menus Ribbon</div>
+      <div class="pi-item"><i class="ti ti-check"></i> Instalação simples · Suporte incluído · Atualizações contínuas</div>
+    </div>
+
+    <a class="pricing-cta-wpp" href="https://wa.me/55981446647?text=Ol%C3%A1%2C%20quero%20testar%20o%20Urbano%20Tools%20por%203%20dias%20gr%C3%A1tis!" target="_blank">
+      <i class="ti ti-brand-whatsapp"></i>
+      Quero 3 dias grátis
+    </a>
+    <a class="pricing-cta-assinar" href="https://pay.hotmart.com/O106459363E" target="_blank">
+      Já quero assinar direto →
+    </a>
+    <div class="pricing-guarantee">
+      <i class="ti ti-lock" style="font-size:14px"></i>
+      Pagamento seguro · Cancele a qualquer momento
+    </div>
+  </div>
+
+  <div class="section-label">Suporte e desenvolvimento</div>
+  <div class="section-title">Encontrou um bug? Tem uma ideia? Precisa de algo sob medida?</div>
+
+  <div class="contact-section">
+    <div class="contact-block">
+      <div class="contact-icon amber"><i class="ti ti-bug"></i></div>
+      <div class="contact-body">
+        <div class="contact-title">Bugs, sugestões e melhorias</div>
+        <div class="contact-desc">Se encontrar algum comportamento inesperado ou tiver ideias de novas funcionalidades, é só avisar — fico feliz em atender. Se precisar adaptar alguma rotina ao padrão do seu escritório, basta entrar em contato e resolvemos juntos.</div>
+      </div>
+    </div>
+    <hr class="contact-divider">
+    <div class="contact-block">
+      <div class="contact-icon teal"><i class="ti ti-settings-automation"></i></div>
+      <div class="contact-body">
+        <div class="contact-title">Tem uma rotina que quer automatizar?</div>
+        <div class="contact-desc">Se tem algum processo repetitivo no AutoCAD ou no seu fluxo de trabalho que consome tempo desnecessário, vamos conversar. Juntos podemos criar a automação certa e reduzir drasticamente o tempo gasto na sua operação.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <p><strong>Desenvolvido por topógrafo · Para o mercado brasileiro</strong></p>
+    <p>Criado por quem usa AutoCAD no dia a dia. Sem complicação.</p>
+    <p style="margin-top: 14px; opacity: 0.5; font-size: 11px; line-height: 1.4;">
+      Urbano Tools © 2026 · Todos os direitos reservados.<br>
+      Este site e as ferramentas disponibilizadas de forma independente não possuem afiliação, patrocínio ou autorização da Autodesk Inc.
+    </p>
+  </div>
+
+</div>
+
+</body>
+</html>
