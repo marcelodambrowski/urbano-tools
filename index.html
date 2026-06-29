@@ -4,6 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Urbano Tools — Automatize seu trabalho no AutoCAD</title>
+<meta name="description" content="Mais de 20 ferramentas AutoLISP para topógrafos e engenheiros: memorial descritivo automático, tabelas, divisão de área, locação de obras e muito mais. Direto no AutoCAD.">
+<meta property="og:title" content="Urbano Tools — Automatize seu trabalho no AutoCAD">
+<meta property="og:description" content="Mais de 20 ferramentas AutoLISP para topógrafos e engenheiros. Memorial descritivo, tabelas, divisão de área e locação — tudo direto no AutoCAD por R$15/mês.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://marcelodambrowski.github.io/urbano-tools/og-image.png">
+<meta property="og:url" content="https://marcelodambrowski.github.io/urbano-tools/">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.19.0/dist/tabler-icons.min.css">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -20,7 +27,7 @@
   }
 
   .page {
-    max-width: 680px;
+    max-width: 860px;
     margin: 0 auto;
     padding: 24px 16px 80px;
     display: flex;
@@ -43,6 +50,21 @@
     height: 4px;
     background: #E8A020;
   }
+
+/* Garante que o contêiner pai exiba os grupos lado a lado */
+.ribbon-main-items {
+  display: flex;
+  flex-direction: row; /* Força o alinhamento horizontal */
+  align-items: stretch;
+  gap: 8px;
+}
+
+/* Opcional: Ajuste para os grupos terem comportamento flexível */
+.r-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centraliza os botões dentro do grupo */
+}
   
   /* Banner WPP incorporado no topo do Hero */
   .hero-top-badge {
@@ -448,7 +470,27 @@
   .ribbon-callout i { color: #185FA5; font-size: 20px; margin-top: 2px; flex-shrink: 0; }
   .ribbon-callout p { font-size: 13px; color: #2A3E52; line-height: 1.6; margin: 0; }
   .ribbon-callout p strong { color: #185FA5; }
-  .ribbon-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+  .ribbon-scroll-hint { display: none; }
+  .ribbon-bar { align-items: stretch; }
+  .r-group { display: flex; flex-direction: column; align-items: stretch; }
+  .r-group-btns { display: flex; gap: 6px; flex: 1; align-items: flex-start; padding-bottom: 4px; }
+  .r-group-label {
+    font-size: 8px;
+    color: #7AAAC8;
+    text-align: center;
+    letter-spacing: .05em;
+    text-transform: uppercase;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 4px;
+    margin-top: auto;
+  }
+  .r-separator {
+    width: 1px;
+    background: rgba(255,255,255,0.12);
+    margin: 4px 4px;
+    align-self: stretch;
+  }
+  .ribbon-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; justify-content: center; }
   .ribbon-chip {
     display: inline-flex;
     align-items: center;
@@ -611,20 +653,153 @@
   }
   .yt-note i { font-size: 14px; }
 
+  /* NAV FIXO */
+  .topnav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(27, 42, 59, 0.96);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    height: 52px;
+  }
+  .topnav-brand {
+    font-size: 15px;
+    font-weight: 600;
+    color: #fff;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .topnav-brand span { color: #6EB5E0; font-weight: 400; }
+  .topnav-links {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .topnav-links a {
+    font-size: 13px;
+    color: #9BB8CC;
+    text-decoration: none;
+    padding: 6px 12px;
+    border-radius: 8px;
+    transition: background .2s, color .2s;
+    white-space: nowrap;
+  }
+  .topnav-links a:hover { background: rgba(255,255,255,0.08); color: #fff; }
+  .topnav-cta {
+    background: #25D366 !important;
+    color: #fff !important;
+    font-weight: 600 !important;
+    padding: 7px 14px !important;
+    border-radius: 100px !important;
+  }
+  .topnav-cta:hover { opacity: .9; background: #25D366 !important; }
+
+  /* FEATURE CARDS — 2 colunas em telas maiores */
+  @media (min-width: 620px) {
+    .features {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+  }
+
+  /* DEPOIMENTOS */
+  .testimonials { display: flex; flex-direction: column; gap: 12px; }
+  @media (min-width: 620px) {
+    .testimonials { flex-direction: row; }
+    .testimonials .testi-card { flex: 1; }
+  }
+  .testi-card {
+    background: #fff;
+    border: 1px solid #E2E8F0;
+    border-radius: 16px;
+    padding: 22px;
+    position: relative;
+  }
+  .testi-placeholder {
+    border: 2px dashed #C8D8E8;
+    background: #F7FAFD;
+  }
+  .testi-stars { color: #E8A020; font-size: 14px; margin-bottom: 12px; letter-spacing: 2px; }
+  .testi-text { font-size: 14px; color: #3A4557; line-height: 1.65; margin-bottom: 14px; font-style: italic; }
+  .testi-author { display: flex; align-items: center; gap: 10px; }
+  .testi-avatar {
+    width: 38px; height: 38px;
+    border-radius: 100px;
+    background: #E6F1FB;
+    display: flex; align-items: center; justify-content: center;
+    color: #185FA5; font-size: 18px; flex-shrink: 0;
+  }
+  .testi-name { font-size: 13px; font-weight: 600; color: #1A1A2E; }
+  .testi-role { font-size: 12px; color: #8A96A8; }
+  .testi-placeholder-msg {
+    text-align: center;
+    padding: 18px 0 8px;
+  }
+  .testi-placeholder-msg i { font-size: 28px; color: #C0CDD8; display: block; margin-bottom: 10px; }
+  .testi-placeholder-msg p { font-size: 13px; color: #8A96A8; line-height: 1.5; }
+
   /* RESPONSIVE */
   @media (max-width: 480px) {
     .hero { padding: 36px 22px 32px; }
     .hero-headline { font-size: 19px; }
     .audience-grid { grid-template-columns: 1fr; }
     .pricing-price .amount { font-size: 40px; }
+    .topnav-links a:not(.topnav-cta) { display: none; }
+
+    /* Ribbon mobile: scroll horizontal suave */
+    .ribbon-section { padding: 20px 16px; }
+    .ribbon-img-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; border-radius: 8px; }
+    .ribbon-img-wrap::-webkit-scrollbar { height: 3px; }
+    .ribbon-img-wrap::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); border-radius: 3px; }
+    .ribbon-mockup { min-width: 600px; }
+    .ribbon-bar { flex-wrap: nowrap; gap: 4px; padding: 8px 10px; }
+    .r-group-btns { gap: 4px; }
+    .r-btn { min-width: 42px; padding: 6px 7px 4px; }
+    .r-btn i { font-size: 16px; }
+    .r-btn span { font-size: 7.5px; }
+    .r-group-label { font-size: 7px; }
+    .ribbon-callout { padding: 12px 14px; }
+    .ribbon-callout p { font-size: 12px; }
+    .ribbon-scroll-hint {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      color: #6B8499;
+      padding: 6px 12px 0;
+      margin-bottom: -2px;
+    }
   }
 </style>
 </head>
 <body>
 
-<div class="page">
+<nav class="topnav">
+  <a class="topnav-brand" href="#">urbano<span>tools</span></a>
+  <div class="topnav-links">
+    <a href="#ferramentas">Ferramentas</a>
+    <a href="#pricing">Preço</a>
+    <a href="#suporte">Suporte</a>
+    <a class="topnav-cta" href="https://wa.me/55981446647?text=Ol%C3%A1%2C%20quero%20testar%20o%20Urbano%20Tools%20por%203%20dias%20gr%C3%A1tis!" target="_blank"><i class="ti ti-brand-whatsapp"></i> 3 dias grátis</a>
+  </div>
+</nav>
+
+<div class="page" style="padding-top: 68px;">
 
   <div class="hero">
+    <div class="hero-top-badge">
+      <i class="ti ti-gift"></i>
+      <span><strong>Teste grátis por 3 dias!</strong> Sem cartão de crédito · Suporte completo</span>
+    </div>
     <div class="hero-logo">urbano<span>tools</span></div>
     <div class="hero-headline">Chega de retrabalho e erros manuais no AutoCAD.</div>
     <div class="hero-sub">Automatize a criação de memoriais descritivos, inserção de tabelas, conversão de coordenadas, divisão de áreas e muito mais — direto no seu desenho, em segundos.</div>
@@ -634,11 +809,7 @@
         <i class="ti ti-brand-whatsapp"></i>
         Quero 3 dias grátis
       </a>
-      <a class="btn-assinar" href="#pricing">Já quero assinar →</a>
-    <div class="hero-top-badge">
-      <i class="ti ti-gift"></i>
-      <span><strong>Teste grátis por 3 dias!</strong> Sem cartão de crédito · Suporte completo</span>
-    </div>
+      <a class="btn-assinar" href="#ferramentas">Ver ferramentas ↓</a>
     </div>
   </div>
 
@@ -682,7 +853,7 @@
     </div>
   </div>
 
-<div class="section-label">O que está incluído</div>
+<div id="ferramentas" class="section-label">O que está incluído</div>
   <div class="section-title">Mais de 20 ferramentas LISP com menus Ribbon instalados no AutoCAD, prontos para uso.</div>
   <div class="section-sub">Cada ferramenta resolve uma tarefa específica do seu fluxo de trabalho — da numeração automática do polígono a descrição completa do memorial descritivo.</div>
 
@@ -761,10 +932,10 @@
 
   <div class="section-label">Interface integrada</div>
   <div class="section-title">Menus Ribbon dedicados — sem digitar um único comando.</div>
-  <div class="section-sub">Todas as ferramentas ficam acessíveis direto na faixa de opções do AutoCAD / Civil 3D. Clique e execute — sem precisar lembrar nenhum comando.</div>
+  <div class="section-sub">Todas as ferramentas ficam acessíveis direto na faixa de opções do AutoCAD. Clique e execute — sem precisar lembrar nenhum comando.</div>
 
   <div class="ribbon-section">
-    <div class="ribbon-img-wrap">
+    <div class="ribbon-container-box">
       <div class="ribbon-mockup">
         <div class="ribbon-tabs">
           <div class="r-tab">Home</div>
@@ -772,42 +943,57 @@
           <div class="r-tab active">Urbano Tools</div>
           <div class="r-tab">View</div>
         </div>
+        
         <div class="ribbon-bar">
-          <div class="r-btn highlight">
-            <i class="ti ti-file-description"></i>
-            <span>Memorial<br>Descritivo</span>
+          <div class="ribbon-main-items">
+
+            <div class="r-group">
+              <div class="r-group-btns">
+                <div class="r-btn highlight">
+                  <i class="ti ti-settings"></i>
+                  <span>Config.</span>
+                </div>
+              </div>
+              <div class="r-group-label">Configurações</div>
+            </div>
+            <div class="r-separator"></div>
+
+            <div class="r-group">
+              <div class="r-group-btns">
+                <div class="r-btn"><i class="ti ti-dimensions"></i><span>Vértices</span></div>
+                <div class="r-btn"><i class="ti ti-file-description"></i><span>Memorial</span></div>
+                <div class="r-btn"><i class="ti ti-vector-bezier-arc"></i><span>Reduzir</span></div>
+                <div class="r-btn"><i class="ti ti-table"></i><span>Tabela</span></div>
+<div class="r-btn"><i class="ti ti-slice"></i><span>Divisão</span></div>
+              </div>
+              <div class="r-group-label">Ferramentas</div>
+            </div>
+            <div class="r-separator"></div>
+
+            <div class="r-group">
+              <div class="r-group-btns">
+                <div class="r-btn"><i class="ti ti-point"></i><span>Criar</span></div>
+                <div class="r-btn"><i class="ti ti-pencil"></i><span>Editar</span></div>
+                <div class="r-btn"><i class="ti ti-list"></i><span>Listar</span></div>
+<div class="r-btn"><i class="ti ti-search"></i><span>Buscar</span></div>
+              </div>
+              <div class="r-group-label">Pontos e Eixos</div>
+            </div>
+            <div class="r-separator"></div>
+
+            <div class="r-group">
+              <div class="r-group-btns">
+                <div class="r-btn"><i class="ti ti-info-circle"></i><span>Sobre</span></div>
+              </div>
+              <div class="r-group-label">Sobre</div>
+            </div>
+
           </div>
-          <div class="r-btn">
-            <i class="ti ti-table"></i>
-            <span>Tabela<br>Confrontantes</span>
-          </div>
-          <div class="r-btn">
-            <i class="ti ti-map-pin"></i>
-            <span>Tabela<br>Coordenadas</span>
-          </div>
-          <div class="r-btn">
-            <i class="ti ti-slice"></i>
-            <span>Divisão<br>de Área</span>
-          </div>
-          <div class="r-btn">
-            <i class="ti ti-dimensions"></i>
-            <span>Vértices<br>e Cotas</span>
-          </div>
-          <div class="r-btn">
-            <i class="ti ti-location"></i>
-            <span>Locação<br>de Obras</span>
-          </div>
-          <div class="r-btn">
-            <i class="ti ti-tree"></i>
-            <span>Inserir<br>Arbóreas</span>
-          </div>
-          <div class="r-btn">
-            <i class="ti ti-certificate"></i>
-            <span>Tabela<br>SIGEF</span>
-          </div>
+
         </div>
       </div>
     </div>
+
     <div class="ribbon-callout">
       <i class="ti ti-info-circle"></i>
       <p><strong>Nada para memorizar.</strong> Após a instalação, uma aba <strong>"Urbano Tools"</strong> aparece automaticamente no Ribbon do AutoCAD. Cada ferramenta tem seu botão próprio com ícone — é só clicar e seguir as instruções na tela. A seção de arbóreas conta com botões para inserção dos blocos <em>e</em> geração da tabela, tudo integrado.</p>
@@ -817,6 +1003,25 @@
       <div class="ribbon-chip"><i class="ti ti-check"></i> Civil 3D</div>
       <div class="ribbon-chip"><i class="ti ti-check"></i> Instalação com 1 clique</div>
       <div class="ribbon-chip"><i class="ti ti-check"></i> Aba exclusiva no Ribbon</div>
+      <div class="ribbon-chip"><i class="ti ti-check"></i> Configurações integradas</div>
+    </div>
+  </div>
+
+  <div class="section-label">Depoimentos</div>
+  <div class="section-title">O que dizem os usuários</div>
+
+  <div class="testimonials">
+    <div class="testi-card testi-placeholder">
+      <div class="testi-placeholder-msg">
+        <i class="ti ti-message-circle"></i>
+        <p><strong style="color:#5A6577">Seu depoimento aqui</strong><br>Experimente 3 dias grátis e conte como foi — publicamos aqui.</p>
+      </div>
+    </div>
+    <div class="testi-card testi-placeholder">
+      <div class="testi-placeholder-msg">
+        <i class="ti ti-message-circle"></i>
+        <p><strong style="color:#5A6577">Seu depoimento aqui</strong><br>Experimente 3 dias grátis e conte como foi — publicamos aqui.</p>
+      </div>
     </div>
   </div>
 
@@ -843,10 +1048,10 @@
 
     <a class="pricing-cta-wpp" href="https://wa.me/55981446647?text=Ol%C3%A1%2C%20quero%20testar%20o%20Urbano%20Tools%20por%203%20dias%20gr%C3%A1tis!" target="_blank">
       <i class="ti ti-brand-whatsapp"></i>
-      Quero 3 dias grátis
+      Começar agora — 3 dias grátis
     </a>
     <a class="pricing-cta-assinar" href="https://pay.hotmart.com/O106459363E" target="_blank">
-      Já quero assinar direto →
+      Assinar direto por R$15/mês →
     </a>
     <div class="pricing-guarantee">
       <i class="ti ti-lock" style="font-size:14px"></i>
@@ -854,7 +1059,7 @@
     </div>
   </div>
 
-  <div class="section-label">Suporte e desenvolvimento</div>
+  <div id="suporte" class="section-label">Suporte e desenvolvimento</div>
   <div class="section-title">Encontrou um bug? Tem uma ideia? Precisa de algo sob medida?</div>
 
   <div class="contact-section">
