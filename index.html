@@ -484,6 +484,35 @@
   }
   .ribbon-chip i { font-size: 14px; }
 
+  /* FAQ */
+  .faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .faq-item {
+    background: #fff;
+    border: 1px solid #E2E8F0;
+    border-radius: 12px;
+    padding: 16px 20px;
+  }
+  .faq-q {
+    font-size: 14px;
+    font-weight: 600;
+    color: #1A1A2E;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+  .faq-q i { color: #185FA5; font-size: 17px; flex-shrink: 0; }
+  .faq-a {
+    font-size: 13px;
+    color: #5A6577;
+    line-height: 1.65;
+    padding-left: 25px;
+  }
+
   /* CONTATO / SUGESTÕES */
   .contact-section {
     background: #1B2A3B;
@@ -756,309 +785,4 @@
 </head>
 <body>
 
-<nav class="topnav">
-  <a class="topnav-brand" href="#">urbano<span>tools</span></a>
-  <div class="topnav-links">
-    <a href="#ferramentas">Ferramentas</a>
-    <a href="#pricing">Preço</a>
-    <a href="#suporte">Suporte</a>
-    <a class="topnav-cta" href="https://wa.me/55981446647?text=Ol%C3%A1%2C%20quero%20testar%20o%20Urbano%20Tools%20por%203%20dias%20gr%C3%A1tis!" target="_blank"><i class="ti ti-brand-whatsapp"></i> 3 dias grátis</a>
-  </div>
-</nav>
-
-<div class="page" style="padding-top: 68px;">
-
-  <div class="hero">
-    <div class="hero-top-badge">
-      <i class="ti ti-gift"></i>
-      <span><strong>Teste grátis por 3 dias!</strong> Sem cartão de crédito · Suporte completo</span>
-    </div>
-    <div class="hero-logo">urbano<span>tools</span></div>
-    <div class="hero-headline">Chega de retrabalho e erros manuais no AutoCAD.</div>
-    <div class="hero-sub">Automatize a criação de memoriais descritivos, inserção de tabelas, conversão de coordenadas, divisão de áreas e muito mais — direto no seu desenho, em segundos.</div>
-    
-    <div class="hero-buttons">
-      <a class="btn-wpp" href="https://wa.me/55981446647?text=Ol%C3%A1%2C%20quero%20testar%20o%20Urbano%20Tools%20por%203%20dias%20gr%C3%A1tis!" target="_blank">
-        <i class="ti ti-brand-whatsapp"></i>
-        Quero 3 dias grátis
-      </a>
-      <a class="btn-assinar" href="#ferramentas">Ver ferramentas ↓</a>
-    </div>
-  </div>
-
-  <div class="section-label">Para quem é</div>
-  <div class="audience-grid">
-    <div class="aud-card">
-      <i class="ti ti-map-2"></i>
-      <strong>Topógrafos</strong>
-      <p>Memorial descritivo, numeração de vértices e contagem automática</p>
-    </div>
-    <div class="aud-card">
-      <i class="ti ti-building"></i>
-      <strong>Engenheiros civis</strong>
-      <p>Divisão de área, locação de obras e arbóreas com precisão</p>
-    </div>
-    <div class="aud-card">
-      <i class="ti ti-vector-bezier-2"></i>
-      <strong>Projetistas CAD</strong>
-      <p>Menos cliques, menos erro — mais tempo para o que importa</p>
-    </div>
-  </div>
-
-  <div class="dor">
-    <div class="dor-title"><i class="ti ti-alert-triangle"></i> Você ainda faz isso manualmente?</div>
-    <div class="dor-item"><i class="ti ti-x"></i> Copiar vértice a vértice para montar o memorial descritivo</div>
-    <div class="dor-item"><i class="ti ti-x"></i> Digitar coordenadas de vértice a vértice em tabelas extensas</div>
-    <div class="dor-item"><i class="ti ti-x"></i> Calcular divisão de área na mão e depois redesenhar</div>
-    <div class="dor-item"><i class="ti ti-x"></i> Inserir vértices e cotas um por um em cada segmento do polígono</div>
-    <div class="dor-item"><i class="ti ti-x"></i> Inserir as árvores do levantamento uma por uma, bloco a bloco no AutoCAD</div>
-  </div>
-
-  <div class="memorial-highlight">
-    <div class="mh-badge"><i class="ti ti-star"></i> Destaque da assinatura</div>
-    <div class="mh-title"><i class="ti ti-file-description"></i> Memorial Descritivo automático</div>
-    <div class="mh-desc">Selecione os dados da tabela de coordenadas (gerada pelo Urbano Tools) no desenho e o script gera o memorial descritivo completo em HTML — com tabela analítica, distâncias, ângulos internos, confrontantes, quadrantes, perímetro e área total, além da descrição textual formatada para retificação ou remembramento.</div>
-    <div class="mh-checks">
-      <div class="mh-check"><i class="ti ti-check"></i> Tabela analítica dos dados</div>
-      <div class="mh-check"><i class="ti ti-check"></i> Quadrantes calculados automaticamente</div>
-      <div class="mh-check"><i class="ti ti-check"></i> Texto descritivo gerado para Retificação ou Remembramento de área</div>
-      <div class="mh-check"><i class="ti ti-check"></i> Exportação em HTML — abre no navegador</div>
-    </div>
-  </div>
-
-<div id="ferramentas" class="section-label">O que está incluído</div>
-  <div class="section-title">Mais de 20 ferramentas prontas no AutoCAD — desde o primeiro clique.</div>
-  <div class="section-sub">Cada ferramenta resolve uma tarefa específica do seu fluxo de trabalho — da numeração automática do polígono a descrição completa do memorial descritivo.</div>
-
-  <div class="features">
-    <div class="feat-card">
-      <div class="feat-icon teal"><i class="ti ti-table"></i></div>
-      <div class="feat-body">
-        <div class="feat-title">Tabela de confrontantes</div>
-        <div class="feat-desc">Gera automaticamente a tabela de confrontantes a partir da seleção do polígono no desenho — com os nomes dos lindeiros preenchidos pelo usuário e inserção direta no layer correto. Sem digitação de vértice por vértice, sem erro.</div>
-        <span class="feat-tag">Inserção no desenho</span>
-      </div>
-    </div>
-
-    <div class="feat-card">
-      <div class="feat-icon teal"><i class="ti ti-map-pin"></i></div>
-      <div class="feat-body">
-        <div class="feat-title">Tabela de coordenadas</div>
-        <div class="feat-desc">Gera a tabela de coordenadas dos vértices do polígono e insere direto no desenho — com distâncias, ângulos internos, quadrantes e área total. Suporta coordenadas UTM e geodésicas no referencial SIRGAS2000.</div>
-        <span class="feat-tag">UTM · Geodésicas · SIRGAS2000</span>
-      </div>
-    </div>
-    <div class="feat-card">
-      <div class="feat-icon blue"><i class="ti ti-certificate"></i></div>
-      <div class="feat-body">
-        <div class="feat-title">Tabela padrão SIGEF</div>
-        <div class="feat-desc">Gera a tabela de vértices no padrão exigido pelo SIGEF a partir do memorial certificado pelo sistema, diretamente no desenho. Colunas de estação, vante, azimute, distância e coordenadas geodésicas.</div>
-        <span class="feat-tag amber">Certificação rural</span>
-      </div>
-    </div>
-
-    <div class="feat-card">
-      <div class="feat-icon amber"><i class="ti ti-slice"></i></div>
-      <div class="feat-body">
-        <div class="feat-title">Divisão de área</div>
-        <div class="feat-desc">Divide uma área por paralela a um segmento ou por pivô, calculando automaticamente o ponto de corte e desenhando as novas polilinhas com as áreas corretas.</div>
-        <span class="feat-tag amber">Cálculo + desenho</span>
-      </div>
-    </div>
-
-    <div class="feat-card">
-      <div class="feat-icon purple"><i class="ti ti-location"></i></div>
-      <div class="feat-body">
-        <div class="feat-title">Sistema de locação de obras</div>
-        <div class="feat-desc">Ferramenta completa para criar, editar, listar, buscar, importar e exportar pontos de locação. Identificação de pontos sobre eixos e auditoria de erros.</div>
-        <span class="feat-tag">Locação completa</span>
-      </div>
-    </div>
-
-    <div class="feat-card">
-      <div class="feat-icon coral"><i class="ti ti-tree"></i></div>
-      <div class="feat-body">
-        <div class="feat-title">Inserção de níveis e arbóreas + tabela automática</div>
-        <div class="feat-desc">Importa árvores de arquivo TXT (ID, coordenadas, código, copa, tronco, altura), insere os blocos georreferenciados no desenho e gera a <strong>tabela de arbóreas</strong> completa — com cabeçalho, convenção do bloco e rodapé de observação. Disponível em formato normal, compacto e em 2 colunas para grandes quantidades.</div>
-        <span class="feat-tag">Levantamento arbóreo completo</span>
-      </div>
-    </div>
-
-    <div class="feat-card">
-      <div class="feat-icon blue"><i class="ti ti-dimensions"></i></div>
-      <div class="feat-body">
-        <div class="feat-title">Vértices e cotas de segmentos</div>
-        <div class="feat-desc">Insere automaticamente os blocos de vértice numerados e cotas de distância em todos os segmentos da polilinha, com posicionamento inteligente. Compatível com polilinha e polígono fechado.</div>
-        <span class="feat-tag">Numeração automática</span>
-      </div>
-    </div>
-
-    <div class="feat-card">
-      <div class="feat-icon teal"><i class="ti ti-vector-bezier-arc"></i></div>
-      <div class="feat-body">
-        <div class="feat-title">Redução de polilinha</div>
-        <div class="feat-desc">Simplifica polilinhas com muitos vértices usando o algoritmo Douglas-Peucker com tolerância informável. Ideal para otimizar geometrias importadas de GPS ou drones sem perda visual de precisão.</div>
-        <span class="feat-tag">Otimização de geometria</span>
-      </div>
-    </div>
-  </div>
-
-  <div class="section-label">Interface integrada</div>
-  <div class="section-title">Menus Ribbon dedicados — sem digitar um único comando.</div>
-  <div class="section-sub">Todas as ferramentas ficam acessíveis direto na faixa de opções do AutoCAD. Clique e execute — sem precisar lembrar nenhum comando.</div>
-
-  <div class="ribbon-section">
-    <div class="ribbon-mockup">
-      <div class="ribbon-tabs">
-        <div class="r-tab">Home</div>
-        <div class="r-tab">Annotate</div>
-        <div class="r-tab active">URBANO_TOOLS</div>
-        <div class="r-tab">View</div>
-      </div>
-      <div class="ribbon-bar">
-        <!-- sempre visíveis -->
-        <div class="r-btn highlight"><i class="ti ti-settings"></i><span>Config.</span></div>
-        <div class="r-btn"><i class="ti ti-file-description"></i><span>Memorial</span></div>
-        <div class="r-btn"><i class="ti ti-table"></i><span>Tabelas</span></div>
-        <div class="r-btn"><i class="ti ti-slice"></i><span>Área</span></div>
-        <div class="r-btn"><i class="ti ti-dimensions"></i><span>Vértices</span></div>
-        <div class="r-btn"><i class="ti ti-certificate"></i><span>SIGEF</span></div>
-        <!-- ocultos no mobile -->
-        <div class="r-btn r-extra"><i class="ti ti-location"></i><span>Locação</span></div>
-        <div class="r-btn r-extra"><i class="ti ti-tree"></i><span>Arbóreas</span></div>
-        <div class="r-btn r-extra"><i class="ti ti-vector-bezier-arc"></i><span>Reduzir</span></div>
-        <div class="r-btn r-extra"><i class="ti ti-ruler-2"></i><span>Níveis</span></div>
-        <!-- sempre visível, empurrado para o fim -->
-        <div class="r-btn r-end"><i class="ti ti-info-circle"></i><span>Sobre</span></div>
-      </div>
-    </div>
-
-    <div class="ribbon-callout">    
-      <i class="ti ti-info-circle"></i>
-      <p><strong>Nada para memorizar.</strong> Após a instalação, uma aba <strong>"URBANO_TOOLS"</strong> aparece automaticamente no Ribbon do AutoCAD. Cada ferramenta tem seu botão com ícone — é só clicar e seguir as instruções na tela. Tudo organizado em grupos por função, sem precisar digitar um único comando.</p>
-    </div>
-    <div class="ribbon-chips">
-      <div class="ribbon-chip"><i class="ti ti-check"></i> AutoCAD</div>
-      <div class="ribbon-chip"><i class="ti ti-check"></i> Civil 3D</div>
-      <div class="ribbon-chip"><i class="ti ti-check"></i> Instalação com 1 clique</div>
-      <div class="ribbon-chip"><i class="ti ti-check"></i> Aba exclusiva no Ribbon</div>
-      <div class="ribbon-chip"><i class="ti ti-check"></i> Configurações integradas</div>
-    </div>
-  </div>
-
-  <div class="section-label">Depoimentos</div>
-  <div class="section-title">O que dizem os usuários</div>
-
-  <div class="testimonials">
-    <div class="testi-card testi-placeholder">
-      <div class="testi-placeholder-msg">
-        <i class="ti ti-message-circle"></i>
-        <p><strong style="color:#5A6577">Seu depoimento aqui</strong><br>Experimente 3 dias grátis e conte como foi — publicamos aqui.</p>
-      </div>
-    </div>
-    <div class="testi-card testi-placeholder">
-      <div class="testi-placeholder-msg">
-        <i class="ti ti-message-circle"></i>
-        <p><strong style="color:#5A6577">Seu depoimento aqui</strong><br>Experimente 3 dias grátis e conte como foi — publicamos aqui.</p>
-      </div>
-    </div>
-  </div>
-
-  <div class="section-label">Plano</div>
-  <div id="pricing" class="pricing-card">
-    <div class="pricing-badge">Acesso completo</div>
-    <div class="pricing-name">Urbano Tools</div>
-    <div class="pricing-sub">Todas as ferramentas. Suporte incluído. Atualizações contínuas.</div>
-    <div class="pricing-price">
-      <span class="currency">R$</span>
-      <span class="amount">15</span>
-      <span class="period">/mês</span>
-    </div>
-    <div class="pricing-includes">
-      <div class="pi-item"><i class="ti ti-check"></i> Memorial Descritivo automático com exportação HTML</div>
-      <div class="pi-item"><i class="ti ti-check"></i> Tabela de confrontantes</div>
-      <div class="pi-item"><i class="ti ti-check"></i> Tabela de coordenadas UTM e geodésicas (SIRGAS2000)</div>
-      <div class="pi-item"><i class="ti ti-check"></i> Divisão de área por paralela ou pivô</div>
-      <div class="pi-item"><i class="ti ti-check"></i> Sistema completo de locação de obras</div>
-      <div class="pi-item"><i class="ti ti-check"></i> Vértices, cotas, níveis, arbóreas e tabela de arbóreas</div>
-      <div class="pi-item"><i class="ti ti-check"></i> Mais de 20 ferramentas LISP com menus Ribbon</div>
-    </div>
-
-    <a class="pricing-cta-wpp" href="https://wa.me/55981446647?text=Ol%C3%A1%2C%20quero%20testar%20o%20Urbano%20Tools%20por%203%20dias%20gr%C3%A1tis!" target="_blank">
-      <i class="ti ti-brand-whatsapp"></i>
-      Começar agora — 3 dias grátis
-    </a>
-    <a class="pricing-cta-assinar" href="https://pay.hotmart.com/O106459363E" target="_blank">
-      Assinar direto por R$15/mês →
-    </a>
-    <div class="pricing-guarantee">
-      <i class="ti ti-lock" style="font-size:14px"></i>
-      Instalação simples · Suporte incluído · Atualizações contínuas · Cancele a qualquer momento
-    </div>
-  </div>
-
-  <div id="suporte" class="section-label">Suporte e desenvolvimento</div>
-  <div class="section-title">Encontrou um bug? Tem uma ideia? Precisa de algo sob medida?</div>
-
-  <div class="contact-section">
-    <div class="contact-block">
-      <div class="contact-icon amber"><i class="ti ti-bug"></i></div>
-      <div class="contact-body">
-        <div class="contact-title">Bugs, sugestões e melhorias</div>
-        <div class="contact-desc">Se encontrar algum comportamento inesperado ou tiver ideias de novas funcionalidades, é só avisar — fico feliz em atender. Se precisar adaptar alguma rotina ao padrão do seu escritório, basta entrar em contato e resolvemos juntos.</div>
-      </div>
-    </div>
-    <hr class="contact-divider">
-    <div class="contact-block">
-      <div class="contact-icon teal"><i class="ti ti-settings-automation"></i></div>
-      <div class="contact-body">
-        <div class="contact-title">Tem uma rotina que quer automatizar?</div>
-        <div class="contact-desc">Se tem algum processo repetitivo no AutoCAD ou no seu fluxo de trabalho que consome tempo desnecessário, vamos conversar. Juntos podemos criar a automação certa e reduzir drasticamente o tempo gasto na sua operação.</div>
-      </div>
-    </div>
-  </div>
-
-  <div class="section-label">Canal no YouTube</div>
-  <div class="section-title">Em breve — conteúdo exclusivo.</div>
-
-  <div class="yt-block">
-    <div class="yt-badge"><i class="ti ti-clock"></i> Em breve</div>
-    <div class="yt-header">
-      <div class="yt-icon"><i class="ti ti-brand-youtube"></i></div>
-      <div>
-        <div class="yt-title">Canal Urbano Tools</div>
-        <div class="yt-sub">Tutoriais e suporte em vídeo</div>
-      </div>
-    </div>
-    <div class="yt-desc">
-      Estou preparando um canal exclusivo no YouTube com conteúdo voltado para quem usa o Urbano Tools no dia a dia. Vídeos práticos, direto ao ponto — sem enrolação.
-    </div>
-    <div class="yt-items">
-      <div class="yt-item"><i class="ti ti-video"></i> Tutoriais passo a passo de cada ferramenta</div>
-      <div class="yt-item"><i class="ti ti-headset"></i> Vídeos de apoio e resolução de dúvidas frequentes</div>
-      <div class="yt-item"><i class="ti ti-bulb"></i> Dicas de uso avançado e fluxos de trabalho reais</div>
-      <div class="yt-item"><i class="ti ti-refresh"></i> Novidades e atualizações explicadas em vídeo</div>
-    </div>
-    <a class="yt-cta" href="https://www.youtube.com/@urbanotools" target="_blank">
-      <i class="ti ti-brand-youtube"></i>
-      Se inscrever no canal
-    </a>
-    <div class="yt-note">
-      <i class="ti ti-bell"></i>
-      Ative o sininho para ser avisado assim que o primeiro vídeo sair.
-    </div>
-  </div>
-
-  <div class="footer">
-    <p><strong>Desenvolvido por topógrafo · Para o mercado brasileiro</strong></p>
-    <p>Criado por quem usa AutoCAD no dia a dia. Sem complicação.</p>
-    <p style="margin-top: 14px; opacity: 0.5; font-size: 11px; line-height: 1.4;">
-      Urbano Tools © 2026 · Todos os direitos reservados.<br>
-      Este site e as ferramentas disponibilizadas de forma independente não possuem afiliação, patrocínio ou autorização da Autodesk Inc.
-    </p>
-  </div>
-
-</div>
-
-</body>
-</html>
+<nav c
