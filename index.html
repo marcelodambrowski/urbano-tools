@@ -397,27 +397,17 @@
     background: #fff;
     border: 1px solid #E2E8F0;
     border-radius: 16px;
-    padding: 28px;
-  }
-  .ribbon-img-wrap {
-    background: #0F1C28;
-    border-radius: 10px;
+    padding: 0 0 20px;
     overflow: hidden;
-    margin-bottom: 20px;
-    border: 1px solid #2A3E52;
-    position: relative;
   }
-  /* Simulated ribbon bar */
   .ribbon-mockup {
-    width: 100%;
     background: #1E3A50;
     padding: 10px 14px 0;
-    margin-bottom: 14px;
+    margin-bottom: 20px;
   }
   .ribbon-tabs {
     display: flex;
     gap: 2px;
-    margin-bottom: 0;
   }
   .r-tab {
     background: #16303F;
@@ -436,10 +426,10 @@
   }
   .ribbon-bar {
     background: #2C5070;
-    padding: 10px 14px;
+    padding: 8px 10px 10px;
     display: flex;
-    gap: 8px;
-    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 6px;
     border-bottom: 2px solid #E8A020;
   }
   .r-btn {
@@ -450,14 +440,23 @@
     background: rgba(255,255,255,0.06);
     border: 1px solid rgba(255,255,255,0.1);
     border-radius: 6px;
-    padding: 8px 10px 6px;
-    min-width: 52px;
+    padding: 7px 9px 5px;
+    flex: 1; /* distribui igualmente */
     cursor: pointer;
+    min-width: 0;
   }
-  .r-btn i { font-size: 20px; color: #6EB5E0; }
-  .r-btn span { font-size: 9px; color: #C8DAEB; text-align: center; line-height: 1.3; font-weight: 500; }
+  .r-btn i { font-size: 18px; color: #6EB5E0; }
+  .r-btn span { font-size: 8.5px; color: #C8DAEB; text-align: center; line-height: 1.2; font-weight: 500; white-space: nowrap; }
   .r-btn.highlight { background: rgba(232,160,32,0.15); border-color: rgba(232,160,32,0.4); }
   .r-btn.highlight i { color: #E8A020; }
+  /* "Sobre" empurrado para a direita */
+  .r-btn.r-end { margin-left: auto; flex: 0 0 auto; }
+  /* Botões extras: ocultos por padrão no mobile, visíveis em telas maiores */
+  .r-extra { display: none; }
+  @media (min-width: 480px) {
+    .r-extra { display: flex; }
+  }
+
   .ribbon-callout {
     display: flex;
     align-items: flex-start;
@@ -466,32 +465,12 @@
     border-left: 3px solid #185FA5;
     border-radius: 0 8px 8px 0;
     padding: 14px 16px;
-    margin-top: 0;
+    margin: 0 20px;
   }
   .ribbon-callout i { color: #185FA5; font-size: 20px; margin-top: 2px; flex-shrink: 0; }
   .ribbon-callout p { font-size: 13px; color: #2A3E52; line-height: 1.6; margin: 0; }
   .ribbon-callout p strong { color: #185FA5; }
-  .ribbon-scroll-hint { display: none; }
-  .ribbon-bar { align-items: stretch; }
-  .r-group { display: flex; flex-direction: column; align-items: stretch; }
-  .r-group-btns { display: flex; gap: 6px; flex: 1; align-items: flex-start; padding-bottom: 4px; }
-  .r-group-label {
-    font-size: 8px;
-    color: #7AAAC8;
-    text-align: center;
-    letter-spacing: .05em;
-    text-transform: uppercase;
-    border-top: 1px solid rgba(255,255,255,0.1);
-    padding-top: 4px;
-    margin-top: auto;
-  }
-  .r-separator {
-    width: 1px;
-    background: rgba(255,255,255,0.12);
-    margin: 4px 4px;
-    align-self: stretch;
-  }
-  .ribbon-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; justify-content: center; }
+  .ribbon-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; justify-content: center; padding: 0 20px; }
   .ribbon-chip {
     display: inline-flex;
     align-items: center;
@@ -748,37 +727,30 @@
   .testi-placeholder-msg i { font-size: 28px; color: #C0CDD8; display: block; margin-bottom: 10px; }
   .testi-placeholder-msg p { font-size: 13px; color: #8A96A8; line-height: 1.5; }
 
+  /* Tablet: audience em 2 cols + 1 */
+  @media (min-width: 380px) and (max-width: 619px) {
+    .audience-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+    /* terceiro card ocupa linha inteira */
+    .aud-card:last-child {
+      grid-column: 1 / -1;
+    }
+  }
+
   /* RESPONSIVE */
   @media (max-width: 480px) {
-    .hero { padding: 36px 22px 32px; }
+    .hero { padding: 32px 18px 28px; }
     .hero-headline { font-size: 19px; }
+    .hero-top-badge { font-size: 12px; padding: 7px 13px; }
     .audience-grid { grid-template-columns: 1fr; }
     .pricing-price .amount { font-size: 40px; }
     .topnav-links a:not(.topnav-cta) { display: none; }
 
-    /* Ribbon mobile: scroll horizontal suave */
-    .ribbon-section { padding: 20px 16px; }
-    .ribbon-img-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; border-radius: 8px; }
-    .ribbon-img-wrap::-webkit-scrollbar { height: 3px; }
-    .ribbon-img-wrap::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); border-radius: 3px; }
-    .ribbon-mockup { min-width: 600px; }
-    .ribbon-bar { flex-wrap: nowrap; gap: 4px; padding: 8px 10px; }
-    .r-group-btns { gap: 4px; }
-    .r-btn { min-width: 42px; padding: 6px 7px 4px; }
-    .r-btn i { font-size: 16px; }
-    .r-btn span { font-size: 7.5px; }
-    .r-group-label { font-size: 7px; }
-    .ribbon-callout { padding: 12px 14px; }
-    .ribbon-callout p { font-size: 12px; }
-    .ribbon-scroll-hint {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 11px;
-      color: #6B8499;
-      padding: 6px 12px 0;
-      margin-bottom: -2px;
-    }
+    /* Ribbon mobile: já tratado por .r-extra acima */
+    .ribbon-section { border-radius: 12px; }
+    .ribbon-callout { margin: 0 14px; }
+    .ribbon-chips { padding: 0 14px; }
   }
 </style>
 </head>
@@ -855,7 +827,7 @@
   </div>
 
 <div id="ferramentas" class="section-label">O que está incluído</div>
-  <div class="section-title">Mais de 20 ferramentas LISP com menus Ribbon instalados no AutoCAD, prontos para uso.</div>
+  <div class="section-title">Mais de 20 ferramentas prontas no AutoCAD — desde o primeiro clique.</div>
   <div class="section-sub">Cada ferramenta resolve uma tarefa específica do seu fluxo de trabalho — da numeração automática do polígono a descrição completa do memorial descritivo.</div>
 
   <div class="features">
@@ -872,8 +844,8 @@
       <div class="feat-icon teal"><i class="ti ti-map-pin"></i></div>
       <div class="feat-body">
         <div class="feat-title">Tabela de coordenadas</div>
-        <div class="feat-desc">Gera a tabela de coordenadas dos vértices do polígono e insere direto no desenho. Inserindo diratamente distâncias, ângulos internos, quadrantes, e a área total, além de integrar-se com scripts em Python para converter coordenadas UTM para Latitude e Longitude (geodésicas) no referencial SIRGAS2000..</div>
-        <span class="feat-tag">UTM · Geodésicas</span>
+        <div class="feat-desc">Gera a tabela de coordenadas dos vértices do polígono e insere direto no desenho — com distâncias, ângulos internos, quadrantes e área total. Suporta coordenadas UTM e geodésicas no referencial SIRGAS2000.</div>
+        <span class="feat-tag">UTM · Geodésicas · SIRGAS2000</span>
       </div>
     </div>
     <div class="feat-card">
@@ -936,68 +908,34 @@
   <div class="section-sub">Todas as ferramentas ficam acessíveis direto na faixa de opções do AutoCAD. Clique e execute — sem precisar lembrar nenhum comando.</div>
 
   <div class="ribbon-section">
-    <div class="ribbon-container-box">
-      <div class="ribbon-mockup">
-        <div class="ribbon-tabs">
-          <div class="r-tab">Home</div>
-          <div class="r-tab">Annotate</div>
-          <div class="r-tab active">URBANO_TOOLS</div>
-          <div class="r-tab">View</div>
-        </div>
-        
-        <div class="ribbon-bar">
-          <div class="ribbon-main-items">
-
-            <div class="r-group">
-              <div class="r-group-btns">
-                <div class="r-btn highlight">
-                  <i class="ti ti-settings"></i>
-                  <span>Config.</span>
-                </div>
-              </div>
-              <div class="r-group-label">Configurações</div>
-            </div>
-            <div class="r-separator"></div>
-
-            <div class="r-group">
-              <div class="r-group-btns">
-                <div class="r-btn"><i class="ti ti-dimensions"></i><span>Vértices</span></div>
-                <div class="r-btn"><i class="ti ti-file-description"></i><span>Memorial</span></div>
-                <div class="r-btn"><i class="ti ti-vector-bezier-arc"></i><span>Reduzir</span></div>
-                <div class="r-btn"><i class="ti ti-table"></i><span>Tabela</span></div>
-<div class="r-btn"><i class="ti ti-slice"></i><span>Divisão</span></div>
-              </div>
-              <div class="r-group-label">Ferramentas</div>
-            </div>
-            <div class="r-separator"></div>
-
-            <div class="r-group">
-              <div class="r-group-btns">
-                <div class="r-btn"><i class="ti ti-point"></i><span>Criar</span></div>
-                <div class="r-btn"><i class="ti ti-pencil"></i><span>Editar</span></div>
-                <div class="r-btn"><i class="ti ti-list"></i><span>Listar</span></div>
-<div class="r-btn"><i class="ti ti-search"></i><span>Buscar</span></div>
-              </div>
-              <div class="r-group-label">Pontos e Eixos</div>
-            </div>
-            <div class="r-separator"></div>
-
-            <div class="r-group">
-              <div class="r-group-btns">
-                <div class="r-btn"><i class="ti ti-info-circle"></i><span>Sobre</span></div>
-              </div>
-              <div class="r-group-label">Sobre</div>
-            </div>
-
-          </div>
-
-        </div>
+    <div class="ribbon-mockup">
+      <div class="ribbon-tabs">
+        <div class="r-tab">Home</div>
+        <div class="r-tab">Annotate</div>
+        <div class="r-tab active">URBANO_TOOLS</div>
+        <div class="r-tab">View</div>
+      </div>
+      <div class="ribbon-bar">
+        <!-- sempre visíveis -->
+        <div class="r-btn highlight"><i class="ti ti-settings"></i><span>Config.</span></div>
+        <div class="r-btn"><i class="ti ti-file-description"></i><span>Memorial</span></div>
+        <div class="r-btn"><i class="ti ti-table"></i><span>Tabelas</span></div>
+        <div class="r-btn"><i class="ti ti-slice"></i><span>Área</span></div>
+        <div class="r-btn"><i class="ti ti-dimensions"></i><span>Vértices</span></div>
+        <div class="r-btn"><i class="ti ti-certificate"></i><span>SIGEF</span></div>
+        <!-- ocultos no mobile -->
+        <div class="r-btn r-extra"><i class="ti ti-location"></i><span>Locação</span></div>
+        <div class="r-btn r-extra"><i class="ti ti-tree"></i><span>Arbóreas</span></div>
+        <div class="r-btn r-extra"><i class="ti ti-vector-bezier-arc"></i><span>Reduzir</span></div>
+        <div class="r-btn r-extra"><i class="ti ti-ruler-2"></i><span>Níveis</span></div>
+        <!-- sempre visível, empurrado para o fim -->
+        <div class="r-btn r-end"><i class="ti ti-info-circle"></i><span>Sobre</span></div>
       </div>
     </div>
 
     <div class="ribbon-callout">    
       <i class="ti ti-info-circle"></i>
-      <p><strong>Nada para memorizar.</strong> Após a instalação, uma aba <strong>"URBANO_TOOLS"</strong> aparece automaticamente no Ribbon do AutoCAD. Cada ferramenta tem seu botão próprio com ícone — é só clicar e seguir as instruções na tela. A seção de arbóreas conta com botões para inserção dos blocos <em>e</em> geração da tabela, tudo integrado.</p>
+      <p><strong>Nada para memorizar.</strong> Após a instalação, uma aba <strong>"URBANO_TOOLS"</strong> aparece automaticamente no Ribbon do AutoCAD. Cada ferramenta tem seu botão com ícone — é só clicar e seguir as instruções na tela. Tudo organizado em grupos por função, sem precisar digitar um único comando.</p>
     </div>
     <div class="ribbon-chips">
       <div class="ribbon-chip"><i class="ti ti-check"></i> AutoCAD</div>
@@ -1039,12 +977,11 @@
     <div class="pricing-includes">
       <div class="pi-item"><i class="ti ti-check"></i> Memorial Descritivo automático com exportação HTML</div>
       <div class="pi-item"><i class="ti ti-check"></i> Tabela de confrontantes</div>
-      <div class="pi-item"><i class="ti ti-check"></i> Tabela de coordenadas UTM e geodésicas (Fuso 21S e 22S)</div>
+      <div class="pi-item"><i class="ti ti-check"></i> Tabela de coordenadas UTM e geodésicas (SIRGAS2000)</div>
       <div class="pi-item"><i class="ti ti-check"></i> Divisão de área por paralela ou pivô</div>
       <div class="pi-item"><i class="ti ti-check"></i> Sistema completo de locação de obras</div>
       <div class="pi-item"><i class="ti ti-check"></i> Vértices, cotas, níveis, arbóreas e tabela de arbóreas</div>
       <div class="pi-item"><i class="ti ti-check"></i> Mais de 20 ferramentas LISP com menus Ribbon</div>
-      <div class="pi-item"><i class="ti ti-check"></i> Instalação simples · Suporte incluído · Atualizações contínuas</div>
     </div>
 
     <a class="pricing-cta-wpp" href="https://wa.me/55981446647?text=Ol%C3%A1%2C%20quero%20testar%20o%20Urbano%20Tools%20por%203%20dias%20gr%C3%A1tis!" target="_blank">
@@ -1056,7 +993,7 @@
     </a>
     <div class="pricing-guarantee">
       <i class="ti ti-lock" style="font-size:14px"></i>
-      Pagamento seguro · Cancele a qualquer momento
+      Instalação simples · Suporte incluído · Atualizações contínuas · Cancele a qualquer momento
     </div>
   </div>
 
