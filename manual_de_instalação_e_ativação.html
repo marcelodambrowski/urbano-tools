@@ -270,7 +270,7 @@
     </div>
     <div class="hero-logo">urbano<span>tools</span><span>Manual de Instalação e Ativação</span></div>
     <div class="hero-headline">Instale e ative o Urbano Tools no seu AutoCAD em 5 passos.</div>
-    <div class="hero-sub">Este guia cobre a extração do pacote, a configuração do AutoCAD/Civil 3D, a instalação do Python, a ativação da licença e a instalação das bibliotecas necessárias. Siga a ordem exata abaixo.</div>
+    <div class="hero-sub">Este guia contempla a extração do pacote, a configuração do AutoCAD/Civil 3D, a instalação do Python mais recente, a instalação das bibliotecas python necessárias e a ativação da sua licença do urbano-tools.</div>
     <div class="hero-buttons">
       <a class="btn-wpp" href="#suporte">
         <i class="ti ti-brand-whatsapp"></i>
@@ -297,7 +297,7 @@
       <div class="roadmap-num">2</div>
       <div class="roadmap-body">
         <div class="roadmap-title">Configurar o AutoCAD</div>
-        <div class="roadmap-desc">Automático (Civil 3D) ou manual (AutoCAD puro)</div>
+        <div class="roadmap-desc">Automático para Civil 3D ou manual para AutoCAD puro</div>
       </div>
       <i class="ti ti-chevron-right"></i>
     </a>
@@ -313,7 +313,7 @@
       <div class="roadmap-num">4</div>
       <div class="roadmap-body">
         <div class="roadmap-title">Instalar bibliotecas Python</div>
-        <div class="roadmap-desc">pyproj, pdfplumber, rasterio</div>
+        <div class="roadmap-desc">Instala todas as bibliotecas python necessárias</div>
       </div>
       <i class="ti ti-chevron-right"></i>
     </a>
@@ -337,22 +337,22 @@
       </div>
     </div>
     <div class="step-body">
-      <p>O arquivo <strong>urbano-tools-main.zip</strong> contém todos os arquivos LISP, DLLs e recursos do Urbano Tools, prontos para uso após a extração.</p>
+      <p>O arquivo <strong>urbano-tools-main.zip</strong> contém todos os arquivos necessários e recursos do Urbano Tools.</p>
 
       <ul class="ol-steps">
-        <li><span class="n">1</span><span class="t">Clique com o botão direito em <strong>urbano-tools-main.zip</strong> e escolha <strong>Extrair tudo...</strong> (recurso nativo do Windows) ou use um programa como 7-Zip/WinRAR.</span></li>
-        <li><span class="n">2</span><span class="t">Quando solicitado o destino da extração, informe (ou confirme) exatamente o caminho abaixo.</span></li>
+        <li><span class="n">1</span><span class="t">Clique com o botão direito em <strong>urbano-tools-main.zip</strong> e escolha <strong>Extrair tudo...</strong></span></li>
+        <li><span class="n">2</span><span class="t">Quando solicitado o destino da extração, informe ou confirme exatamente o caminho abaixo.</span></li>
       </ul>
 
       <div class="code-block"><i class="ti ti-folder"></i> C:\urbano-tools</div>
 
       <ul class="ol-steps">
-        <li><span class="n">3</span><span class="t">Confirme e aguarde a extração terminar.</span></li>
+        <li><span class="n">3</span><span class="t">Clique em <strong>Extrair</strong> e aguarde a extração terminar.</span></li>
       </ul>
 
       <div class="callout warn">
         <i class="ti ti-alert-triangle"></i>
-        <div><strong>O caminho C:\urbano-tools é fixo e obrigatório.</strong> Os arquivos .bat de configuração e as rotinas LISP fazem referência direta a esse caminho — se a extração for feita em outra pasta, a configuração automática do AutoCAD e o carregamento das rotinas irão falhar.</div>
+        <div><strong>O caminho C:\urbano-tools é fixo e obrigatório.</strong> Os arquivos e as rotinas LISP fazem referência direta a esse caminho — se a extração for feita em outra pasta, o carregamento do urbano tools e o seu funcionamento irá falhar.</div>
       </div>
     </div>
   </div>
@@ -369,14 +369,14 @@
     <div class="step-body">
       <p>O AutoCAD precisa saber onde estão os arquivos do Urbano Tools. Escolha a opção conforme o que você usa:</p>
 
-      <div class="sub-h"><i class="ti ti-bolt"></i> Civil 3D — automático</div>
+      <div class="sub-h"><i class="ti ti-bolt"></i> Versão Civil 3D — automático</div>
       <ul class="ol-steps">
         <li><span class="n">1</span><span class="t">Dentro de <strong>C:\urbano-tools</strong>, execute o arquivo <strong>_1.configurar_Civil3D.bat</strong>.</span></li>
         <li><span class="n">2</span><span class="t">O script detecta as versões instaladas e pergunta se deseja aplicar a configuração <strong>(S/N)</strong>.</span></li>
-        <li><span class="n">3</span><span class="t">Confirme com <strong>S</strong> e reinicie o Civil 3D — as ferramentas já aparecem automaticamente.</span></li>
+        <li><span class="n">3</span><span class="t">Confirme com <strong>S</strong> e pronto, já está configurado.</span></li>
       </ul>
 
-      <div class="sub-h"><i class="ti ti-hand-click"></i> AutoCAD "puro" (ou se o script não funcionar)</div>
+      <div class="sub-h"><i class="ti ti-hand-click"></i> Versão AutoCAD "puro" (ou se o script não funcionar)</div>
       <p>Adicione o caminho manualmente pela janela Options:</p>
       <ul class="ol-steps">
         <li><span class="n">1</span><span class="t">Digite <strong>OPTIONS</strong> no AutoCAD e abra a aba <strong>Files</strong>.</span></li>
@@ -384,12 +384,12 @@
       </ul>
       <div class="code-block"><i class="ti ti-folder"></i> C:\urbano-tools</div>
       <ul class="ol-steps">
-        <li><span class="n">3</span><span class="t">Clique em <strong>Apply</strong>, depois em <strong>OK</strong>, e reabra o AutoCAD.</span></li>
+        <li><span class="n">3</span><span class="t">Clique em <strong>Apply</strong>, depois em <strong>OK</strong>.</span></li>
       </ul>
 
       <div class="callout info">
         <i class="ti ti-bulb"></i>
-        <div>Para conferir, vá em <strong>Options &gt; Files &gt; Support File Search Path</strong> e confirme se C:\urbano-tools aparece na lista.</div>
+        <div>Para conferir se está tudo certo, vá novamente em <strong>Options &gt; Files &gt; Support File Search Path</strong> e confirme se C:\urbano-tools aparece na lista.</div>
       </div>
     </div>
   </div>
@@ -404,11 +404,11 @@
       </div>
     </div>
     <div class="step-body">
-      <p>Diversas ferramentas do Urbano Tools (otimizador de GeoTIFF, extrator de memoriais SIGEF) dependem de scripts Python executados em segundo plano pelas rotinas LISP. Por isso, o Python precisa estar instalado e acessível pelo sistema.</p>
+      <p>Diversas ferramentas do Urbano Tools dependem de scripts Python executados pelas rotinas LISP. Por isso, o Python precisa estar instalado e acessível pelo sistema.</p>
 
       <div class="callout info">
         <i class="ti ti-info-circle"></i>
-        <div>O Python não vem incluído no pacote (é um arquivo grande). Baixe direto do site oficial pelo botão abaixo.</div>
+        <div>O Python não vem incluído no pacote. Baixe direto do site oficial pelo botão abaixo.</div>
       </div>
 
       <a class="step-download" href="https://www.python.org/downloads/" target="_blank"><i class="ti ti-download"></i> Baixar Python (site oficial)</a>
@@ -435,16 +435,16 @@
       <div class="step-badge">4</div>
       <div>
         <div class="step-head-title">Instalação das bibliotecas Python</div>
-        <div class="step-head-sub">Executar _2.installLbibliotecas_python.bat</div>
+        <div class="step-head-sub">Executar _2.install_bibliotecas_python.bat</div>
       </div>
     </div>
     <div class="step-body">
       <p>Com o Python já instalado e no PATH (Etapa 3), o próximo passo é instalar as bibliotecas Python que dão suporte às ferramentas do Urbano Tools.</p>
 
       <ul class="ol-steps">
-        <li><span class="n">1</span><span class="t">Execute o arquivo <strong>_2.installLbibliotecas_python.bat</strong>.</span></li>
+        <li><span class="n">1</span><span class="t">Dentro de C:\urbano-tools, execute o arquivo <strong>_2.installLbibliotecas_python.bat</strong>.</span></li>
         <li><span class="n">2</span><span class="t">O script atualiza o pip (gerenciador de pacotes do Python) para a versão mais recente.</span></li>
-        <li><span class="n">3</span><span class="t">Em seguida instala, em sequência, as bibliotecas abaixo.</span></li>
+        <li><span class="n">3</span><span class="t">Em na sequência instala as bibliotecas abaixo.</span></li>
       </ul>
 
       <div class="tag-row">
@@ -474,13 +474,13 @@
       </div>
     </div>
     <div class="step-body">
-      <p>O Urbano Tools usa um sistema de licenciamento próprio (<strong>Porteira</strong>), carregado automaticamente ao abrir um desenho no AutoCAD. Não é preciso digitar nenhum comando.</p>
+      <p>O Urbano Tools usa um sistema de licenciamento próprio chamado internamente de <strong>Porteira</strong>, carregado automaticamente ao abrir um desenho no AutoCAD. Não é preciso digitar nenhum comando.</p>
 
       <ul class="ol-steps">
-        <li><span class="n">1</span><span class="t">Ao abrir um desenho, a Porteira identifica o computador e confere a licença automaticamente pela internet.</span></li>
+        <li><span class="n">1</span><span class="t">Ao abrir um desenho CAD, a Porteira identifica o computador e confere sua licença automaticamente no servidor.</span></li>
         <li><span class="n">2</span><span class="t">Se estiver válida, o Urbano Tools carrega normalmente e a Ribbon aparece no AutoCAD.</span></li>
-        <li><span class="n">3</span><span class="t">Se ainda não estiver ativada ou tiver expirado, uma janela mostra o <strong>ID de Cliente</strong> e oferece abrir o suporte via WhatsApp.</span></li>
-        <li><span class="n">4</span><span class="t">Após a confirmação do pagamento/renovação, a liberação é feita remotamente — basta reabrir o AutoCAD.</span></li>
+        <li><span class="n">3</span><span class="t">Se ainda não estiver ativada ou tiver expirada, uma janela será aberta com o seu <strong>numero de ID</strong> e dará opção de abrir o suporte via WhatsApp. Para ativar/reativar a licença.</span></li>
+        <li><span class="n">4</span><span class="t">Após a renovação, a liberação é feita remotamente — basta apenas reabrir o AutoCAD.</span></li>
       </ul>
 
       <div class="callout info">
@@ -498,11 +498,11 @@
   <div class="faq-list">
     <div class="faq-item">
       <div class="faq-q"><i class="ti ti-help-circle"></i> Posso extrair em outra pasta, diferente de C:\urbano-tools?</div>
-      <div class="faq-a">Não é recomendado. Os scripts de configuração e as rotinas LISP referenciam esse caminho diretamente. Extrair em outro local exige ajustar manualmente cada referência e pode quebrar o auto-update.</div>
+      <div class="faq-a">Não! Os scripts de configuração e as rotinas LISP referenciam esse caminho diretamente. Extrair em outro local quebrar todo o sistema.</div>
     </div>
     <div class="faq-item">
       <div class="faq-q"><i class="ti ti-help-circle"></i> O script _1.configurar_Civil3D.bat não encontrou nenhuma versão. E agora?</div>
-      <div class="faq-a">Isso indica que você não tem o Civil 3D instalado (só AutoCAD comum) ou que o Civil 3D está em um perfil não-padrão. Siga o procedimento manual da Etapa 2.2 para adicionar o caminho pela janela Options do AutoCAD.</div>
+      <div class="faq-a">Isso indica que você não tem o Civil 3D instalado, apenas o AutoCAD comum ou que o Civil 3D está em um perfil não-padrão. Siga o procedimento manual da Etapa 2 para adicionar o caminho pela janela Options do AutoCAD.</div>
     </div>
     <div class="faq-item">
       <div class="faq-q"><i class="ti ti-help-circle"></i> Já instalei o Python antes, preciso reinstalar?</div>
@@ -522,7 +522,7 @@
       <div class="contact-icon teal"><i class="ti ti-brand-whatsapp"></i></div>
       <div class="contact-body">
         <div class="contact-title">Suporte direto via WhatsApp</div>
-        <div class="contact-desc">Se travar em qualquer etapa da instalação — configuração do AutoCAD, Python ou ativação da licença — chame no WhatsApp com o ID de Cliente em mãos (quando disponível) para agilizar o atendimento.</div>
+        <div class="contact-desc">Se travar em qualquer etapa da instalação — configuração do AutoCAD, Python ou ativação da licença — chame no WhatsApp para iniciar o atendimento.</div>
       </div>
     </div>
     <a class="contact-cta" href="https://wa.me/55981446647?text=Ol%C3%A1%2C%20estou%20com%20d%C3%BAvida%20na%20instala%C3%A7%C3%A3o%20do%20Urbano%20Tools" target="_blank">
