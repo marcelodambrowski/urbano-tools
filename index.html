@@ -893,6 +893,24 @@
     </div>
 
     <div class="feat-card">
+      <div class="feat-icon purple"><i class="ti ti-crosshair"></i></div>
+      <div class="feat-body">
+        <div class="feat-title">Área local SIGEF/INCRA</div>
+        <div class="feat-desc">Converte automaticamente as coordenadas UTM da polilinha para o sistema local topocêntrico (ENU), cruzando com o XData dos pontos do desenho — fuso, altitude e identificação detectados automaticamente. Gera relatório em CSV compatível com Excel BR, pronto para conferência da área conforme o padrão SIGEF/INCRA.</div>
+        <span class="feat-tag purple">Conversão UTM → ENU</span>
+      </div>
+    </div>
+
+    <div class="feat-card">
+      <div class="feat-icon teal"><i class="ti ti-photo"></i></div>
+      <div class="feat-body">
+        <div class="feat-title">Otimização de GeoTIFF</div>
+        <div class="feat-desc">Comprime arquivos TIF/GeoTIFF — ortofotos, imagens de satélite ou drone — sem perder o georreferenciamento, reduzindo drasticamente o tamanho do arquivo. Basta selecionar a origem e o destino; depois é só inserir com o comando MAPIINSERT do AutoCAD, sem travamentos.</div>
+        <span class="feat-tag">Compressão sem perda de georreferência</span>
+      </div>
+    </div>
+
+    <div class="feat-card">
       <div class="feat-icon amber"><i class="ti ti-slice"></i></div>
       <div class="feat-body">
         <div class="feat-title">Divisão de área</div>
@@ -963,8 +981,10 @@
         <div class="r-btn r-extra"><i class="ti ti-tree"></i><span>Arbóreas</span></div>
         <div class="r-btn r-extra"><i class="ti ti-vector-bezier-arc"></i><span>Reduzir</span></div>
         <div class="r-btn r-extra"><i class="ti ti-ruler-2"></i><span>Níveis</span></div>
+        <div class="r-btn r-extra"><i class="ti ti-crosshair"></i><span>Área SGL</span></div>
+        <div class="r-btn r-extra"><i class="ti ti-photo"></i><span>Otimizar TIF</span></div>
         <!-- sempre visível, empurrado para o fim -->
-        <div class="r-btn r-end"><i class="ti ti-info-circle"></i><span>Sobre</span></div>
+        <div class="r-btn r-end"><i class="ti ti-license"></i><span>Licença</span></div>
       </div>
     </div>
 
@@ -1020,6 +1040,8 @@
       <div class="pi-item"><i class="ti ti-check"></i> Divisão de área por paralela ou pivô</div>
       <div class="pi-item"><i class="ti ti-check"></i> Sistema completo de locação de obras</div>
       <div class="pi-item"><i class="ti ti-check"></i> Vértices, cotas, níveis, arbóreas e tabela de arbóreas</div>
+      <div class="pi-item"><i class="ti ti-check"></i> Cálculo de área local no padrão SIGEF/INCRA (UTM → ENU)</div>
+      <div class="pi-item"><i class="ti ti-check"></i> Otimização de imagens GeoTIFF sem perda de georreferência</div>
       <div class="pi-item"><i class="ti ti-check"></i> Mais de 20 ferramentas LISP com menus Ribbon</div>
     </div>
 
