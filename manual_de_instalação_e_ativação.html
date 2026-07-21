@@ -318,15 +318,14 @@
       </div>
       <i class="ti ti-chevron-right"></i>
     </a>
-    <a class="roadmap-item" href="#etapa5">
+<a class="roadmap-item" href="#etapa5">
       <div class="roadmap-num">5</div>
       <div class="roadmap-body">
         <div class="roadmap-title">Ativar a licença</div>
-        <div class="roadmap-desc">Sistema Porteira — automático ao abrir o AutoCAD</div>
+        <div class="roadmap-desc">Sistema Porteira — via botão "Status da Licença" no Ribbon</div>
       </div>
       <i class="ti ti-chevron-right"></i>
     </a>
-  </div>
 
   <!-- ETAPA 1 -->
   <div id="etapa1" class="step-card">
@@ -465,23 +464,26 @@
     </div>
   </div>
 
-  <!-- ETAPA 5 -->
+<!-- ETAPA 5 -->
   <div id="etapa5" class="step-card">
     <div class="step-head">
       <div class="step-badge">5</div>
       <div>
         <div class="step-head-title">Ativação e renovação da licença</div>
-        <div class="step-head-sub">Sistema Porteira — automático</div>
+        <div class="step-head-sub">Sistema Porteira — via botão "Status da Licença" no Ribbon</div>
       </div>
     </div>
     <div class="step-body">
-      <p>O Urbano Tools usa um sistema de licenciamento próprio chamado internamente de <strong>Porteira</strong>, carregado automaticamente ao abrir um desenho no AutoCAD. Não é preciso digitar nenhum comando.</p>
+      <p>O Urbano Tools usa um sistema de licenciamento próprio chamado internamente de <strong>Porteira</strong>.</p>
 
+
+      <div class="sub-h"><i class="ti ti-info-circle"></i> Como verificar e ativar a licença</div>
       <ul class="ol-steps">
-        <li><span class="n">1</span><span class="t">Ao abrir um desenho CAD, a Porteira identifica o computador e confere sua licença automaticamente no servidor.</span></li>
-        <li><span class="n">2</span><span class="t">Se estiver válida, o Urbano Tools carrega normalmente e a Ribbon aparece no AutoCAD.</span></li>
-        <li><span class="n">3</span><span class="t">Se ainda não estiver ativada ou tiver expirada, uma janela será aberta com o seu <strong>número de ID</strong> e a opção de abrir o suporte via WhatsApp para ativar ou reativar a licença.</span></li>
-        <li><span class="n">4</span><span class="t">Após a renovação, a liberação é feita remotamente — basta apenas reabrir o AutoCAD.</span></li>
+        <li><span class="n">1</span><span class="t">Na Ribbon do AutoCAD, na aba do Urbano Tools, clique no botão <strong>Status da Licença</strong>.</span></li>
+        <li><span class="n">2</span><span class="t">Uma janela é aberta mostrando o <strong>ID do cliente</strong>, a <strong>versão instalada</strong>, o <strong>status da licença</strong> (ATIVA, EXPIRADA ou NÃO ATIVADA), a <strong>data de validade</strong> e os <strong>dias restantes</strong> (ou dias em atraso), além da data da <strong>última verificação online</strong>.</span></li>
+        <li><span class="n">3</span><span class="t">Se a licença estiver expirada ou ainda não ativada, clique no botão <strong>Ativar / Renovar Licença</strong> dentro dessa mesma janela.</span></li>
+        <li><span class="n">4</span><span class="t">Isso abre o WhatsApp de suporte com uma mensagem já preenchida, incluindo automaticamente o seu <strong>ID de cliente</strong> — não é preciso copiar nada manualmente.</span></li>
+        <li><span class="n">5</span><span class="t">Após a renovação, a liberação é feita remotamente — basta reabrir o AutoCAD ou clicar novamente em <strong>Status da Licença</strong> para confirmar que está ativa.</span></li>
       </ul>
 
       <div class="callout info">
@@ -509,9 +511,10 @@
       <div class="faq-q"><i class="ti ti-help-circle"></i> Já instalei o Python antes, preciso reinstalar?</div>
       <div class="faq-a">Só se a opção "Add to PATH" não tiver sido marcada na instalação original. Nesse caso, rode o instalador novamente, escolha Modify e marque "Add Python to environment variables".</div>
     </div>
-    <div class="faq-item">
+<div class="faq-item">
       <div class="faq-q"><i class="ti ti-help-circle"></i> Preciso ativar a licença manualmente todo dia?</div>
-      <div class="faq-a">Não. Uma vez ativada, a verificação acontece automaticamente toda vez que o AutoCAD abre um desenho, sem nenhuma ação do usuário — só é exibido aviso se a licença estiver expirada ou ainda não ativada.</div>
+      <div class="faq-a">Não. A verificação acontece automaticamente em segundo plano toda vez que o AutoCAD abre um desenho, sem nenhuma ação do usuário. Mas nenhum alerta é exibido caso a licença esteja expirada ou não ativada — para conferir o status ou renovar, acesse o botão "Status da Licença" no Ribbon do Urbano Tools.</div>
+    </div>
     </div>
     <div class="faq-item">
       <div class="faq-q"><i class="ti ti-help-circle"></i> Como faço para desinstalar o Urbano Tools?</div>
