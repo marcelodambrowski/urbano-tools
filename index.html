@@ -5,18 +5,69 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Urbano Tools — Automatize seu trabalho no AutoCAD</title>
 <meta name="description" content="Mais de 20 ferramentas AutoLISP para topógrafos e engenheiros: memorial descritivo automático, tabelas, divisão de área, locação de obras e muito mais. Direto no AutoCAD.">
+
+<!-- SEO Canonical & Indexação -->
+<link rel="canonical" href="https://marcelodambrowski.github.io/urbano-tools/">
+<meta name="robots" content="index, follow">
+
+<!-- Open Graph / Facebook / WhatsApp -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://marcelodambrowski.github.io/urbano-tools/">
 <meta property="og:title" content="Urbano Tools — Automatize seu trabalho no AutoCAD">
 <meta property="og:description" content="Mais de 20 ferramentas AutoLISP para topógrafos e engenheiros. Memorial descritivo, tabelas, divisão de área e locação — tudo direto no AutoCAD por R$15/mês.">
-<meta property="og:type" content="website">
 <meta property="og:image" content="https://marcelodambrowski.github.io/urbano-tools/og-image.png">
-<meta property="og:url" content="https://marcelodambrowski.github.io/urbano-tools/">
+
+<!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Urbano Tools — Automatize seu trabalho no AutoCAD">
+<meta name="twitter:description" content="Mais de 20 ferramentas AutoLISP para topógrafos e engenheiros no AutoCAD por R$15/mês.">
+<meta name="twitter:image" content="https://marcelodambrowski.github.io/urbano-tools/og-image.png">
+
+<!-- Favicon -->
+<link rel="icon" type="image/png" href="https://marcelodambrowski.github.io/urbano-tools/favicon.png">
+
+<!-- Google Analytics 4 (Substitua G-XXXXXXXXXX pela sua ID de Métrica do GA4) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-XXXXXXXXXX');
+</script>
+
+<!-- Microsoft Clarity (Mapas de Calor - Substitua O_SEU_ID_CLARITY) -->
+<script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "O_SEU_ID_CLARITY");
+</script>
+
+<!-- Schema.org Dados Estruturados -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Urbano Tools",
+  "operatingSystem": "Windows",
+  "applicationCategory": "BusinessApplication",
+  "description": "Mais de 20 ferramentas AutoLISP para topógrafos e engenheiros no AutoCAD: memorial descritivo automático, tabelas de coordenadas, divisão de área e locação.",
+  "offers": {
+    "@type": "Offer",
+    "price": "15.00",
+    "priceCurrency": "BRL"
+  }
+}
+</script>
+
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.19.0/dist/tabler-icons.min.css">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   html {
-    scroll-behavior: smooth; /* Ativa a rolagem suave na página */
+    scroll-behavior: smooth;
   }
 
   body {
@@ -51,22 +102,6 @@
     background: #E8A020;
   }
 
-/* Garante que o contêiner pai exiba os grupos lado a lado */
-.ribbon-main-items {
-  display: flex;
-  flex-direction: row; /* Força o alinhamento horizontal */
-  align-items: stretch;
-  gap: 8px;
-}
-
-/* Opcional: Ajuste para os grupos terem comportamento flexível */
-.r-group {
-  display: flex;
-  flex-direction: column;
-  align-items: center; /* Centraliza os botões dentro do grupo */
-}
-  
-  /* Banner WPP incorporado no topo do Hero */
   .hero-top-badge {
     background: rgba(37, 211, 102, 0.14);
     border: 1px solid rgba(37, 211, 102, 0.35);
@@ -269,7 +304,6 @@
     padding: 2px 10px;
     border-radius: 100px;
     margin-top: 8px;
-    /* default: teal */
     background: #E1F5EE;
     color: #0A5C43;
   }
@@ -446,7 +480,7 @@
     border: 1px solid rgba(255,255,255,0.1);
     border-radius: 6px;
     padding: 7px 9px 5px;
-    flex: 1; /* distribui igualmente */
+    flex: 1;
     cursor: pointer;
     min-width: 0;
   }
@@ -454,9 +488,7 @@
   .r-btn span { font-size: 8.5px; color: #C8DAEB; text-align: center; line-height: 1.2; font-weight: 500; white-space: nowrap; }
   .r-btn.highlight { background: rgba(232,160,32,0.15); border-color: rgba(232,160,32,0.4); }
   .r-btn.highlight i { color: #E8A020; }
-  /* "Sobre" empurrado para a direita */
   .r-btn.r-end { margin-left: auto; flex: 0 0 auto; }
-  /* Botões extras: ocultos por padrão no mobile, visíveis em telas maiores */
   .r-extra { display: none; }
   @media (min-width: 480px) {
     .r-extra { display: flex; }
@@ -544,25 +576,9 @@
   }
   .contact-icon.amber  { background: rgba(232,160,32,0.18); color: #E8A020; }
   .contact-icon.teal   { background: rgba(37,211,102,0.15); color: #25D366; }
-  .contact-body {}
   .contact-title { font-size: 15px; font-weight: 600; color: #fff; margin-bottom: 6px; }
   .contact-desc { font-size: 13px; color: #9BB8CC; line-height: 1.6; }
   .contact-divider { border: none; border-top: 1px solid rgba(255,255,255,0.08); margin: 0; }
-  .contact-cta {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: #25D366;
-    color: #fff;
-    font-size: 14px;
-    font-weight: 600;
-    padding: 13px 22px;
-    border-radius: 100px;
-    text-decoration: none;
-    transition: opacity .2s;
-    align-self: flex-start;
-  }
-  .contact-cta:hover { opacity: .9; }
 
   /* YOUTUBE */
   .yt-block {
@@ -716,7 +732,6 @@
   }
   .topnav-cta:hover { opacity: .9; background: #25D366 !important; }
 
-  /* FEATURE CARDS — 2 colunas em telas maiores */
   @media (min-width: 620px) {
     .features {
       display: grid;
@@ -742,7 +757,6 @@
     border: 2px dashed #C8D8E8;
     background: #F7FAFD;
   }
-  .testi-stars { color: #E8A020; font-size: 14px; margin-bottom: 12px; letter-spacing: 2px; }
   .testi-text { font-size: 14px; color: #3A4557; line-height: 1.65; margin-bottom: 14px; font-style: italic; }
   .testi-author { display: flex; align-items: center; gap: 10px; }
   .testi-avatar {
@@ -761,12 +775,10 @@
   .testi-placeholder-msg i { font-size: 28px; color: #C0CDD8; display: block; margin-bottom: 10px; }
   .testi-placeholder-msg p { font-size: 13px; color: #8A96A8; line-height: 1.5; }
 
-  /* Tablet: audience em 2 cols + 1 */
   @media (min-width: 380px) and (max-width: 619px) {
     .audience-grid {
       grid-template-columns: 1fr 1fr;
     }
-    /* terceiro card ocupa linha inteira */
     .aud-card:last-child {
       grid-column: 1 / -1;
     }
@@ -780,8 +792,6 @@
     .audience-grid { grid-template-columns: 1fr; }
     .pricing-price .amount { font-size: 40px; }
     .topnav-links a:not(.topnav-cta) { display: none; }
-
-    /* Ribbon mobile: já tratado por .r-extra acima */
     .ribbon-section { border-radius: 12px; }
     .ribbon-callout { margin: 0 14px; }
     .ribbon-chips { padding: 0 14px; }
@@ -796,7 +806,7 @@
     <a href="#ferramentas">Ferramentas</a>
     <a href="#pricing">Preço</a>
     <a href="#suporte">Suporte</a>
-    <a class="topnav-cta" href="https://wa.me/55981446647?text=Ol%C3%A1%2C%20quero%20testar%20o%20Urbano%20Tools%20por%203%20dias%20gr%C3%A1tis!" target="_blank"><i class="ti ti-brand-whatsapp"></i> 3 dias grátis</a>
+    <a class="topnav-cta" href="https://wa.me/55981446647?text=Ol%C3%A1%2C%20quero%20testar%20o%20Urbano%20Tools%20por%203%20dias%20gr%C3%A1tis!" target="_blank" onclick="gtag('event', 'click_whatsapp_nav', {'event_category': 'Conversion'});"><i class="ti ti-brand-whatsapp"></i> 3 dias grátis</a>
   </div>
 </nav>
 
@@ -812,7 +822,7 @@
     <div class="hero-sub">Mais de 20 rotinas em <strong style="color:#fff">AutoLISP</strong> que automatizam a criação de memoriais descritivos, inserção de tabelas, conversão de coordenadas, divisão de áreas e muito mais — direto no seu desenho, em segundos.</div>
     
     <div class="hero-buttons">
-      <a class="btn-wpp" href="https://wa.me/55981446647?text=Ol%C3%A1%2C%20quero%20testar%20o%20Urbano%20Tools%20por%203%20dias%20gr%C3%A1tis!" target="_blank">
+      <a class="btn-wpp" href="https://wa.me/55981446647?text=Ol%C3%A1%2C%20quero%20testar%20o%20Urbano%20Tools%20por%203%20dias%20gr%C3%A1tis!" target="_blank" onclick="gtag('event', 'click_whatsapp_hero', {'event_category': 'Conversion'});">
         <i class="ti ti-brand-whatsapp"></i>
         Quero 3 dias grátis
       </a>
@@ -861,7 +871,7 @@
     </div>
   </div>
 
-<div id="ferramentas" class="section-label">O que está incluído</div>
+  <div id="ferramentas" class="section-label">O que está incluído</div>
   <div class="section-title">Mais de 20 ferramentas em AutoLISP, prontas no AutoCAD — desde o primeiro clique.</div>
   <div class="section-sub">Cada ferramenta resolve uma tarefa específica do seu fluxo de trabalho — da numeração automática do polígono a descrição completa do memorial descritivo.</div>
 
@@ -883,6 +893,7 @@
         <span class="feat-tag">UTM · Geodésicas · SIRGAS2000</span>
       </div>
     </div>
+
     <div class="feat-card">
       <div class="feat-icon blue"><i class="ti ti-certificate"></i></div>
       <div class="feat-body">
@@ -932,7 +943,7 @@
       <div class="feat-icon coral"><i class="ti ti-tree"></i></div>
       <div class="feat-body">
         <div class="feat-title">Inserção de níveis e arbóreas + tabela automática</div>
-        <div class="feat-desc">Duas ferramentas integradas: a de <strong>níveis</strong> lê os pontos COGO do Civil 3D pelo código configurável, insere o bloco indicador e a cota com vírgula via MLeader — tudo no layer correto, com opção de atualizar escala dos níveis já inseridos. A de <strong>arbóreas</strong> importa um arquivo TXT (ID, coordenadas, código, copa, tronco, altura), insere os blocos georreferenciados e gera a tabela completa em formato normal, compacto ou 2 colunas.</div>
+        <div class="feat-desc">Duas ferramentas integradas: a de <strong>níveis</strong> lê os pontos COGO do Civil 3D pelo código configurável, insere o bloco indicador e a cota com vírgula via MLeader — tudo no layer correto. A de <strong>arbóreas</strong> importa TXT, insere os blocos e gera a tabela completa.</div>
         <span class="feat-tag coral">Pontos COGO · Levantamento arbóreo</span>
       </div>
     </div>
@@ -969,28 +980,25 @@
         <div class="r-tab active">URBANO_TOOLS</div>
       </div>
       <div class="ribbon-bar">
-        <!-- sempre visíveis -->
         <div class="r-btn"><i class="ti ti-settings"></i><span>Config.</span></div>
         <div class="r-btn"><i class="ti ti-file-description"></i><span>Memorial</span></div>
         <div class="r-btn"><i class="ti ti-table"></i><span>Tabelas</span></div>
         <div class="r-btn"><i class="ti ti-slice"></i><span>Área</span></div>
         <div class="r-btn"><i class="ti ti-dimensions"></i><span>Vértices</span></div>
         <div class="r-btn"><i class="ti ti-certificate"></i><span>SIGEF</span></div>
-        <!-- ocultos no mobile -->
         <div class="r-btn r-extra"><i class="ti ti-location"></i><span>Locação</span></div>
         <div class="r-btn r-extra"><i class="ti ti-tree"></i><span>Arbóreas</span></div>
         <div class="r-btn r-extra"><i class="ti ti-vector-bezier-arc"></i><span>Reduzir</span></div>
         <div class="r-btn r-extra"><i class="ti ti-ruler-2"></i><span>Níveis</span></div>
         <div class="r-btn r-extra"><i class="ti ti-crosshair"></i><span>Área SGL</span></div>
         <div class="r-btn r-extra"><i class="ti ti-photo"></i><span>Otimizar TIF</span></div>
-        <!-- sempre visível, empurrado para o fim -->
         <div class="r-btn r-end"><i class="ti ti-license"></i><span>Licença</span></div>
       </div>
     </div>
 
-    <div class="ribbon-callout">    
+    <div class="ribbon-callout">
       <i class="ti ti-info-circle"></i>
-      <p><strong>Nada para memorizar.</strong> Após a instalação, uma aba <strong>"URBANO_TOOLS"</strong> aparece automaticamente no Ribbon do AutoCAD. Cada ferramenta tem seu botão com ícone — é só clicar e seguir as instruções na tela. Tudo organizado em grupos por função, sem precisar digitar um único comando.</p>
+      <p><strong>Nada para memorizar.</strong> Após a instalação, uma aba <strong>"URBANO_TOOLS"</strong> aparece automaticamente no Ribbon do AutoCAD. Cada ferramenta tem seu botão com ícone — é só clicar e seguir as instruções na tela.</p>
     </div>
     <div class="ribbon-chips">
       <div class="ribbon-chip"><i class="ti ti-check"></i> AutoCAD</div>
@@ -1045,11 +1053,11 @@
       <div class="pi-item"><i class="ti ti-check"></i> Mais de 20 ferramentas LISP com menus Ribbon</div>
     </div>
 
-    <a class="pricing-cta-wpp" href="https://wa.me/55981446647?text=Ol%C3%A1%2C%20quero%20testar%20o%20Urbano%20Tools%20por%203%20dias%20gr%C3%A1tis!" target="_blank">
+    <a class="pricing-cta-wpp" href="https://wa.me/55981446647?text=Ol%C3%A1%2C%20quero%20testar%20o%20Urbano%20Tools%20por%203%20dias%20gr%C3%A1tis!" target="_blank" onclick="gtag('event', 'click_whatsapp_pricing', {'event_category': 'Conversion'});">
       <i class="ti ti-brand-whatsapp"></i>
       Começar agora — 3 dias grátis
     </a>
-    <a class="pricing-cta-assinar" href="https://pay.hotmart.com/O106459363E" target="_blank">
+    <a class="pricing-cta-assinar" href="https://pay.hotmart.com/O106459363E" target="_blank" onclick="gtag('event', 'click_hotmart_checkout', {'event_category': 'Conversion'});">
       Assinar direto por R$15/mês →
     </a>
     <div class="pricing-guarantee">
@@ -1062,7 +1070,6 @@
   <div class="section-title">Perguntas antes de assinar</div>
 
   <div class="faq-list">
-
     <div class="faq-item">
       <div class="faq-q"><i class="ti ti-help-circle"></i> Funciona no meu AutoCAD?</div>
       <div class="faq-a">Funciona no AutoCAD e Civil 3D a partir de 2015. Para AutoCAD LT: versões 2024 ou mais recentes têm suporte a AutoLISP integrado e a grande maioria das rotinas funciona — macros mais complexas podem ter limitações. Versões LT 2023 e anteriores não têm suporte a AutoLISP e não são compatíveis.</div>
@@ -1080,7 +1087,7 @@
 
     <div class="faq-item">
       <div class="faq-q"><i class="ti ti-help-circle"></i> As ferramentas recebem atualizações?</div>
-      <div class="faq-a">Sim. As atualizações são automáticas — ao abrir qualquer desenho no AutoCAD, o sistema verifica e aplica a versão mais recente sem nenhuma ação necessária. Você pode conferir a versão instalada a qualquer momento na aba <strong>Sobre</strong> dentro do Urbano Tools.</div>
+      <div class="faq-a">Sim. As atualizações são automáticas — ao abrir qualquer desenho no AutoCAD, o sistema verifica e aplica a versão mais recente sem nenhuma ação necessária.</div>
     </div>
 
     <div class="faq-item">
@@ -1092,7 +1099,6 @@
       <div class="faq-q"><i class="ti ti-help-circle"></i> Tenho suporte se travar em algo?</div>
       <div class="faq-a">Sim, suporte direto via WhatsApp incluso na assinatura. Se travar em qualquer ferramenta ou precisar adaptar algo ao seu fluxo de trabalho, é só chamar.</div>
     </div>
-
   </div>
 
   <div id="suporte" class="section-label">Suporte e desenvolvimento</div>
@@ -1137,7 +1143,7 @@
       <div class="yt-item"><i class="ti ti-bulb"></i> Dicas de uso avançado e fluxos de trabalho reais</div>
       <div class="yt-item"><i class="ti ti-rocket"></i> Lançamento de novas ferramentas e atualizações</div>
     </div>
-    <a class="yt-cta" href="https://www.youtube.com/@urbano_tools" target="_blank">
+    <a class="yt-cta" href="https://www.youtube.com/@urbano_tools" target="_blank" onclick="gtag('event', 'click_youtube', {'event_category': 'Social'});">
       <i class="ti ti-brand-youtube"></i>
       Se inscrever no canal
     </a>
