@@ -47,7 +47,7 @@
   }
   </script>
 
-<!-- Google Analytics 4 (Substitua G-XXXXXXXXXX pela sua ID de Métrica do GA4) -->
+<!-- Google Analytics 4 -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-L096RL6H9W"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -890,6 +890,15 @@
     </div>
 
     <div class="feat-card">
+      <div class="feat-icon amber"><i class="ti ti-world-latitude"></i></div>
+      <div class="feat-body">
+        <div class="feat-title">Fator de Conversão Geoidal (N)</div>
+        <div class="feat-desc">Calcula a ondulação geoidal (N) diretamente no AutoCAD/Civil 3D utilizando a grade oficial do IBGE (HGEO/HNOR2020 - Imbituba) por interpolação spline bicúbica. Selecione o ponto UTM/SIRGAS2000 no desenho e obtenha o fator para conversão de altitudes elipsoidais e ortométricas.</div>
+        <span class="feat-tag amber">Grade Oficial IBGE · Spline Bicúbica</span>
+      </div>
+    </div>
+
+    <div class="feat-card">
       <div class="feat-icon blue"><i class="ti ti-certificate"></i></div>
       <div class="feat-body">
         <div class="feat-title">Tabela padrão SIGEF</div>
@@ -978,6 +987,7 @@
         <div class="r-btn"><i class="ti ti-settings"></i><span>Config.</span></div>
         <div class="r-btn"><i class="ti ti-file-description"></i><span>Memorial</span></div>
         <div class="r-btn"><i class="ti ti-table"></i><span>Tabelas</span></div>
+        <div class="r-btn highlight"><i class="ti ti-world-latitude"></i><span>Ondulação N</span></div>
         <div class="r-btn"><i class="ti ti-slice"></i><span>Área</span></div>
         <div class="r-btn"><i class="ti ti-dimensions"></i><span>Vértices</span></div>
         <div class="r-btn"><i class="ti ti-certificate"></i><span>SIGEF</span></div>
@@ -1040,6 +1050,7 @@
       <div class="pi-item"><i class="ti ti-check"></i> Memorial Descritivo automático com exportação HTML</div>
       <div class="pi-item"><i class="ti ti-check"></i> Tabela de confrontantes com quadrantes automáticos</div>
       <div class="pi-item"><i class="ti ti-check"></i> Tabela de coordenadas UTM e geodésicas (SIRGAS2000)</div>
+      <div class="pi-item"><i class="ti ti-check"></i> Cálculo da ondulação geoidal (Fator N - IBGE Imbituba)</div>
       <div class="pi-item"><i class="ti ti-check"></i> Divisão de área por paralela ou pivô</div>
       <div class="pi-item"><i class="ti ti-check"></i> Sistema completo de locação de obras</div>
       <div class="pi-item"><i class="ti ti-check"></i> Vértices, cotas, níveis, arbóreas e tabela de arbóreas</div>
