@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Manual de Instalação — Urbano Tools</title>
-<meta name="description" content="Manual oficial de instalação e ativação do Urbano Tools: execução do instalador, configuração do ambiente Python, instalação de bibliotecas e ativação da licença.">
+<meta name="description" content="Manual oficial de instalação e ativação do Urbano Tools: Python, instalador, bibliotecas, primeira abertura no AutoCAD/Civil 3D e ativação da licença.">
 <meta property="og:title" content="Manual de Instalação — Urbano Tools">
 <meta property="og:description" content="Passo a passo completo para instalar e ativar o Urbano Tools no AutoCAD ou Civil 3D.">
 <meta property="og:type" content="website">
@@ -19,6 +19,15 @@
     color: #1A1A2E;
     line-height: 1.6;
   }
+  code {
+    font-family: 'Consolas', 'SFMono-Regular', monospace;
+    font-size: .92em;
+    background: #EEF2F6;
+    color: #16303F;
+    padding: 1px 6px;
+    border-radius: 5px;
+    word-break: break-word;
+  }
   .page {
     max-width: 860px;
     margin: 0 auto;
@@ -30,69 +39,29 @@
 
   /* NAV FIXO */
   .topnav {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    z-index: 100;
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
     background: rgba(27, 42, 59, 0.96);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
     border-bottom: 1px solid rgba(255,255,255,0.07);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 20px;
-    height: 52px;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 20px; height: 52px;
   }
-  .topnav-brand {
-    font-size: 15px;
-    font-weight: 600;
-    color: #fff;
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-  }
+  .topnav-brand { font-size: 15px; font-weight: 600; color: #fff; text-decoration: none; display: flex; align-items: center; gap: 6px; }
   .topnav-brand span { color: #6EB5E0; font-weight: 400; }
   .topnav-links { display: flex; align-items: center; gap: 4px; }
   .topnav-links a {
-    font-size: 13px;
-    color: #9BB8CC;
-    text-decoration: none;
-    padding: 6px 12px;
-    border-radius: 8px;
-    transition: background .2s, color .2s;
-    white-space: nowrap;
+    font-size: 13px; color: #9BB8CC; text-decoration: none; padding: 6px 12px; border-radius: 8px;
+    transition: background .2s, color .2s; white-space: nowrap;
   }
   .topnav-links a:hover { background: rgba(255,255,255,0.08); color: #fff; }
-  .topnav-links a.active { background: rgba(110,181,224,0.15); color: #6EB5E0; }
 
   /* HERO */
-  .hero {
-    background: #1B2A3B;
-    padding: 44px 32px 36px;
-    border-radius: 16px;
-    position: relative;
-    overflow: hidden;
-  }
-  .hero::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 4px;
-    background: #E8A020;
-  }
+  .hero { background: #1B2A3B; padding: 44px 32px 36px; border-radius: 16px; position: relative; overflow: hidden; }
+  .hero::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: #E8A020; }
   .hero-top-badge {
-    background: rgba(24,95,165,0.20);
-    border: 1px solid rgba(110,181,224,0.35);
-    color: #C8DAEB;
-    font-size: 13px;
-    font-weight: 500;
-    padding: 8px 16px;
-    border-radius: 8px;
-    margin-bottom: 22px;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
+    background: rgba(24,95,165,0.20); border: 1px solid rgba(110,181,224,0.35); color: #C8DAEB;
+    font-size: 13px; font-weight: 500; padding: 8px 16px; border-radius: 8px; margin-bottom: 22px;
+    display: inline-flex; align-items: center; gap: 8px;
   }
   .hero-top-badge i { color: #6EB5E0; }
   .hero-top-badge strong { font-weight: 700; color: #fff; }
@@ -100,37 +69,39 @@
   .hero-logo .brand-suffix { color: #6EB5E0; font-weight: 400; }
   .hero-logo .hero-logo-sub { display: block; font-weight: 400; font-size: 16px; margin-top: 4px; color: #9BB8CC; }
   .hero-headline { font-size: 21px; font-weight: 600; color: #fff; margin-bottom: 10px; line-height: 1.4; }
-  .hero-sub { font-size: 14px; color: #9BB8CC; line-height: 1.7; margin-bottom: 22px; max-width: 540px; }
-  .hero-buttons { display: flex; flex-wrap: wrap; align-items: center; gap: 16px; }
+  .hero-sub { font-size: 14px; color: #9BB8CC; line-height: 1.7; margin-bottom: 22px; max-width: 560px; }
+  .hero-buttons { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
   .btn-wpp {
-    display: inline-flex; align-items: center; gap: 8px;
-    background: #25D366; color: #fff; font-size: 15px; font-weight: 600;
+    display: inline-flex; align-items: center; gap: 8px; background: #25D366; color: #fff; font-size: 15px; font-weight: 600;
     padding: 14px 24px; border-radius: 100px; text-decoration: none; transition: opacity .2s;
   }
   .btn-wpp:hover { opacity: .9; }
   .btn-wpp i { font-size: 20px; }
   .btn-ghost {
-    display: inline-flex; align-items: center; gap: 8px;
-    color: #C8DAEB; font-size: 14px; font-weight: 500;
+    display: inline-flex; align-items: center; gap: 8px; color: #C8DAEB; font-size: 14px; font-weight: 500;
     background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.16);
     padding: 13px 20px; border-radius: 100px; text-decoration: none; transition: background .2s;
   }
   .btn-ghost:hover { background: rgba(255,255,255,0.12); }
 
+  /* REQUISITOS */
+  .req-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .req-card { background: #fff; border: 1px solid #E2E8F0; border-radius: 12px; padding: 16px; }
+  .req-card i { font-size: 22px; color: #185FA5; display: block; margin-bottom: 8px; }
+  .req-card strong { font-size: 14px; font-weight: 600; display: block; margin-bottom: 4px; }
+  .req-card p { font-size: 12.5px; color: #5A6577; line-height: 1.55; }
+
   /* SECTION HEADERS */
-  .section-label {
-    font-size: 11px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase;
-    color: #8A96A8; margin-bottom: 4px; padding: 0 4px;
-  }
+  .section-label { font-size: 11px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: #8A96A8; margin-bottom: 4px; padding: 0 4px; }
   .section-title { font-size: 20px; font-weight: 600; color: #1A1A2E; margin-bottom: 6px; line-height: 1.3; padding: 0 4px; }
   .section-sub { font-size: 14px; color: #5A6577; margin-bottom: 14px; line-height: 1.6; padding: 0 4px; }
 
-  /* RESUMO / TIMELINE DE ETAPAS */
+  /* ROADMAP */
   .roadmap { display: flex; flex-direction: column; gap: 10px; }
   .roadmap-item {
-    background: #fff; border: 1px solid #E2E8F0; border-radius: 14px;
-    padding: 14px 18px; display: flex; align-items: center; gap: 14px;
-    text-decoration: none; color: inherit; transition: border-color .2s, transform .15s;
+    background: #fff; border: 1px solid #E2E8F0; border-radius: 14px; padding: 14px 18px;
+    display: flex; align-items: center; gap: 14px; text-decoration: none; color: inherit;
+    transition: border-color .2s, transform .15s;
   }
   .roadmap-item:hover { border-color: #185FA5; transform: translateX(2px); }
   .roadmap-num {
@@ -143,13 +114,8 @@
   .roadmap-item i.ti-chevron-right { color: #C0CDD8; font-size: 16px; flex-shrink: 0; }
 
   /* STEP CARD */
-  .step-card {
-    background: #fff; border: 1px solid #E2E8F0; border-radius: 16px; overflow: hidden; scroll-margin-top: 68px;
-  }
-  .step-head {
-    display: flex; align-items: center; gap: 14px;
-    background: #1B2A3B; padding: 18px 22px;
-  }
+  .step-card { background: #fff; border: 1px solid #E2E8F0; border-radius: 16px; overflow: hidden; scroll-margin-top: 68px; }
+  .step-head { display: flex; align-items: center; gap: 14px; background: #1B2A3B; padding: 18px 22px; }
   .step-badge {
     width: 34px; height: 34px; border-radius: 10px; background: #E8A020; color: #1B2A3B;
     font-size: 16px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0;
@@ -161,12 +127,11 @@
   .step-body p:last-child { margin-bottom: 0; }
 
   .sub-h { font-size: 14px; font-weight: 600; color: #185FA5; margin: 18px 0 10px; display: flex; align-items: center; gap: 8px; }
+  .sub-h:first-child { margin-top: 0; }
   .sub-h i { font-size: 16px; }
 
   .ol-steps { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 14px; }
-  .ol-steps li {
-    display: flex; gap: 12px; font-size: 13.5px; color: #3A4557; line-height: 1.6; align-items: flex-start;
-  }
+  .ol-steps li { display: flex; gap: 12px; font-size: 13.5px; color: #3A4557; line-height: 1.6; align-items: flex-start; }
   .ol-steps li .n {
     width: 22px; height: 22px; border-radius: 100px; background: #E6F1FB; color: #185FA5;
     font-size: 11px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px;
@@ -180,27 +145,35 @@
   }
   .code-block i { color: #6EB5E0; flex-shrink: 0; }
 
-  .callout {
-    display: flex; align-items: flex-start; gap: 12px;
-    border-radius: 10px; padding: 14px 16px; margin: 4px 0 14px; font-size: 13px; line-height: 1.6;
-  }
+  .callout { display: flex; align-items: flex-start; gap: 12px; border-radius: 10px; padding: 14px 16px; margin: 4px 0 14px; font-size: 13px; line-height: 1.6; }
+  .callout:last-child { margin-bottom: 0; }
   .callout i { font-size: 18px; margin-top: 1px; flex-shrink: 0; }
   .callout.info { background: #F0F6FB; border-left: 3px solid #185FA5; color: #2A3E52; }
   .callout.info i { color: #185FA5; }
   .callout.warn { background: #FFF8F0; border: 1px solid #F5C890; color: #8B5E1A; }
   .callout.warn i { color: #C0601A; }
+  .callout.ok { background: #EEF8F3; border-left: 3px solid #0F6E56; color: #1F4A3C; }
+  .callout.ok i { color: #0F6E56; }
   .callout strong { color: inherit; }
   .callout.warn strong { color: #7A4A0A; }
   .callout.info strong { color: #185FA5; }
+  .callout code { background: rgba(255,255,255,.7); }
 
   .step-download {
-    display: inline-flex; align-items: center; gap: 8px;
-    background: #E6F1FB; color: #185FA5; font-size: 13px; font-weight: 600;
-    padding: 10px 16px; border-radius: 100px; text-decoration: none; margin: 4px 0 14px;
+    display: inline-flex; align-items: center; gap: 8px; background: #E6F1FB; color: #185FA5; font-size: 13px; font-weight: 600;
+    padding: 10px 16px; border-radius: 100px; text-decoration: none; margin: 4px 8px 14px 0;
     border: 1px solid #C8DAEB; transition: background .2s;
   }
   .step-download:hover { background: #D6E9FA; }
   .step-download i { font-size: 16px; }
+
+  /* TABELAS */
+  .tbl-wrap { overflow-x: auto; margin: 4px 0 14px; border: 1px solid #E2E8F0; border-radius: 10px; }
+  table.tbl { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .tbl th { background: #F4F7FA; color: #5A6577; font-weight: 600; font-size: 11.5px; text-transform: uppercase; letter-spacing: .05em; text-align: left; padding: 9px 12px; border-bottom: 1px solid #E2E8F0; }
+  .tbl td { padding: 9px 12px; border-bottom: 1px solid #F0F4F8; color: #3A4557; vertical-align: top; }
+  .tbl tr:last-child td { border-bottom: none; }
+  .tbl td:first-child { white-space: nowrap; }
 
   /* FAQ */
   .faq-list { display: flex; flex-direction: column; gap: 8px; }
@@ -212,10 +185,7 @@
   /* CONTATO */
   .contact-section { background: #1B2A3B; border-radius: 16px; padding: 28px; display: flex; flex-direction: column; gap: 20px; }
   .contact-block { display: flex; gap: 16px; align-items: flex-start; }
-  .contact-icon {
-    width: 44px; height: 44px; border-radius: 12px; display: flex; align-items: center; justify-content: center;
-    flex-shrink: 0; font-size: 22px;
-  }
+  .contact-icon { width: 44px; height: 44px; border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 22px; }
   .contact-icon.teal { background: rgba(37,211,102,0.15); color: #25D366; }
   .contact-title { font-size: 15px; font-weight: 600; color: #fff; margin-bottom: 6px; }
   .contact-desc { font-size: 13px; color: #9BB8CC; line-height: 1.6; }
@@ -231,11 +201,37 @@
   .footer strong { color: #9BB8CC; }
   .footer p + p { margin-top: 6px; }
 
+  .print-only { display: none; }
+
+  @media (max-width: 620px) {
+    .req-grid { grid-template-columns: 1fr; }
+  }
   @media (max-width: 480px) {
     .hero { padding: 32px 18px 26px; }
     .hero-headline { font-size: 18px; }
     .step-head { padding: 16px 18px; }
     .step-body { padding: 18px; }
+    .topnav-links a.hide-sm { display: none; }
+  }
+
+  /* ===== IMPRESSÃO / PDF ===== */
+  @page { size: A4; margin: 14mm 13mm 16mm; }
+  @media print {
+    body { background: #fff; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .topnav, .no-print { display: none !important; }
+    .print-only { display: block; }
+    .page { padding: 0 !important; max-width: none; gap: 10px; }
+    .hero { padding: 28px 26px 24px; }
+    .roadmap-item, .step-card, .faq-item, .req-card, .callout, .tbl-wrap, .code-block, .contact-section { break-inside: avoid; }
+    .step-card { break-inside: auto; }
+    .step-head { break-after: avoid; }
+    .sub-h { break-after: avoid; }
+    .ol-steps li { break-inside: avoid; }
+    .section-title, .section-label { break-after: avoid; }
+    .roadmap-item:hover { transform: none; }
+    a { color: inherit; }
+    .step-download { border: 1px solid #C8DAEB; }
+    .pb { break-before: page; }
   }
 </style>
 </head>
@@ -245,6 +241,8 @@
   <a class="topnav-brand" href="index.html">urbano<span>tools</span></a>
   <div class="topnav-links">
     <a href="#etapas">Etapas</a>
+    <a class="hide-sm" href="#comandos">Comandos</a>
+    <a class="hide-sm" href="manual-urbano-tools.pdf" download><i class="ti ti-file-type-pdf"></i> PDF</a>
     <a href="#suporte">Suporte</a>
   </div>
 </nav>
@@ -254,46 +252,83 @@
   <div class="hero">
     <div class="hero-top-badge">
       <i class="ti ti-book"></i>
-      <span><strong>Guia oficial</strong> · Leva poucos minutos</span>
+      <span><strong>Guia oficial</strong> · Versão 10.4 · Leva cerca de 10 minutos</span>
     </div>
     <div class="hero-logo">urbano<span class="brand-suffix">tools</span><span class="hero-logo-sub">Manual de Instalação e Ativação</span></div>
-    <div class="hero-headline">Instale e ative o Urbano Tools no seu AutoCAD em 3 passos simples.</div>
-    <div class="hero-sub">Este guia contempla a execução do instalador unificado, a instalação do Python com as bibliotecas necessárias (via batch) e a ativação da sua licença.</div>
-    <div class="hero-buttons">
+    <div class="hero-headline">Instale e ative o Urbano Tools no seu AutoCAD ou Civil 3D em 5 etapas.</div>
+    <div class="hero-sub">Este guia cobre a instalação do Python, o instalador do Urbano Tools (com a configuração automática do Civil 3D), as bibliotecas Python, a primeira abertura no CAD e a ativação da sua licença.</div>
+    <div class="hero-buttons no-print">
       <a class="btn-wpp" href="#suporte">
         <i class="ti ti-brand-whatsapp"></i>
         Preciso de ajuda
       </a>
-      <a class="btn-ghost" href="#etapas"><i class="ti ti-list-check"></i> Ver as 3 etapas ↓</a>
+      <a class="btn-ghost" href="#etapas"><i class="ti ti-list-check"></i> Ver as etapas ↓</a>
+      <a class="btn-ghost" href="manual-urbano-tools.pdf" download><i class="ti ti-file-type-pdf"></i> Baixar em PDF</a>
+    </div>
+  </div>
+
+  <div class="section-label">Antes de começar</div>
+  <div class="section-title">O que você precisa</div>
+  <div class="req-grid">
+    <div class="req-card">
+      <i class="ti ti-brand-windows"></i>
+      <strong>Windows 10 ou 11 (64 bits)</strong>
+      <p>Não precisa ser administrador: o instalador grava tudo no seu próprio usuário.</p>
+    </div>
+    <div class="req-card">
+      <i class="ti ti-building"></i>
+      <strong>AutoCAD ou Civil 3D</strong>
+      <p>Civil 3D 2023 a 2027 é configurado automaticamente. Nas demais versões, o caminho é incluído à mão (etapa 4).</p>
+    </div>
+    <div class="req-card">
+      <i class="ti ti-wifi"></i>
+      <strong>Internet</strong>
+      <p>Para baixar o Python e as bibliotecas e para ativar a licença. Depois, funciona até 30 dias sem conexão.</p>
     </div>
   </div>
 
   <div id="etapas" class="section-label">Passo a passo</div>
-  <div class="section-title">As 3 etapas da instalação</div>
-  <div class="section-sub">Clique em qualquer etapa para pular direto até ela.</div>
+  <div class="section-title">As 5 etapas da instalação</div>
+  <div class="section-sub">Siga na ordem: com o Python já instalado, o próprio instalador do Urbano Tools oferece instalar as bibliotecas no final.</div>
 
   <div class="roadmap">
     <a class="roadmap-item" href="#etapa1">
       <div class="roadmap-num">1</div>
       <div class="roadmap-body">
-        <div class="roadmap-title">Executar o Instalador & Support Path</div>
-        <div class="roadmap-desc">Setup_UrbanoTools_v1.0.exe → Instala arquivos e grava caminho no CAD</div>
+        <div class="roadmap-title">Instalar o Python</div>
+        <div class="roadmap-desc">python.org, 64 bits, marcando "Add python.exe to PATH"</div>
       </div>
       <i class="ti ti-chevron-right"></i>
     </a>
     <a class="roadmap-item" href="#etapa2">
       <div class="roadmap-num">2</div>
       <div class="roadmap-body">
-        <div class="roadmap-title">Instalar o Python & Bibliotecas</div>
-        <div class="roadmap-desc">Download do Python + Execução do _1.install_bibliotecas_python.bat</div>
+        <div class="roadmap-title">Executar o instalador do Urbano Tools</div>
+        <div class="roadmap-desc">Setup_urbano-tools-10.4.exe: pasta, Support Path do Civil 3D e conclusão</div>
       </div>
       <i class="ti ti-chevron-right"></i>
     </a>
     <a class="roadmap-item" href="#etapa3">
       <div class="roadmap-num">3</div>
       <div class="roadmap-body">
-        <div class="roadmap-title">Ativar a Licença</div>
-        <div class="roadmap-desc">Sistema Porteira — via botão "Status da Licença" na Ribbon</div>
+        <div class="roadmap-title">Instalar as bibliotecas Python</div>
+        <div class="roadmap-desc">Janela "Bibliotecas Python": pyproj, pdfplumber e rasterio</div>
+      </div>
+      <i class="ti ti-chevron-right"></i>
+    </a>
+    <a class="roadmap-item" href="#etapa4">
+      <div class="roadmap-num">4</div>
+      <div class="roadmap-body">
+        <div class="roadmap-title">Abrir o AutoCAD / Civil 3D</div>
+        <div class="roadmap-desc">Aba "Urbano Tools" na Ribbon · Support Path manual, se precisar</div>
+      </div>
+      <i class="ti ti-chevron-right"></i>
+    </a>
+    <a class="roadmap-item" href="#etapa5">
+      <div class="roadmap-num">5</div>
+      <div class="roadmap-body">
+        <div class="roadmap-title">Ativar a licença</div>
+        <div class="roadmap-desc">Botão "Licença" na Ribbon → envie seu ID → "Atualizar status"</div>
       </div>
       <i class="ti ti-chevron-right"></i>
     </a>
@@ -304,34 +339,26 @@
     <div class="step-head">
       <div class="step-badge">1</div>
       <div>
-        <div class="step-head-title">Execução do Instalador e Support Path</div>
-        <div class="step-head-sub">Instalação de arquivos e configuração do CAD</div>
+        <div class="step-head-title">Instalação do Python</div>
+        <div class="step-head-sub">Interpretador usado pelas janelas e cálculos do Urbano Tools</div>
       </div>
     </div>
     <div class="step-body">
-      <p>O arquivo <strong>Setup_UrbanoTools_v1.0.exe</strong> copia toda a estrutura de arquivos e registra automaticamente a pasta do sistema na lista de busca (Support Path) do seu AutoCAD ou Civil 3D.</p>
+      <p>Várias ferramentas (licença, divisão de área, níveis, arbóreas, ondulação geoidal, tabelas com latitude/longitude, SIGEF e otimização de TIF) usam o Python. Se você já tem o Python 3 instalado pelo python.org, pode pular para a etapa 2.</p>
 
-      <div class="sub-h"><i class="ti ti-device-desktop-analytics"></i> 1.1 Execução do Setup</div>
+      <a class="step-download" href="https://www.python.org/ftp/python/3.14.8/python-3.14.8-amd64.exe"><i class="ti ti-download"></i> Baixar Python 3.14.8 (Windows 64 bits)</a>
+      <a class="step-download" href="https://www.python.org/downloads/windows/" target="_blank"><i class="ti ti-external-link"></i> Outras versões no python.org</a>
+
       <ul class="ol-steps">
-        <li><span class="n">1</span><span class="t">Execute o arquivo <strong>Setup_UrbanoTools_v1.0.exe</strong>.</span></li>
-        <li><span class="n">2</span><span class="t">Selecione o idioma do assistente e avance.</span></li>
-        <li><span class="n">3</span><span class="t">Mantenha o diretório fixado em <strong>C:\urbano-tools</strong> e prossiga até a conclusão.</span></li>
+        <li><span class="n">1</span><span class="t">Abra o instalador baixado.</span></li>
+        <li><span class="n">2</span><span class="t">Na primeira tela, marque <strong>"Add python.exe to PATH"</strong> (parte de baixo da janela).</span></li>
+        <li><span class="n">3</span><span class="t">Clique em <strong>Install Now</strong> e aguarde até aparecer <em>"Setup was successful"</em>.</span></li>
       </ul>
 
-      <div class="code-block"><i class="ti ti-folder"></i> Local fixo de instalação: C:\urbano-tools</div>
-
-      <div class="sub-h"><i class="ti ti-bolt"></i> 1.2 Configuração do Support Path no CAD</div>
-      <p><strong>Configuração Automática (Recomendada):</strong> Durante o processo, o instalador já insere o caminho <code>C:\urbano-tools</code> diretamente no Registro do CAD. Na maioria das vezes, você não precisará fazer nada.</p>
-
-      <p><strong>Configuração Manual (Fallback):</strong> Caso utilize uma versão específica do AutoCAD, tenha instalado o software após o Urbano Tools ou precise checar o caminho manualmente, siga o procedimento:</p>
-      <ul class="ol-steps">
-        <li><span class="n">1</span><span class="t">Abra o AutoCAD/Civil 3D, digite o comando <strong>OPTIONS</strong> na linha de comando e pressione <strong>Enter</strong>.</span></li>
-        <li><span class="n">2</span><span class="t">Navegue até a aba <strong>Files</strong> e expanda a opção <strong>Support File Search Path</strong>.</span></li>
-        <li><span class="n">3</span><span class="t">Clique em <strong>Add...</strong>, depois em <strong>Browse...</strong> e selecione a pasta <strong>C:\urbano-tools</strong>.</span></li>
-        <li><span class="n">4</span><span class="t">Clique em <strong>Apply</strong> e em <strong>OK</strong>.</span></li>
-      </ul>
-
-      <div class="code-block"><i class="ti ti-path"></i> OPTIONS → Files → Support File Search Path → Add: C:\urbano-tools</div>
+      <div class="callout warn">
+        <i class="ti ti-alert-triangle"></i>
+        <div><strong>Use o Python do python.org, não o da Microsoft Store.</strong> O Urbano Tools ignora o atalho da Store (pasta <code>WindowsApps</code>). Se for usar "Customize installation", deixe marcada a opção <strong>tcl/tk and IDLE</strong>: as janelas do Urbano Tools dependem dela.</div>
+      </div>
     </div>
   </div>
 
@@ -340,33 +367,38 @@
     <div class="step-head">
       <div class="step-badge">2</div>
       <div>
-        <div class="step-head-title">Instalação do Python e das Bibliotecas</div>
-        <div class="step-head-sub">Ambiente necessário para rotinas avançadas e mapas</div>
+        <div class="step-head-title">Execução do instalador do Urbano Tools</div>
+        <div class="step-head-sub">Copia os arquivos e configura o Support Path do Civil 3D</div>
       </div>
     </div>
     <div class="step-body">
-      <p>Diversas ferramentas do Urbano Tools dependem do interpretador Python e de suas bibliotecas para geoprocessamento e manipulação de dados espaciais.</p>
+      <p>O arquivo <strong>Setup_urbano-tools-10.4.exe</strong> (o número muda conforme a versão) copia o programa, registra a pasta escolhida e, se você deixar marcado, inclui essa pasta no Support Path de todos os perfis do Civil 3D encontrados no computador.</p>
 
-      <div class="sub-h"><i class="ti ti-brand-python"></i> 2.1 Download e Instalação do Python</div>
-      <p>Clique no botão abaixo para baixar o instalador oficial do Python:</p>
-
-      <a class="step-download" href="https://www.python.org/ftp/python/3.14.6/python-3.14.6-amd64.exe" download><i class="ti ti-download"></i> Baixar Instalador do Python (64-bit .exe)</a>
-
-      <div class="callout warn">
-        <i class="ti ti-alert-triangle"></i>
-        <div><strong>Atenção Obrigatória:</strong> Ao abrir o instalador do Python, lembre-se de marcar a caixa <strong>"Add python.exe to PATH"</strong> na parte inferior da primeira janela antes de clicar em "Install Now".</div>
+      <div class="callout info">
+        <i class="ti ti-info-circle"></i>
+        <div><strong>Feche o AutoCAD / Civil 3D antes de começar.</strong> Se ele estiver aberto, o instalador avisa: as alterações no Support Path podem não ser salvas com o programa em execução.</div>
       </div>
 
-      <div class="sub-h"><i class="ti ti-terminal-2"></i> 2.2 Instalação das Bibliotecas Python</div>
-      <p>Após terminar a instalação do Python, acesse a pasta do sistema e execute o arquivo de automação para baixar os pacotes necessários:</p>
-
+      <div class="sub-h"><i class="ti ti-device-desktop-analytics"></i> 2.1 Passo a passo do assistente</div>
       <ul class="ol-steps">
-        <li><span class="n">1</span><span class="t">Abra a pasta <strong>C:\urbano-tools</strong> no seu Explorador de Arquivos.</span></li>
-        <li><span class="n">2</span><span class="t">Dê um duplo clique no arquivo <strong>_1.install_bibliotecas_python.bat</strong>.</span></li>
-        <li><span class="n">3</span><span class="t">Aguarde a janela preta (Prompt de Comando) finalizar a instalação automática das dependências e fechar.</span></li>
+        <li><span class="n">1</span><span class="t">Execute o <strong>Setup_urbano-tools-10.4.exe</strong> e escolha o idioma (Português do Brasil ou English).</span></li>
+        <li><span class="n">2</span><span class="t"><strong>Pasta de instalação:</strong> o padrão é <code>C:\urbano-tools</code> e é o recomendado. Você pode escolher outra pasta, exceto <em>Arquivos de Programas</em> ou a pasta do Windows, e o caminho não pode ter ponto e vírgula (<code>;</code>). Numa atualização, o instalador reaproveita a pasta usada antes.</span></li>
+        <li><span class="n">3</span><span class="t"><strong>Componentes:</strong> "Urbano Tools" é obrigatório. Deixe marcada a opção <strong>"Configurar Support Path no AutoCAD Civil 3D (2023-2027)"</strong>.</span></li>
+        <li><span class="n">4</span><span class="t">Clique em <strong>Instalar</strong>. Ao terminar, aparece um resumo com cada versão e perfil do Civil 3D configurado (ex.: <em>Civil 3D 2025 [&lt;&lt;C3D_Metric&gt;&gt;]: OK</em>).</span></li>
+        <li><span class="n">5</span><span class="t">Na última tela, deixe marcada a caixa <strong>"Instalar as bibliotecas Python agora"</strong> e clique em <strong>Aplicar e Concluir</strong>. A janela de bibliotecas da etapa 3 abre em seguida.</span></li>
       </ul>
 
-      <div class="code-block"><i class="ti ti-file-code"></i> Executar: C:\urbano-tools\_1.install_bibliotecas_python.bat</div>
+      <div class="code-block"><i class="ti ti-folder"></i> Pasta recomendada: C:\urbano-tools</div>
+
+      <div class="callout info">
+        <i class="ti ti-info-circle"></i>
+        <div><strong>Não apareceu a caixa das bibliotecas?</strong> Ela só aparece quando o Python já está instalado. Sem problema: faça a etapa 1 e depois siga a etapa 3 pelo duplo clique no arquivo.</div>
+      </div>
+
+      <div class="callout ok">
+        <i class="ti ti-shield-check"></i>
+        <div><strong>Segurança da pasta:</strong> quando instalado fora da sua pasta de usuário (como em <code>C:\urbano-tools</code>), o instalador restringe a pasta ao seu usuário, ao sistema e aos administradores, para que outras contas do computador não alterem os arquivos.</div>
+      </div>
     </div>
   </div>
 
@@ -375,49 +407,178 @@
     <div class="step-head">
       <div class="step-badge">3</div>
       <div>
-        <div class="step-head-title">Ativação da Licença</div>
-        <div class="step-head-sub">Sistema Porteira — via botão "Status da Licença" na Ribbon</div>
+        <div class="step-head-title">Instalação das bibliotecas Python</div>
+        <div class="step-head-sub">pyproj, pdfplumber e rasterio, no mesmo Python usado pelo AutoCAD</div>
       </div>
     </div>
     <div class="step-body">
-      <p>O Urbano Tools utiliza o sistema de licenciamento integrado <strong>Porteira</strong>.</p>
+      <p>A janela <strong>"Bibliotecas Python"</strong> mostra qual Python o AutoCAD vai usar, verifica cada biblioteca e instala o que estiver faltando. Ela abre de três jeitos:</p>
 
-      <div class="sub-h"><i class="ti ti-key"></i> Passos para ativação</div>
       <ul class="ol-steps">
-        <li><span class="n">1</span><span class="t">Na Ribbon (barra superior) do AutoCAD, clique na aba do Urbano Tools e escolha o botão <strong>Status da Licença</strong>.</span></li>
-        <li><span class="n">2</span><span class="t">Na janela exibida, identifique o seu <strong>ID do cliente</strong> e a situação atual da sua licença.</span></li>
-        <li><span class="n">3</span><span class="t">Clique no botão <strong>Ativar / Renovar Licença</strong> para enviar uma mensagem com seu ID ao suporte via WhatsApp.</span></li>
-        <li><span class="n">4</span><span class="t">Após a liberação pelo suporte, clique no botão <strong>Atualizar Status</strong> dentro da mesma janela para validar online.</span></li>
+        <li><span class="n">A</span><span class="t">Automaticamente no final do instalador (caixa da etapa 2.5).</span></li>
+        <li><span class="n">B</span><span class="t">Com <strong>duplo clique</strong> no arquivo <code>1_instalar_bibliotecas.pyw</code>, na pasta de instalação. Não precisa abrir o AutoCAD.</span></li>
+        <li><span class="n">C</span><span class="t">No AutoCAD, pelo comando <code>URBANO_PYTHON</code> → opção <strong>Instalar bibliotecas</strong>. Se algum comando precisar de uma biblioteca ausente, ele também oferece instalar na hora.</span></li>
+      </ul>
+
+      <div class="code-block"><i class="ti ti-file-code"></i> C:\urbano-tools\1_instalar_bibliotecas.pyw</div>
+
+      <div class="sub-h"><i class="ti ti-terminal-2"></i> Na janela</div>
+      <ul class="ol-steps">
+        <li><span class="n">1</span><span class="t">Confira em <strong>"Python usado pelo AutoCAD"</strong> o caminho do <code>python.exe</code>. Para usar outro, clique em <strong>Trocar...</strong></span></li>
+        <li><span class="n">2</span><span class="t">Clique em <strong>Instalar / atualizar</strong> e aguarde (pode levar alguns minutos; o andamento aparece no quadro de mensagens).</span></li>
+        <li><span class="n">3</span><span class="t">Pronto quando todas as linhas mostrarem <strong>"instalada"</strong> e o rodapé disser <strong>"Tudo instalado."</strong> O botão <strong>Verificar</strong> refaz a conferência sem instalar nada.</span></li>
+      </ul>
+
+      <div class="tbl-wrap">
+        <table class="tbl">
+          <thead><tr><th>Biblioteca</th><th>Usada em</th></tr></thead>
+          <tbody>
+            <tr><td><code>tkinter</code></td><td>Todas as janelas (já vem com o Python)</td></tr>
+            <tr><td><code>pyproj</code></td><td>Tabela de coordenadas (Lat/Long) e Área local SGL (SIGEF)</td></tr>
+            <tr><td><code>pdfplumber</code></td><td>Tabela SIGEF a partir do PDF do memorial</td></tr>
+            <tr><td><code>rasterio</code></td><td>Otimizar TIF / GeoTIFF</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout info">
+        <i class="ti ti-bulb"></i>
+        <div><strong>Mesmo Python para tudo:</strong> o caminho escolhido fica gravado no Windows e é o mesmo que o AutoCAD usa. Assim, as bibliotecas sempre vão para o interpretador que roda as ferramentas.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ETAPA 4 -->
+  <div id="etapa4" class="step-card">
+    <div class="step-head">
+      <div class="step-badge">4</div>
+      <div>
+        <div class="step-head-title">Primeira abertura no AutoCAD / Civil 3D</div>
+        <div class="step-head-sub">Carregamento automático, aba na Ribbon e Support Path manual</div>
+      </div>
+    </div>
+    <div class="step-body">
+      <p>Ao abrir um desenho, o AutoCAD lê o <code>acaddoc.lsp</code> da pasta do Urbano Tools, que carrega a Ribbon e as ferramentas. A aba <strong>Urbano Tools</strong> aparece com os painéis <em>Ferramentas</em>, <em>Sistema de Locação de Pontos</em>, <em>Georreferenciamento</em> e <em>Licença</em>.</p>
+
+      <div class="sub-h"><i class="ti ti-lock-open"></i> 4.1 Aviso de segurança do AutoCAD</div>
+      <p>Na primeira abertura o AutoCAD pode exibir <em>"Security - Unsigned Executable File"</em> para o <code>acaddoc.lsp</code> ou o <code>urbano-tools.vlx</code>. Clique em <strong>Always Load</strong> (Sempre carregar). Para não ver mais o aviso, inclua a pasta em <strong>Trusted Locations</strong>:</p>
+      <div class="code-block"><i class="ti ti-path"></i> OPTIONS → Files → Trusted Locations → Add: C:\urbano-tools</div>
+
+      <div class="sub-h"><i class="ti ti-adjustments"></i> 4.2 Support Path manual (quando a aba não aparece)</div>
+      <p>O instalador configura sozinho o <strong>Civil 3D 2023 a 2027</strong>. Faça o procedimento abaixo se você usa o <strong>AutoCAD "puro"</strong>, outra versão, um perfil criado depois da instalação, ou se a aba não apareceu:</p>
+      <ul class="ol-steps">
+        <li><span class="n">1</span><span class="t">Digite <strong>OPTIONS</strong> na linha de comando e pressione <strong>Enter</strong>.</span></li>
+        <li><span class="n">2</span><span class="t">Na aba <strong>Files</strong>, expanda <strong>Support File Search Path</strong>.</span></li>
+        <li><span class="n">3</span><span class="t">Clique em <strong>Add...</strong>, depois em <strong>Browse...</strong> e selecione a pasta de instalação (ex.: <code>C:\urbano-tools</code>).</span></li>
+        <li><span class="n">4</span><span class="t">Clique em <strong>Apply</strong> e <strong>OK</strong>, feche e abra o AutoCAD de novo.</span></li>
+      </ul>
+      <div class="code-block"><i class="ti ti-path"></i> OPTIONS → Files → Support File Search Path → Add: C:\urbano-tools</div>
+
+      <div class="callout warn">
+        <i class="ti ti-alert-triangle"></i>
+        <div><strong>Inclua a pasta principal</strong> (<code>C:\urbano-tools</code>), não a subpasta <code>data</code>. É na principal que fica o <code>acaddoc.lsp</code>.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ETAPA 5 -->
+  <div id="etapa5" class="step-card">
+    <div class="step-head">
+      <div class="step-badge">5</div>
+      <div>
+        <div class="step-head-title">Ativação da licença</div>
+        <div class="step-head-sub">Cada computador tem um ID próprio, liberado pelo suporte</div>
+      </div>
+    </div>
+    <div class="step-body">
+      <p>Enquanto a licença não estiver ativa, a aba aparece normalmente, mas os comandos mostram <em>"Licença inválida ou expirada"</em> na linha de comando e não executam. Para ativar:</p>
+
+      <ul class="ol-steps">
+        <li><span class="n">1</span><span class="t">Na aba <strong>Urbano Tools</strong>, painel <strong>Licença</strong>, clique no botão <strong>Licença</strong> (ou digite <code>URBANO_LICENCA</code>).</span></li>
+        <li><span class="n">2</span><span class="t">A janela mostra <strong>Licenciado para</strong>, <strong>ID do cliente</strong> (formato <code>A3F9-21C7-88D0-4E12</code>), <strong>Status</strong> (<em>NÃO ATIVADA</em>, <em>ATIVA</em> ou <em>EXPIRADA</em>), <strong>Válida até</strong>, <strong>Dias restantes</strong> e <strong>Versão instalada</strong>.</span></li>
+        <li><span class="n">3</span><span class="t">Clique em <strong>Ativar / Renovar</strong>. O WhatsApp abre com uma mensagem pronta contendo o seu ID: é só enviar.</span></li>
+        <li><span class="n">4</span><span class="t">Depois da confirmação do suporte, clique em <strong>Atualizar status</strong>. A licença passa para <strong>ATIVA</strong> e as ferramentas carregam na hora, sem reiniciar o AutoCAD.</span></li>
       </ul>
 
       <div class="callout info">
         <i class="ti ti-wifi-off"></i>
-        <div><strong>Uso Offline:</strong> A validação salva o registro localmente, permitindo que as ferramentas continuem funcionando mesmo se você ficar sem internet temporariamente.</div>
+        <div><strong>Uso sem internet:</strong> a última verificação fica salva no computador. As ferramentas continuam funcionando por até <strong>30 dias</strong> sem conexão; depois disso, conecte-se para renovar a verificação.</div>
       </div>
 
-      <a class="step-download" href="https://wa.me/55981446647" target="_blank"><i class="ti ti-brand-whatsapp"></i> Solicitar ativação via WhatsApp</a>
+      <div class="callout warn">
+        <i class="ti ti-device-laptop"></i>
+        <div><strong>Trocou de computador ou formatou?</strong> O ID muda. Abra a janela de Licença no computador novo e envie o novo ID ao suporte.</div>
+      </div>
+
+      <a class="step-download no-print" href="https://wa.me/55981446647?text=Ol%C3%A1!%20Gostaria%20de%20ativar%20minha%20licen%C3%A7a%20do%20Urbano%20Tools." target="_blank"><i class="ti ti-brand-whatsapp"></i> Solicitar ativação via WhatsApp</a>
     </div>
   </div>
 
+  <!-- ATUALIZAÇÕES -->
+  <div class="step-card">
+    <div class="step-head">
+      <div class="step-badge"><i class="ti ti-refresh"></i></div>
+      <div>
+        <div class="step-head-title">Atualizações automáticas</div>
+        <div class="step-head-sub">Nenhuma ação necessária</div>
+      </div>
+    </div>
+    <div class="step-body">
+      <p>Uma vez por abertura do AutoCAD, com a licença ativa e internet disponível, o Urbano Tools verifica se há versão nova. Se houver, ela é baixada <strong>em segundo plano</strong>, conferida e passa a valer na <strong>próxima abertura</strong> do AutoCAD. Para verificar na hora, use <code>URBANO_CONEXAO</code>.</p>
+      <div class="callout info">
+        <i class="ti ti-info-circle"></i>
+        <div><strong>Reinstalar o instalador não é necessário</strong> para receber novas versões. Use o instalador novamente só se for mudar a pasta de instalação ou se o suporte pedir.</div>
+      </div>
+    </div>
+  </div>
+
+  <div id="comandos" class="section-label">Referência rápida</div>
+  <div class="section-title">Comandos de suporte</div>
+  <div class="section-sub">Digite na linha de comando do AutoCAD. Estes comandos funcionam mesmo sem licença ativa.</div>
+
+  <div class="tbl-wrap" style="background:#fff">
+    <table class="tbl">
+      <thead><tr><th>Comando</th><th>Para que serve</th></tr></thead>
+      <tbody>
+        <tr><td><code>URBANO_LICENCA</code></td><td>Abre a janela de licença: ID do computador, status, validade e ativação.</td></tr>
+        <tr><td><code>URBANO_PYTHON</code></td><td>Mostra o Python em uso e as bibliotecas. Opções: <em>Detectar novamente</em>, <em>Escolher python.exe</em> e <em>Instalar bibliotecas</em>.</td></tr>
+        <tr><td><code>URBANO_CONEXAO</code></td><td>Testa a conexão com o servidor de licença e de atualização e, havendo versão nova, oferece baixar.</td></tr>
+        <tr><td><code>URBANO_REPAIR</code></td><td>Reparo de emergência: baixa e restaura todos os arquivos do Urbano Tools. Reinicie o AutoCAD depois.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
   <div class="section-label">Dúvidas frequentes</div>
-  <div class="section-title">Perguntas comuns na instalação</div>
+  <div class="section-title">Problemas comuns na instalação</div>
 
   <div class="faq-list">
     <div class="faq-item">
-      <div class="faq-q"><i class="ti ti-help-circle"></i> O que faz o arquivo _1.install_bibliotecas_python.bat?</div>
-      <div class="faq-a">Ele baixa e instala automaticamente no Python todas as bibliotecas e pacotes necessários para o funcionamento das rotinas de geoprocessamento e ferramentas do Urbano Tools.</div>
+      <div class="faq-q"><i class="ti ti-help-circle"></i> A aba "Urbano Tools" não apareceu na Ribbon.</div>
+      <div class="faq-a">Quase sempre é o Support Path: siga a etapa 4.2 e reinicie o AutoCAD. Se o AutoCAD mostrou um aviso de segurança e você clicou em "Do Not Load", feche, abra de novo e escolha "Always Load".</div>
     </div>
     <div class="faq-item">
-      <div class="faq-q"><i class="ti ti-help-circle"></i> Esqueci de marcar a opção "Add python.exe to PATH", o que faço?</div>
-      <div class="faq-a">Execute o instalador do Python novamente, clique em <strong>Modify</strong> (ou Reinstalar) e certifique-se de marcar a opção "Add python.exe to PATH". Em seguida, execute o <code>_1.install_bibliotecas_python.bat</code> novamente.</div>
+      <div class="faq-q"><i class="ti ti-help-circle"></i> Aparece "Python não encontrado".</div>
+      <div class="faq-a">Instale o Python pelo python.org (etapa 1). Se já estiver instalado, rode <code>URBANO_PYTHON</code> → <strong>Detectar novamente</strong>, ou <strong>Escolher python.exe</strong> e aponte o arquivo (normalmente em <code>%LOCALAPPDATA%\Programs\Python\Python3xx\python.exe</code>).</div>
     </div>
     <div class="faq-item">
-      <div class="faq-q"><i class="ti ti-help-circle"></i> O instalador grava o Support Path no AutoCAD sozinho?</div>
-      <div class="faq-a">Sim! O executável insere o diretório <code>C:\urbano-tools</code> no Registro do sistema operacional para o seu CAD automaticamente. A inclusão manual através do comando <code>OPTIONS</code> serve apenas como um plano de reserva (fallback).</div>
+      <div class="faq-q"><i class="ti ti-help-circle"></i> Esqueci de marcar "Add python.exe to PATH". E agora?</div>
+      <div class="faq-a">Não é obrigatório para o Urbano Tools, que também procura o Python nas pastas padrão. Se ele não for encontrado, rode o instalador do Python de novo, clique em <strong>Modify</strong> e marque a opção, ou indique o caminho com <code>URBANO_PYTHON</code> → <strong>Escolher python.exe</strong>.</div>
     </div>
     <div class="faq-item">
-      <div class="faq-q"><i class="ti ti-help-circle"></i> Onde os arquivos do sistema ficam salvos?</div>
-      <div class="faq-a">Toda a estrutura do pacote fica centralizada no diretório fixo <strong>C:\urbano-tools</strong>. Recomendamos não renomear ou mover essa pasta.</div>
+      <div class="faq-q"><i class="ti ti-help-circle"></i> A janela de bibliotecas mostra "FALTA" ou erro do pip.</div>
+      <div class="faq-a">Verifique a internet e clique em <strong>Instalar / atualizar</strong> de novo. Em redes corporativas, proxy ou antivírus podem bloquear o download. Se só faltar o <code>tkinter</code>, reinstale o Python mantendo marcada a opção <strong>tcl/tk and IDLE</strong>.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q"><i class="ti ti-help-circle"></i> Ativei a licença, mas os comandos continuam bloqueados.</div>
+      <div class="faq-a">Na janela de Licença, clique em <strong>Atualizar status</strong>. Se ainda não mudar, rode <code>URBANO_CONEXAO</code> e envie o resultado ao suporte; ele mostra se o computador consegue falar com o servidor (internet, firewall, proxy).</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q"><i class="ti ti-help-circle"></i> Posso instalar em outra pasta ou mudar de pasta depois?</div>
+      <div class="faq-a">Sim. Rode o instalador e escolha a nova pasta: ele tira a pasta antiga do Support Path do Civil 3D e grava a nova. Evite <em>Arquivos de Programas</em>, pois o Urbano Tools precisa gravar na própria pasta para se atualizar.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q"><i class="ti ti-help-circle"></i> Como desinstalar?</div>
+      <div class="faq-a">Em <strong>Configurações do Windows → Aplicativos</strong>, desinstale <em>Urbano Tools</em>. O desinstalador pergunta se deve remover o caminho do Support Path do Civil 3D. Se você incluiu o caminho à mão (etapa 4.2), remova-o também pelo OPTIONS.</div>
     </div>
   </div>
 
@@ -429,16 +590,18 @@
       <div class="contact-icon teal"><i class="ti ti-brand-whatsapp"></i></div>
       <div class="contact-body">
         <div class="contact-title">Atendimento direto via WhatsApp</div>
-        <div class="contact-desc">Se precisar de ajuda para instalar, checar caminhos ou ativar sua licença, acione o suporte.</div>
+        <div class="contact-desc">Se precisar de ajuda para instalar, conferir caminhos ou ativar sua licença, chame o suporte. Se possível, envie o seu ID (janela de Licença) e o resultado do <code style="background:rgba(255,255,255,.1);color:#C8DAEB">URBANO_CONEXAO</code>.</div>
+        <div class="contact-desc print-only" style="margin-top:8px;color:#fff">WhatsApp: (55) 98144-6647</div>
       </div>
     </div>
-    <a class="contact-cta" href="https://wa.me/55981446647?text=Ol%C3%A1%2C%20estou%20com%20d%C3%BAvida%20na%20instala%C3%A7%C3%A3o%20do%20Urbano%20Tools" target="_blank">
+    <a class="contact-cta no-print" href="https://wa.me/55981446647?text=Ol%C3%A1%2C%20estou%20com%20d%C3%BAvida%20na%20instala%C3%A7%C3%A3o%20do%20Urbano%20Tools" target="_blank">
       <i class="ti ti-brand-whatsapp"></i> Falar com o suporte
     </a>
   </div>
 
   <div class="footer">
-    <p><strong>Urbano Tools</strong> — Manual de Instalação e Ativação</p>
+    <p><strong>Urbano Tools</strong> — Manual de Instalação e Ativação · versão 10.4</p>
+    <p class="print-only">marcelodambrowski.github.io/urbano-tools</p>
     <p style="margin-top: 14px; opacity: 0.5; font-size: 11px; line-height: 1.4;">
       Urbano Tools © 2026 · Todos os direitos reservados.<br>
       Este site e as ferramentas disponibilizadas de forma independente não possuem afiliação, patrocínio ou autorização da Autodesk Inc.
