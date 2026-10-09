@@ -800,6 +800,7 @@
   <div class="topnav-links">
     <a href="#ferramentas">Ferramentas</a>
     <a href="#pricing">Preço</a>
+    <a href="manual.html">Instalação</a>
     <a href="#suporte">Suporte</a>
     <a class="topnav-cta" href="https://wa.me/55981446647?text=Ol%C3%A1%2C%20quero%20testar%20o%20Urbano%20Tools%20por%203%20dias%20gr%C3%A1tis!" target="_blank" onclick="gtag('event', 'click_whatsapp_nav', {'event_category': 'Conversion'});"><i class="ti ti-brand-whatsapp"></i> 3 dias grátis</a>
   </div>
@@ -857,11 +858,11 @@
   <div class="memorial-highlight">
     <div class="mh-badge"><i class="ti ti-star"></i> Destaque da assinatura</div>
     <div class="mh-title"><i class="ti ti-file-description"></i> Memorial Descritivo automático</div>
-    <div class="mh-desc">Selecione os dados da tabela de coordenadas (gerada pelo Urbano Tools) no desenho e o script gera o memorial descritivo completo em HTML — com tabela analítica, distâncias, ângulos internos, confrontantes, quadrantes, perímetro e área total, além da descrição textual formatada para retificação ou remembramento.</div>
+    <div class="mh-desc">Selecione os dados da tabela de coordenadas (gerada pelo Urbano Tools) no desenho e o script gera o memorial descritivo completo em HTML — com tabela analítica, distâncias, ângulos internos, confrontantes, quadrantes, perímetro e área total, além da descrição textual formatada para retificação, remembramento ou desmembramento.</div>
     <div class="mh-checks">
       <div class="mh-check"><i class="ti ti-check"></i> Tabela analítica dos dados</div>
       <div class="mh-check"><i class="ti ti-check"></i> Quadrantes calculados automaticamente</div>
-      <div class="mh-check"><i class="ti ti-check"></i> Texto descritivo gerado para Retificação ou Remembramento de área</div>
+      <div class="mh-check"><i class="ti ti-check"></i> Texto descritivo gerado para Retificação, Remembramento ou Desmembramento de área</div>
       <div class="mh-check"><i class="ti ti-check"></i> Exportação em HTML — abre no navegador</div>
     </div>
   </div>
@@ -929,8 +930,8 @@
       <div class="feat-icon amber"><i class="ti ti-slice"></i></div>
       <div class="feat-body">
         <div class="feat-title">Divisão de área</div>
-        <div class="feat-desc">Divide uma área por paralela a um segmento ou por pivô, calculando automaticamente o ponto de corte e desenhando as novas polilinhas com as áreas corretas.</div>
-        <span class="feat-tag amber">Cálculo + desenho</span>
+        <div class="feat-desc">Janela dinâmica que fica aberta ao lado do desenho, com prévia em tempo real: corte paralelo, perpendicular ou por ângulo, pivô em qualquer ponto do contorno e divisão em N partes iguais. Considera arcos e polígonos côncavos, e desenha as novas polilinhas com o texto de área — sem alterar a original.</div>
+        <span class="feat-tag amber">Paralela · Ângulo · Pivô · N partes</span>
       </div>
     </div>
 
@@ -947,7 +948,7 @@
       <div class="feat-icon coral"><i class="ti ti-tree"></i></div>
       <div class="feat-body">
         <div class="feat-title">Inserção de níveis e arbóreas + tabela automática</div>
-        <div class="feat-desc">Duas ferramentas integradas: a de <strong>níveis</strong> lê os pontos COGO do Civil 3D pelo código configurável, insere o bloco indicador e a cota com vírgula via MLeader — tudo no layer correto. A de <strong>arbóreas</strong> importa TXT, insere os blocos e gera a tabela completa.</div>
+        <div class="feat-desc">Duas ferramentas integradas: a de <strong>níveis</strong> lê os pontos COGO do Civil 3D pelo código configurável (ou por clique no desenho), insere o bloco indicador e a cota com vírgula via MLeader — tudo no layer correto. A de <strong>arbóreas</strong> importa TXT, insere os blocos e gera a tabela completa, compacta ou em 2 colunas.</div>
         <span class="feat-tag coral">Pontos COGO · Levantamento arbóreo</span>
       </div>
     </div>
@@ -981,36 +982,36 @@
         <div class="r-tab">Home</div>
         <div class="r-tab">Insert</div>
         <div class="r-tab">Annotate</div>
-        <div class="r-tab active">URBANO_TOOLS</div>
+        <div class="r-tab active">Urbano Tools</div>
       </div>
       <div class="ribbon-bar">
-        <div class="r-btn"><i class="ti ti-settings"></i><span>Config.</span></div>
-        <div class="r-btn"><i class="ti ti-file-description"></i><span>Memorial</span></div>
-        <div class="r-btn"><i class="ti ti-table"></i><span>Tabelas</span></div>
-        <div class="r-btn highlight"><i class="ti ti-world-latitude"></i><span>Ondulação N</span></div>
-        <div class="r-btn"><i class="ti ti-slice"></i><span>Área</span></div>
         <div class="r-btn"><i class="ti ti-dimensions"></i><span>Vértices</span></div>
-        <div class="r-btn"><i class="ti ti-certificate"></i><span>SIGEF</span></div>
-        <div class="r-btn r-extra"><i class="ti ti-location"></i><span>Locação</span></div>
-        <div class="r-btn r-extra"><i class="ti ti-tree"></i><span>Arbóreas</span></div>
-        <div class="r-btn r-extra"><i class="ti ti-vector-bezier-arc"></i><span>Reduzir</span></div>
+        <div class="r-btn"><i class="ti ti-table"></i><span>Confront.</span></div>
+        <div class="r-btn"><i class="ti ti-map-pin"></i><span>Coord.</span></div>
+        <div class="r-btn highlight"><i class="ti ti-file-description"></i><span>Memorial</span></div>
+        <div class="r-btn"><i class="ti ti-slice"></i><span>Dividir Área</span></div>
+        <div class="r-btn"><i class="ti ti-location"></i><span>Locação</span></div>
         <div class="r-btn r-extra"><i class="ti ti-ruler-2"></i><span>Níveis</span></div>
-        <div class="r-btn r-extra"><i class="ti ti-crosshair"></i><span>Área SGL</span></div>
+        <div class="r-btn r-extra"><i class="ti ti-tree"></i><span>Arbóreas</span></div>
+        <div class="r-btn r-extra"><i class="ti ti-vector-bezier-arc"></i><span>Simplificar</span></div>
         <div class="r-btn r-extra"><i class="ti ti-photo"></i><span>Otimizar TIF</span></div>
+        <div class="r-btn r-extra"><i class="ti ti-crosshair"></i><span>Área SGL</span></div>
+        <div class="r-btn r-extra"><i class="ti ti-certificate"></i><span>SIGEF</span></div>
+        <div class="r-btn r-extra"><i class="ti ti-world-latitude"></i><span>Ondulação</span></div>
         <div class="r-btn r-end"><i class="ti ti-license"></i><span>Licença</span></div>
       </div>
     </div>
 
     <div class="ribbon-callout">
       <i class="ti ti-info-circle"></i>
-      <p><strong>Nada para memorizar.</strong> Após a instalação, uma aba <strong>"URBANO_TOOLS"</strong> aparece automaticamente no Ribbon do AutoCAD. Cada ferramenta tem seu botão com ícone — é só clicar e seguir as instruções na tela.</p>
+      <p><strong>Nada para memorizar.</strong> Após a instalação, a aba <strong>"Urbano Tools"</strong> aparece automaticamente no Ribbon, organizada em quatro painéis: <strong>Ferramentas</strong>, <strong>Sistema de Locação de Pontos</strong>, <strong>Georreferenciamento</strong> e <strong>Licença</strong>. Cada ferramenta tem seu botão com ícone — é só clicar e seguir as instruções na tela.</p>
     </div>
     <div class="ribbon-chips">
       <div class="ribbon-chip"><i class="ti ti-check"></i> AutoCAD</div>
       <div class="ribbon-chip"><i class="ti ti-check"></i> Civil 3D</div>
-      <div class="ribbon-chip"><i class="ti ti-check"></i> Instalação com 1 clique</div>
+      <div class="ribbon-chip"><i class="ti ti-check"></i> Instalador automático</div>
       <div class="ribbon-chip"><i class="ti ti-check"></i> Aba exclusiva no Ribbon</div>
-      <div class="ribbon-chip"><i class="ti ti-check"></i> Configurações integradas</div>
+      <div class="ribbon-chip"><i class="ti ti-check"></i> Atualização automática</div>
     </div>
   </div>
 
@@ -1051,7 +1052,7 @@
       <div class="pi-item"><i class="ti ti-check"></i> Tabela de confrontantes com quadrantes automáticos</div>
       <div class="pi-item"><i class="ti ti-check"></i> Tabela de coordenadas UTM e geodésicas (SIRGAS2000)</div>
       <div class="pi-item"><i class="ti ti-check"></i> Cálculo da ondulação geoidal (Fator N - IBGE Imbituba)</div>
-      <div class="pi-item"><i class="ti ti-check"></i> Divisão de área por paralela ou pivô</div>
+      <div class="pi-item"><i class="ti ti-check"></i> Divisão de área por paralela, ângulo, pivô ou N partes iguais</div>
       <div class="pi-item"><i class="ti ti-check"></i> Sistema completo de locação de obras</div>
       <div class="pi-item"><i class="ti ti-check"></i> Vértices, cotas, níveis, arbóreas e tabela de arbóreas</div>
       <div class="pi-item"><i class="ti ti-check"></i> Cálculo de área local no padrão SIGEF/INCRA (UTM → ENU)</div>
@@ -1078,12 +1079,12 @@
   <div class="faq-list">
     <div class="faq-item">
       <div class="faq-q"><i class="ti ti-help-circle"></i> Funciona no meu AutoCAD?</div>
-      <div class="faq-a">Funciona no AutoCAD e Civil 3D a partir de 2015. Para AutoCAD LT: versões 2024 ou mais recentes têm suporte a AutoLISP integrado e a grande maioria das rotinas funciona — macros mais complexas podem ter limitações. Versões LT 2023 e anteriores não têm suporte a AutoLISP e não são compatíveis.</div>
+      <div class="faq-a">Funciona no AutoCAD e no Civil 3D para Windows. No <strong>Civil 3D 2023 a 2027</strong> o instalador configura tudo sozinho; no AutoCAD e em outras versões basta incluir a pasta no Support Path (2 minutos, passo a passo no <a href="manual.html#etapa4" style="color:#185FA5">manual</a>). O <strong>AutoCAD LT não é compatível</strong>: as ferramentas usam recursos (ActiveX e aplicativos VLX) que o LT não oferece.</div>
     </div>
 
     <div class="faq-item">
       <div class="faq-q"><i class="ti ti-help-circle"></i> Como recebo as ferramentas após assinar?</div>
-      <div class="faq-a">O acesso é enviado por e-mail pela Hotmart logo após a confirmação do pagamento. A instalação é feita com 1 clique — um instalador configura tudo automaticamente no AutoCAD.</div>
+      <div class="faq-a">O acesso é enviado por e-mail pela Hotmart logo após a confirmação do pagamento. Você instala o Python (gratuito), roda o instalador do Urbano Tools — que copia os arquivos, configura o Civil 3D e instala as bibliotecas — e ativa a licença pelo botão <strong>Licença</strong> na Ribbon. Tudo explicado no <a href="manual.html" style="color:#185FA5">manual de instalação</a>.</div>
     </div>
 
     <div class="faq-item">
@@ -1093,12 +1094,17 @@
 
     <div class="faq-item">
       <div class="faq-q"><i class="ti ti-help-circle"></i> As ferramentas recebem atualizações?</div>
-      <div class="faq-a">Sim. As atualizações são automáticas — ao abrir qualquer desenho no AutoCAD, o sistema verifica e aplica a versão mais recente sem nenhuma ação necessária.</div>
+      <div class="faq-a">Sim, e automaticamente. Ao abrir o AutoCAD, o Urbano Tools verifica se há versão nova, baixa em segundo plano e ela passa a valer na próxima abertura — sem reinstalar nada.</div>
     </div>
 
     <div class="faq-item">
       <div class="faq-q"><i class="ti ti-help-circle"></i> Preciso saber programar ou mexer em LISP?</div>
-      <div class="faq-a">Não. As ferramentas são plug-and-play — basta instalar e usar pelo menu Ribbon do AutoCAD. Nenhum conhecimento técnico necessário.</div>
+      <div class="faq-a">Não. As ferramentas são plug-and-play — basta instalar e usar pelo menu Ribbon do AutoCAD. O Python, usado por algumas ferramentas, é instalado uma única vez e você não precisa mexer nele.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q"><i class="ti ti-help-circle"></i> Preciso de internet para usar?</div>
+      <div class="faq-a">Só para ativar a licença e receber atualizações. Depois de verificada, a licença funciona por até 30 dias sem conexão. A licença é por computador: ao trocar de máquina, é só enviar o novo ID pelo WhatsApp.</div>
     </div>
 
     <div class="faq-item">
