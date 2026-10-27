@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Manual de Instalação e Ativação — Urbano Tools</title>
+<meta name="description" content="Instale e ative o Urbano Tools 15.4 em 3 etapas: instalador, aba no Ribbon do AutoCAD / Civil 3D e licença. Atualizações, comandos de suporte e solução de problemas.">
+<link rel="canonical" href="https://marcelodambrowski.github.io/urbano-tools/manual.html">
+<meta name="robots" content="index, follow">
+<link rel="icon" type="image/svg+xml" href="assets/img/urbano.svg">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.19.0/dist/tabler-icons.min.css">
+<link rel="stylesheet" href="assets/css/urbano.css">
+<script src="assets/js/tema.js"></script>
+<style>
+  .hero { background: var(--header); border: 1px solid var(--header-linha); border-radius: 18px; padding: 36px 36px 32px; position: relative; overflow: hidden; }
+  .hero::before { content: ""; position: absolute; inset: 0 0 auto 0; height: 4px; background: var(--primario); }
+  .hero-selo { display: inline-flex; align-items: center; gap: 8px; background: var(--tile); color: var(--header-sub); font-size: 13px; padding: 6px 14px; border-radius: 100px; margin-bottom: 20px; }
+  .hero-selo i { color: var(--acento); }
+  .hero .logo { display: flex; align-items: center; gap: 12px; font-size: 30px; font-weight: 600; color: var(--header-texto); }
+  .hero .logo img { width: 38px; height: 38px; }
+  .hero .logo span { color: var(--acento); font-weight: 400; }
+  .hero .tit { font-size: 18px; color: var(--header-sub); margin: 4px 0 16px; }
+  .hero h1 { font-size: clamp(24px, 4vw, 32px); color: var(--header-texto); margin-bottom: 8px; }
+  .hero p { color: var(--header-sub); font-size: 16px; max-width: 60ch; }
+  .hero p strong { color: var(--header-texto); }
+  .hero .acoes { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
+
+  .req { display: flex; gap: 14px; align-items: flex-start; }
+  .req > i { font-size: 24px; color: var(--acento); flex: none; margin-top: 2px; }
+  .req p { color: var(--muted); font-size: 14px; margin-top: 2px; }
+
+  .resumo { display: grid; gap: 10px; }
+  .resumo a { display: flex; gap: 16px; align-items: center; background: var(--cartao); border: 1px solid var(--linha); border-radius: var(--r); padding: 16px 20px; text-decoration: none; color: inherit; }
+  .resumo a:hover { border-color: var(--primario); }
+  .resumo b { display: block; color: var(--forte); font-weight: 600; font-size: 16px; }
+  .resumo small { color: var(--muted); font-size: 14px; }
+  .resumo .seta { margin-left: auto; color: var(--muted); font-size: 20px; }
+
+  .etapa-cab { display: flex; gap: 16px; align-items: center; }
+  .etapa-cab .num { background: var(--primario); color: var(--sobre-primario); }
+  .etapa-cab h2 { margin: 0; }
+  .etapa-cab p { color: var(--muted); font-size: 15px; }
+  .etapa { scroll-margin-top: 76px; }
+
+  ol.passos { list-style: none; display: grid; gap: 10px; counter-reset: s; }
+  ol.passos > li { counter-increment: s; display: flex; gap: 14px; align-items: flex-start; background: var(--cartao); border: 1px solid var(--linha); border-radius: var(--r-sm); padding: 14px 18px; }
+  ol.passos > li::before { content: counter(s); flex: none; width: 26px; height: 26px; border-radius: 50%; background: var(--num); color: #fff; font-size: 13px; font-weight: 700; display: grid; place-items: center; margin-top: 1px; }
+  ol.passos p { color: var(--muted); font-size: 14.5px; margin-top: 3px; }
+  ol.passos .txt { flex: 1; min-width: 0; }
+
+  .nota { display: flex; gap: 12px; align-items: flex-start; border-radius: var(--r-sm); padding: 14px 16px; font-size: 14.5px; }
+  .nota > i { font-size: 20px; flex: none; margin-top: 1px; }
+  .nota b, .nota strong { color: inherit; }
+  .nota.aviso { background: var(--aviso-fundo); color: var(--aviso); }
+  .nota.info { background: var(--acento-claro); color: var(--texto); }
+  .nota.info > i { color: var(--acento); }
+  .nota.ok { background: var(--ok-fundo); color: var(--ok); }
+  .nota.erro { background: var(--erro-fundo); color: var(--erro); }
+  .nota .corpo { color: var(--texto); }
+  .nota.aviso .corpo, .nota.ok .corpo, .nota.erro .corpo { color: var(--texto); }
+  .nota .corpo b { display: block; margin-bottom: 2px; color: var(--forte); }
+
+  table { width: 100%; border-collapse: separate; border-spacing: 0; background: var(--cartao); border: 1px solid var(--linha); border-radius: var(--r-sm); overflow: hidden; font-size: 14.5px; }
+  th { text-align: left; font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); background: var(--zebra); padding: 11px 16px; font-weight: 600; }
+  td { padding: 12px 16px; border-top: 1px solid var(--linha); vertical-align: top; color: var(--muted); }
+  td:first-child { color: var(--forte); white-space: nowrap; }
+  td strong { color: var(--forte); }
+  td code { white-space: nowrap; overflow-wrap: normal; }
+  td.chipcol { width: 1%; }
+
+  .duas { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; align-items: start; }
+  .faq { display: grid; gap: 8px; }
+  .faq details { background: var(--cartao); border: 1px solid var(--linha); border-radius: var(--r-sm); }
+  .faq summary { list-style: none; cursor: pointer; padding: 15px 18px; font-weight: 600; color: var(--forte); font-size: 15px; display: flex; gap: 10px; align-items: center; }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq summary i { color: var(--acento); font-size: 18px; flex: none; }
+  .faq summary::after { content: "▸"; margin-left: auto; color: var(--muted); transition: transform .15s; }
+  .faq details[open] summary::after { transform: rotate(90deg); }
+  .faq .resp { padding: 0 18px 16px 46px; color: var(--muted); font-size: 14.5px; line-height: 1.65; }
+  .contato { display: flex; gap: 18px; align-items: center; flex-wrap: wrap; background: var(--header); border: 1px solid var(--header-linha); border-radius: var(--r); padding: 22px 24px; }
+  .contato .corpo { flex: 1; min-width: 240px; color: var(--header-sub); font-size: 14.5px; }
+  .contato h3 { color: var(--header-texto); margin-bottom: 4px; font-size: 18px; }
+  .contato strong { color: var(--header-texto); }
+  .fim { text-align: center; color: var(--muted); font-size: 12.5px; }
+  .so-pdf { display: none; }
+
+  @media screen and (max-width: 760px) {
+    .duas { grid-template-columns: 1fr; }
+    .hero { padding: 26px 20px; }
+    td:first-child { white-space: normal; }
+    table.empilha thead { display: none; }
+    table.empilha tr, table.empilha td { display: block; }
+    table.empilha td:first-child { padding-bottom: 2px; }
+    table.empilha td:not(:first-child) { border-top: 0; padding-top: 0; }
+    table.empilha tr + tr td:first-child { border-top: 1px solid var(--linha); }
+  }
+
+  /* ===== PDF / impressão: A4, tema claro, sem barra de navegação ===== */
+  @media print {
+    @page { size: A4; margin: 14mm 13mm 16mm; }
+    :root, :root[data-theme] {
+      --header: #DCDDE0; --header-texto: #222933; --header-sub: #4A5360; --header-linha: #CDD0D5;
+      --fundo: #fff; --texto: #222933; --muted: #4A5360; --forte: #151B23;
+      --cartao: #fff; --entrada: #F5F5F5; --linha: #D5D8DD; --zebra: #F2F3F5;
+      --acento: #B86F0A; --acento-claro: #FBEBCF; --link: #965808; --primario-hover: #E09A1F;
+      --ok: #1E7A4D; --ok-fundo: #E3F3EA; --aviso: #8A5200; --aviso-fundo: #FFF1D6;
+      --erro: #B3261E; --erro-fundo: #FDECEA; --tile: #EEF0F3; --borda: #C8C8C8; --sombra: none;
+      color-scheme: light;
+    }
+    html { scroll-padding-top: 0; }
+    body { background: #fff; font-size: 11.5px; line-height: 1.5; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .topnav, .rodape, .so-web, .tema { display: none !important; }
+    .so-pdf { display: block; }
+    .page { padding: 0; gap: 22px; }
+    .wrap { max-width: none; padding: 0; }
+    .hero { padding: 22px 24px; }
+    .hero .logo { font-size: 24px; }
+    h2 { font-size: 18px; }
+    .bloco, .cartao, ol.passos > li, .nota, table, tr, .janela, figure, details { break-inside: avoid; }
+    .etapa { break-before: auto; }
+    .pg-quebra { break-before: page; }
+    .faq details { display: block; }
+    .faq details > .resp { display: block; }
+    .faq summary::after { display: none; }
+    a { color: var(--link); text-decoration: none; }
+    .janela img.tela { max-height: 95mm; width: auto; margin: 0 auto; }
+    .duas { gap: 14px; }
+    table.empilha thead { display: table-header-group; }
+    table.empilha tr { display: table-row; } table.empilha td { display: table-cell; }
+    td:first-child { white-space: normal; }
+    .num.grande, .ico { -webkit-print-color-adjust: exact; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="topnav">
+  <div class="wrap">
+    <a class="brand" href="index.html"><img src="assets/img/urbano.svg" alt="">urbano<span>tools</span></a>
+    <div class="nav-links">
+      <a href="index.html#ferramentas">Ferramentas</a>
+      <a href="index.html#pricing">Preço</a>
+      <a href="manual.html" aria-current="page">Instalação</a>
+      <a href="index.html#suporte">Suporte</a>
+    </div>
+    <div class="nav-right">
+      <div class="tema" role="group" aria-label="Tema">
+        <button data-tema="auto" aria-pressed="true" title="Automático (segue o sistema)"><i class="ti ti-device-desktop"></i></button>
+        <button data-tema="dark" aria-pressed="false" title="Escuro"><i class="ti ti-moon"></i></button>
+        <button data-tema="light" aria-pressed="false" title="Claro"><i class="ti ti-sun"></i></button>
+      </div>
+      <a class="btn btn-primario btn-pequeno keep" aria-label="Voltar ao site" href="index.html"><i class="ti ti-arrow-left"></i><span class="t-lg">Voltar ao site</span></a>
+    </div>
+  </div>
+</nav>
+
+<main class="wrap page">
+
+  <!-- CAPA -->
+  <header class="hero">
+    <div class="hero-selo"><i class="ti ti-book-2"></i> Guia oficial · Versão 15.4 Beta · Cerca de 5 minutos</div>
+    <div class="logo"><img src="assets/img/urbano.svg" alt="">urbano<span>tools</span></div>
+    <div class="tit">Manual de Instalação e Ativação</div>
+    <h1>Instale e ative o Urbano Tools em 3 etapas.</h1>
+    <p>Tudo vem no instalador: <strong>não é preciso instalar Python nem bibliotecas.</strong> O teste grátis de 3 dias começa sozinho na primeira abertura.</p>
+    <div class="acoes so-web">
+      <a class="btn btn-primario" href="downloads/manual-urbano-tools-15.4.pdf" download><i class="ti ti-file-download"></i> Baixar em PDF</a>
+      <a class="btn btn-sec" href="#etapa1" style="color:var(--header-texto);border-color:var(--borda-forte)">Começar pela etapa 1</a>
+    </div>
+  </header>
+
+  <!-- ANTES DE COMEÇAR -->
+  <section class="bloco">
+    <div class="cab-secao"><div class="rotulo">Antes de começar</div><h2>O que você precisa</h2></div>
+    <div class="grade g2">
+      <div class="cartao req"><i class="ti ti-brand-windows"></i><div><strong>Windows 10 ou 11 (64 bits)</strong><p>Não precisa ser administrador.</p></div></div>
+      <div class="cartao req"><i class="ti ti-building"></i><div><strong>AutoCAD ou Civil 3D</strong><p>Civil 3D 2023 a 2027 é configurado sozinho. O AutoCAD LT não é compatível.</p></div></div>
+      <div class="cartao req"><i class="ti ti-wifi"></i><div><strong>Internet</strong><p>Para ativar e atualizar. Funciona até 30 dias sem conexão.</p></div></div>
+      <div class="cartao req"><i class="ti ti-package"></i><div><strong>300 MB livres</strong><p>O motor Python já vem incluído no instalador.</p></div></div>
+    </div>
+  </section>
+
+  <!-- AS 3 ETAPAS -->
+  <section class="bloco">
+    <div class="cab-secao"><div class="rotulo">Passo a passo</div><h2>As 3 etapas</h2></div>
+    <div class="resumo">
+      <a href="#etapa1"><span class="num grande">1</span><div><b>Instalar</b><small>Rodar o Setup_urbano-tools-15.4.exe</small></div><i class="ti ti-chevron-right seta"></i></a>
+      <a href="#etapa2"><span class="num grande">2</span><div><b>Abrir o AutoCAD / Civil 3D</b><small>Conferir a aba "Urbano Tools" no Ribbon</small></div><i class="ti ti-chevron-right seta"></i></a>
+      <a href="#etapa3"><span class="num grande">3</span><div><b>Ativar a licença</b><small>Enviar o ID pelo WhatsApp e clicar em "Atualizar status"</small></div><i class="ti ti-chevron-right seta"></i></a>
+    </div>
+  </section>
+
+  <!-- ETAPA 1 -->
+  <section id="etapa1" class="bloco etapa">
+    <div class="etapa-cab"><span class="num grande">1</span><div><h2>Instalar</h2><p>Feche o AutoCAD / Civil 3D antes de começar.</p></div></div>
+    <ol class="passos">
+      <li><div class="txt"><strong>Execute o Setup_urbano-tools-15.4.exe.</strong><p>Escolha o idioma (Português ou English) e leia o contrato de uso. Marque <strong>Aceito o contrato</strong> para seguir.</p></div></li>
+      <li><div class="txt"><strong>Pasta: deixe <code>C:\urbano-tools</code>.</strong><p>Não use <em>Arquivos de Programas</em> nem a pasta do Windows: o programa grava arquivos na própria pasta (atualização automática) e o instalador roda sem administrador. O caminho também não pode ter ponto e vírgula (;).</p></div></li>
+      <li><div class="txt"><strong>Deixe marcado "Configurar Support Path e locais confiáveis no AutoCAD Civil 3D (2023 ou mais novo)".</strong><p>É o que faz a aba aparecer sozinha e evita o aviso de segurança. O relatório no fim mostra, versão por versão do Civil 3D, se deu certo.</p></div></li>
+      <li><div class="txt"><strong>Clique em Instalar e depois em Concluir.</strong><p>Se o AutoCAD estiver aberto, o instalador avisa: feche-o e continue.</p></div></li>
+    </ol>
+    <div class="nota aviso"><i class="ti ti-shield-exclamation"></i><div class="corpo"><b>Antivírus bloqueou o urbano-py.exe?</b>Libere a pasta de instalação (<code>C:\urbano-tools</code>) no antivírus e rode <code>URBANO_REPAIR</code> no AutoCAD. É um falso positivo comum em programas que trazem o próprio motor.</div></div>
+    <div class="nota info"><i class="ti ti-flask"></i><div class="corpo"><b>Versão Beta</b>O Urbano Tools está em fase Beta: ajuda e automatiza processos, mas confira sempre os resultados.</div></div>
+  </section>
+
+  <!-- ETAPA 2 -->
+  <section id="etapa2" class="bloco etapa">
+    <div class="etapa-cab"><span class="num grande">2</span><div><h2>Abrir o AutoCAD / Civil 3D</h2><p>A aba "Urbano Tools" aparece no Ribbon.</p></div></div>
+    <figure class="tela-fig">
+      <div class="janela ajusta"><div class="janela-barra"><img src="assets/img/urbano.svg" alt="">AutoCAD <small>aba Urbano Tools</small></div><img class="tela" src="assets/img/ribbon.png" alt="Aba Urbano Tools no Ribbon, com os painéis Ferramentas, Suporte, Sistema de Locação de Pontos e Georreferenciamento" width="604" height="420"></div>
+      <figcaption>Quatro painéis: <strong>Ferramentas</strong>, <strong>Sistema de Locação de Pontos</strong>, <strong>Georreferenciamento</strong> e <strong>Suporte</strong>. No AutoCAD eles ficam lado a lado, numa faixa só.</figcaption>
+    </figure>
+    <div class="duas">
+      <div class="nota aviso"><i class="ti ti-alert-triangle"></i><div class="corpo"><b>Apareceu um aviso de segurança?</b>Clique em <strong>Always Load</strong>. Para não ver mais o aviso, inclua a pasta nos locais confiáveis:<br><code>OPTIONS → Files → Trusted Locations → Add: C:\urbano-tools</code></div></div>
+      <div class="nota erro"><i class="ti ti-layout-off"></i><div class="corpo"><b>A aba não apareceu?</b>Acontece no AutoCAD "puro", em outras versões ou em perfis criados depois da instalação. Inclua a pasta e reabra o AutoCAD:<br><code>OPTIONS → Files → Support File Search Path → Add: C:\urbano-tools</code></div></div>
+    </div>
+    <span id="etapa4"></span>
+    <div class="nota info"><i class="ti ti-folder"></i><div class="corpo"><b>Use a pasta principal</b>Inclua <code>C:\urbano-tools</code>, e não a subpasta <code>data</code>.</div></div>
+  </section>
+
+  <!-- ETAPA 3 -->
+  <section id="etapa3" class="bloco etapa">
+    <div class="etapa-cab"><span class="num grande">3</span><div><h2>Ativar a licença</h2><p>Cada computador tem um ID próprio.</p></div></div>
+    <div class="nota ok"><i class="ti ti-gift"></i><div class="corpo"><b>3 dias grátis, automáticos</b>Em um computador novo, o teste começa sozinho na primeira vez que o AutoCAD abre com o Urbano Tools e com internet. Não precisa pedir nem ativar nada para testar. O teste não renova: ao acabar, a licença aparece como <strong>Expirada</strong> e os comandos param até você ativar.</div></div>
+    <div class="duas">
+      <ol class="passos">
+        <li><div class="txt"><strong>Na aba Urbano Tools, clique em Licença e Suporte</strong><p>Ou digite <code>URBANO_LICENCA</code> na linha de comando.</p></div></li>
+        <li><div class="txt"><strong>Clique em Ativar / Renovar</strong><p>O WhatsApp abre com uma mensagem pronta que já leva o seu ID. É só enviar. Sem WhatsApp no computador? Use <strong>Copiar</strong>, ao lado do ID, e mande por outro meio.</p></div></li>
+        <li><div class="txt"><strong>Depois da confirmação, clique em Atualizar status</strong><p>Em cerca de 1 minuto a licença passa para <strong>Ativa até…</strong> e as ferramentas liberam. Se pedir, reinicie o AutoCAD.</p></div></li>
+      </ol>
+      <figure class="tela-fig">
+        <div class="janela"><div class="janela-barra"><img src="assets/img/icones/licenca.png" alt="">Licença e suporte</div><img class="tela" src="assets/img/telas/licenca_janela.png" alt="Janela Licença e suporte: status, ID da máquina, ferramentas de suporte e botões Atualizar status e Ativar / Renovar" width="620" height="691"></div>
+      </figure>
+    </div>
+    <table class="empilha">
+      <thead><tr><th>Status</th><th>O que fazer</th></tr></thead>
+      <tbody>
+        <tr><td class="chipcol"><span class="chip ok">Ativa</span></td><td>Nada. Os "dias restantes" ficam âmbar nos últimos 3 dias (<span class="chip aviso">vence em breve</span>).</td></tr>
+        <tr><td><span class="chip ok">Teste grátis</span></td><td>Aproveite os 3 dias. Para continuar depois, use <strong>Ativar / Renovar</strong>.</td></tr>
+        <tr><td><span class="chip erro">Expirada</span></td><td><strong>Ativar / Renovar</strong> e depois <strong>Atualizar status</strong>.</td></tr>
+        <tr><td><span class="chip aviso">Não ativada</span></td><td>Envie o ID pelo <strong>Ativar / Renovar</strong>.</td></tr>
+        <tr><td><span class="chip aviso">Não verificada</span></td><td>Não é falta de ativação: sem internet há mais de 30 dias, ou data do Windows errada. Conecte-se, confira a data e clique em <strong>Atualizar status</strong>.</td></tr>
+      </tbody>
+    </table>
+    <div class="nota info"><i class="ti ti-device-laptop"></i><div class="corpo"><b>Trocou de computador ou formatou?</b>O ID muda. Envie o novo ID ao suporte.</div></div>
+  </section>
+
+  <!-- PRIMEIROS PASSOS -->
+  <section class="bloco">
+    <div class="cab-secao"><div class="rotulo">Depois de instalar</div><h2>Primeiros passos no AutoCAD</h2></div>
+    <div class="grade g2">
+      <div class="cartao req"><span class="ico sm"><img src="assets/img/icones/ajuda.png" alt=""></span><div><strong>Guia de Ajuda</strong><p>Botão <strong>Guia de Ajuda</strong> (painel Suporte) ou <code>URBANO_AJUDA</code>: uma página para cada comando, com passo a passo e imagens. Funciona mesmo sem licença.</p></div></div>
+      <div class="cartao req"><i class="ti ti-contrast-2"></i><div><strong>Tema das janelas</strong><p>Em <strong>Licença e suporte</strong>, o seletor no canto escolhe Automático (segue o AutoCAD), Escuro ou Claro.</p></div></div>
+    </div>
+  </section>
+
+  <!-- ATUALIZAÇÕES -->
+  <section class="bloco">
+    <div class="cab-secao"><div class="rotulo">Atualizações</div><h2>Automáticas, sem reinstalar</h2>
+      <p class="sub">O Urbano Tools procura versão nova ao abrir o AutoCAD, baixa em segundo plano só o que mudou, e a versão nova vale na próxima abertura. Para conferir se está em dia, clique em <strong>Atualizar status</strong> na janela de Licença: a resposta vem do servidor na hora.</p></div>
+    <table class="empilha">
+      <thead><tr><th>Aviso na janela de Licença</th><th>O que fazer</th></tr></thead>
+      <tbody>
+        <tr><td><span class="chip ok"><i class="ti ti-check"></i> Atualizado</span></td><td>Nada. Aparece depois de clicar em Atualizar status.</td></tr>
+        <tr><td>Baixando atualização…</td><td>Continue trabalhando.</td></tr>
+        <tr><td>Atualização baixada. Feche as janelas do Urbano Tools…</td><td>Feche as janelas das ferramentas e a de Licença para a instalação terminar.</td></tr>
+        <tr><td>Atualização instalada. Reinicie o AutoCAD…</td><td>Reabra o AutoCAD quando puder.</td></tr>
+        <tr><td>Falha ao atualizar: …</td><td>Clique em Atualizar status. Se repetir, chame o suporte.</td></tr>
+        <tr><td>Sem conexão / servidor indisponível</td><td>Tente mais tarde.</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- COMANDOS DE SUPORTE -->
+  <section class="bloco">
+    <div class="cab-secao"><div class="rotulo">Suporte</div><h2>Comandos de suporte</h2>
+      <p class="sub">Funcionam mesmo sem licença ativa. Também estão nos botões da janela <strong>Licença e suporte</strong>.</p></div>
+    <table class="empilha">
+      <thead><tr><th>Comando</th><th>Para que serve</th></tr></thead>
+      <tbody>
+        <tr><td><code>URBANO_LICENCA</code></td><td>Janela de licença: ID, status, validade e atualização.</td></tr>
+        <tr><td><code>URBANO_CONEXAO</code></td><td>Testa a conexão com o servidor e mostra licença, versão e motor, num relatório com o botão <strong>Copiar relatório</strong>. Havendo atualização, oferece baixar.</td></tr>
+        <tr><td><code>URBANO_AUTOTESTE</code></td><td>Diagnóstico completo: assinatura da licença, motor Python e bibliotecas. Use quando o suporte pedir.</td></tr>
+        <tr><td><code>URBANO_REPAIR</code></td><td>Baixa e restaura as ferramentas e o motor. Reinicie o AutoCAD depois.</td></tr>
+        <tr><td><code>URBANO_AJUDA</code></td><td>Abre o Guia de Ajuda com todos os comandos.</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- PROBLEMAS COMUNS -->
+  <section class="bloco">
+    <div class="cab-secao"><div class="rotulo">Dúvidas</div><h2>Problemas comuns</h2></div>
+    <div class="faq">
+      <details open><summary><i class="ti ti-help-circle"></i> Ativei, mas os comandos continuam bloqueados.</summary><div class="resp">Clique em <strong>Atualizar status</strong>. Se não mudar, rode <code>URBANO_CONEXAO</code>, clique em <strong>Copiar relatório</strong> e envie ao suporte.</div></details>
+      <details open><summary><i class="ti ti-help-circle"></i> A janela não abre, ou um comando dá erro.</summary><div class="resp">Digite <code>URBANO_REPAIR</code> na linha de comando (ou use <strong>Reparar instalação</strong> na janela de Licença) para restaurar os arquivos e o motor. Se o antivírus apagou o <code>urbano-py.exe</code>, libere a pasta <code>C:\urbano-tools</code> antes.</div></details>
+      <details open><summary><i class="ti ti-help-circle"></i> Apareceu "A data do computador está anterior à última verificação".</summary><div class="resp">O relógio do Windows está atrasado. Acerte a data e a hora, ou conecte-se à internet.</div></details>
+      <details open><summary><i class="ti ti-help-circle"></i> O relatório mostra "SEM RESPOSTA".</summary><div class="resp">Sem internet, ou um firewall, antivírus ou proxy bloqueando o AutoCAD. Se mostrar <strong>ERRO 429</strong>, foram muitas consultas seguidas: aguarde um minuto.</div></details>
+      <details open><summary><i class="ti ti-help-circle"></i> Posso mudar a pasta de instalação?</summary><div class="resp">Sim: rode o instalador de novo e escolha a nova pasta; ele tira a pasta antiga do Support Path. Evite <em>Arquivos de Programas</em>.</div></details>
+      <details open><summary><i class="ti ti-help-circle"></i> Como desinstalar?</summary><div class="resp">Configurações do Windows → Aplicativos → <strong>Urbano Tools</strong>. O desinstalador pergunta se deve remover o caminho do Civil 3D. Se você incluiu o caminho à mão (etapa 2), remova-o também no <code>OPTIONS</code>.</div></details>
+    </div>
+  </section>
+
+  <!-- AJUDA -->
+  <section class="contato">
+    <span class="ico"><i class="ti ti-brand-whatsapp" style="font-size:26px;color:var(--wpp)"></i></span>
+    <div class="corpo"><h3>Precisa de ajuda?</h3>Atendimento via WhatsApp. Envie o seu ID (janela de Licença) e, se possível, o resultado do <code>URBANO_CONEXAO</code>.<br><strong>WhatsApp: (55) 98144-6647</strong></div>
+    <a class="btn btn-wpp" href="https://wa.me/55981446647" target="_blank" rel="noopener"><i class="ti ti-brand-whatsapp"></i> Chamar no WhatsApp</a>
+  </section>
+
+  <p class="fim">Urbano Tools · Manual de Instalação e Ativação · versão 15.4 · marcelodambrowski.github.io/urbano-tools<br>Urbano Tools © 2026 · Todos os direitos reservados. Este site e as ferramentas disponibilizadas de forma independente não possuem afiliação, patrocínio ou autorização da Autodesk Inc.</p>
+
+</main>
+
+</body>
+</html>

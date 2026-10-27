@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Urbano Tools — Automatize seu trabalho no AutoCAD</title>
+<meta name="description" content="24 ferramentas para topógrafos e engenheiros direto no AutoCAD e no Civil 3D: memorial descritivo automático, tabelas, divisão de área, locação de pontos e georreferenciamento. 3 dias grátis, depois R$15/mês.">
+
+<!-- SEO Canonical & Indexação -->
+<link rel="canonical" href="https://marcelodambrowski.github.io/urbano-tools/">
+<meta name="robots" content="index, follow">
+
+<!-- Open Graph / Facebook / WhatsApp -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://marcelodambrowski.github.io/urbano-tools/">
+<meta property="og:title" content="Urbano Tools — Automatize seu trabalho no AutoCAD">
+<meta property="og:description" content="24 ferramentas para topógrafos e engenheiros direto no AutoCAD: memorial descritivo, tabelas, divisão de área, locação e georreferenciamento. 3 dias grátis, depois R$15/mês.">
+<meta property="og:image" content="https://marcelodambrowski.github.io/urbano-tools/og-image.png">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Urbano Tools — Automatize seu trabalho no AutoCAD">
+<meta name="twitter:description" content="24 ferramentas para topógrafos e engenheiros no AutoCAD e no Civil 3D. 3 dias grátis, depois R$15/mês.">
+<meta name="twitter:image" content="https://marcelodambrowski.github.io/urbano-tools/og-image.png">
+
+<!-- Favicon -->
+<link rel="icon" type="image/svg+xml" href="assets/img/urbano.svg">
+<link rel="icon" type="image/png" href="https://marcelodambrowski.github.io/urbano-tools/favicon.png">
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Urbano Tools",
+    "softwareVersion": "15.4",
+    "operatingSystem": "Windows",
+    "applicationCategory": "BusinessApplication",
+    "description": "24 ferramentas para topógrafos e engenheiros no AutoCAD e no Civil 3D: memorial descritivo automático, tabelas de coordenadas e confrontantes, divisão de área, locação de pontos e georreferenciamento.",
+    "offers": {
+      "@type": "Offer",
+      "price": "15.00",
+      "priceCurrency": "BRL"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "5.0",
+      "ratingCount": "1"
+    }
+  }
+</script>
+
+<!-- Google Analytics 4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-L096RL6H9W"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-L096RL6H9W');
+</script>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.19.0/dist/tabler-icons.min.css">
+<link rel="stylesheet" href="assets/css/urbano.css">
+<script src="assets/js/tema.js"></script>
+<style>
+  /* ---- específico da página inicial ---- */
+  .hero { background: var(--header); border: 1px solid var(--header-linha); border-radius: 18px; padding: 44px 40px 40px; position: relative; overflow: hidden; }
+  .hero::before { content: ""; position: absolute; inset: 0 0 auto 0; height: 4px; background: var(--primario); }
+  .hero-selo { display: inline-flex; align-items: center; gap: 8px; background: var(--ok-fundo); color: var(--ok); font-size: 13.5px; font-weight: 500; padding: 7px 14px; border-radius: 100px; margin-bottom: 22px; }
+  .hero-selo strong { color: inherit; font-weight: 700; }
+  .hero h1 { font-size: clamp(28px, 5vw, 42px); color: var(--header-texto); max-width: 22ch; margin-bottom: 14px; letter-spacing: -.01em; }
+  .hero h1 em { font-style: normal; color: var(--acento); }
+  .hero p.sub { color: var(--header-sub); font-size: 17px; max-width: 58ch; margin-bottom: 26px; }
+  .hero p.sub strong { color: var(--header-texto); }
+  .hero-acoes { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+  .hero-ver { color: var(--header-sub); font-size: 14px; }
+  .hero-meta { display: flex; flex-wrap: wrap; gap: 10px 22px; margin-top: 26px; padding-top: 20px; border-top: 1px solid var(--header-linha); color: var(--header-sub); font-size: 13.5px; }
+  .hero-meta span { display: inline-flex; align-items: center; gap: 7px; }
+  .hero-meta i { color: var(--acento); font-size: 17px; }
+
+  .numeros { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+  .numero { text-align: center; padding: 18px 10px; }
+  .numero b { display: block; font-size: 32px; font-weight: 600; color: var(--acento); line-height: 1.1; }
+  .numero span { font-size: 13px; color: var(--muted); }
+
+  .publico .cartao { text-align: left; }
+  .publico i { font-size: 26px; color: var(--acento); margin-bottom: 10px; display: block; }
+  .publico p { color: var(--muted); font-size: 14px; margin-top: 4px; }
+
+  .dor { background: var(--aviso-fundo); border-color: transparent; }
+  .dor h3 { color: var(--aviso); display: flex; gap: 8px; align-items: center; margin-bottom: 14px; font-size: 16px; }
+  .dor ul { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 10px 28px; }
+  .dor li { display: flex; gap: 10px; font-size: 14.5px; color: var(--texto); }
+  .dor li i { color: var(--erro); font-size: 18px; flex: none; margin-top: 2px; }
+
+  .destaque { display: grid; grid-template-columns: 1.05fr 1fr; gap: 28px; align-items: center; background: var(--cartao); border: 1px solid var(--primario); border-radius: 18px; padding: 28px; }
+  .destaque .chip { margin-bottom: 12px; background: var(--primario); color: var(--sobre-primario); }
+  .destaque h2 { font-size: 24px; margin-bottom: 10px; display: flex; gap: 10px; align-items: center; }
+  .destaque p { color: var(--muted); font-size: 15px; margin-bottom: 14px; }
+  .checks { list-style: none; display: grid; gap: 9px; }
+  .checks li { display: flex; gap: 10px; font-size: 14.5px; align-items: flex-start; }
+  .checks li i { color: var(--ok); font-size: 18px; flex: none; margin-top: 2px; }
+
+  .painel-titulo { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+  .painel-titulo h3 { font-size: 17px; }
+  .painel-titulo .chip { margin-left: auto; }
+  .ferr { display: flex; gap: 14px; align-items: flex-start; }
+  .ferr h3 { margin-bottom: 4px; }
+  .ferr.largo { grid-column: 1 / -1; }
+  .ferr p { color: var(--muted); font-size: 14px; line-height: 1.55; }
+  .ferr .chip { margin-top: 10px; font-size: 11.5px; }
+  .lista-pt { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+  .lista-pt .item { display: flex; align-items: center; gap: 11px; background: var(--cartao); border: 1px solid var(--linha); border-radius: var(--r-sm); padding: 9px 12px; font-size: 14px; }
+  .lista-pt .item small { display: block; color: var(--muted); font-size: 12px; line-height: 1.35; }
+
+  .galeria { display: grid; grid-template-columns: 1.35fr 1fr; gap: 18px; align-items: start; }
+  .galeria .col { display: flex; flex-direction: column; gap: 18px; }
+
+  .ribbon-bloco .janela img { background: #fff; }
+  .ribbon-nota { margin-top: 14px; display: flex; gap: 12px; color: var(--muted); font-size: 14.5px; }
+  .ribbon-nota i { color: var(--acento); font-size: 22px; flex: none; }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+
+  .passos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; counter-reset: p; }
+  .passo { display: flex; flex-direction: column; gap: 10px; }
+  .passo p { color: var(--muted); font-size: 14.5px; }
+  .passo .num { margin-bottom: 2px; }
+
+  .depo { display: grid; grid-template-columns: 1.4fr 1fr; gap: 14px; }
+  .depo blockquote { font-size: 15px; line-height: 1.65; color: var(--texto); font-style: italic; margin-bottom: 16px; }
+  .autor { display: flex; align-items: center; gap: 10px; }
+  .autor .avatar { width: 38px; height: 38px; border-radius: 50%; background: var(--acento-claro); color: var(--acento); display: grid; place-items: center; font-size: 19px; }
+  .autor b { display: block; font-size: 14px; color: var(--forte); font-weight: 600; }
+  .autor span { font-size: 12.5px; color: var(--muted); }
+  .depo .vazio { border: 2px dashed var(--borda); background: transparent; display: grid; place-items: center; text-align: center; color: var(--muted); font-size: 14px; }
+  .depo .vazio i { font-size: 28px; display: block; margin-bottom: 8px; }
+
+  .preco { border: 2px solid var(--primario); border-radius: 18px; background: var(--cartao); padding: 30px; display: grid; grid-template-columns: 1fr 1fr; gap: 34px; }
+  .preco .valor { display: flex; align-items: baseline; gap: 6px; margin: 10px 0 6px; }
+  .preco .valor .moeda { font-size: 18px; color: var(--muted); }
+  .preco .valor .qtd { font-size: 60px; font-weight: 600; color: var(--acento); line-height: 1; }
+  .preco .valor .per { color: var(--muted); }
+  .preco h2 { font-size: 24px; }
+  .preco .acoes { display: grid; gap: 10px; margin-top: 22px; }
+  .preco .garantia { font-size: 12.5px; color: var(--muted); margin-top: 14px; display: flex; gap: 6px; align-items: flex-start; }
+  .preco ul { list-style: none; }
+  .preco li { display: flex; gap: 10px; padding: 8px 0; font-size: 14px; border-bottom: 1px solid var(--linha); }
+  .preco li:last-child { border: 0; }
+  .preco li i { color: var(--ok); font-size: 18px; flex: none; }
+
+  .faq { display: grid; gap: 8px; }
+  .faq details { background: var(--cartao); border: 1px solid var(--linha); border-radius: var(--r-sm); }
+  .faq summary { list-style: none; cursor: pointer; padding: 15px 18px; font-weight: 600; color: var(--forte); font-size: 15px; display: flex; gap: 10px; align-items: center; }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq summary i { color: var(--acento); font-size: 18px; flex: none; }
+  .faq summary::after { content: "▸"; margin-left: auto; color: var(--muted); transition: transform .15s; }
+  .faq details[open] summary::after { transform: rotate(90deg); }
+  .faq .resp { padding: 0 18px 16px 46px; color: var(--muted); font-size: 14.5px; line-height: 1.65; }
+
+  .suporte { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .suporte .cartao { display: flex; gap: 16px; }
+  .suporte p { color: var(--muted); font-size: 14.5px; margin-top: 6px; }
+  .yt { display: flex; gap: 18px; align-items: center; flex-wrap: wrap; border-top: 3px solid #FF3B30; }
+  .yt .ico { background: rgba(255,59,48,.15); color: #FF5A4F; font-size: 26px; }
+  .yt .corpo { flex: 1; min-width: 240px; }
+  .yt p { color: var(--muted); font-size: 14.5px; margin-top: 4px; }
+
+  @media (max-width: 860px) {
+    .destaque, .preco, .galeria, .depo, .suporte { grid-template-columns: 1fr; }
+    .lista-pt { grid-template-columns: repeat(2, 1fr); }
+    .numeros { grid-template-columns: repeat(2, 1fr); }
+    .passos { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 600px) {
+    .hero { padding: 30px 20px 26px; }
+    .dor ul, .lista-pt { grid-template-columns: 1fr; }
+    .preco { padding: 22px 18px; }
+    .destaque { padding: 20px 18px; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="topnav">
+  <div class="wrap">
+    <a class="brand" href="#topo"><img src="assets/img/urbano.svg" alt="">urbano<span>tools</span></a>
+    <div class="nav-links">
+      <a href="#ferramentas">Ferramentas</a>
+      <a href="#pricing">Preço</a>
+      <a href="manual.html">Instalação</a>
+      <a href="#suporte">Suporte</a>
+    </div>
+    <div class="nav-right">
+      <div class="tema" role="group" aria-label="Tema">
+        <button data-tema="auto" aria-pressed="true" title="Automático (segue o sistema)"><i class="ti ti-device-desktop"></i></button>
+        <button data-tema="dark" aria-pressed="false" title="Escuro"><i class="ti ti-moon"></i></button>
+        <button data-tema="light" aria-pressed="false" title="Claro"><i class="ti ti-sun"></i></button>
+      </div>
+      <a class="btn btn-primario btn-pequeno keep" aria-label="3 dias grátis pelo WhatsApp" href="https://wa.me/55981446647?text=Ol%C3%A1%2C%20quero%20testar%20o%20Urbano%20Tools%20por%203%20dias%20gr%C3%A1tis!" target="_blank" rel="noopener" onclick="gtag('event', 'click_whatsapp_nav', {'event_category': 'Conversion'});"><i class="ti ti-brand-whatsapp"></i><span class="t-lg">3 dias grátis</span></a>
+    </div>
+  </div>
+</nav>
+
+<main id="topo" class="wrap page">
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero-selo"><i class="ti ti-gift"></i><span><strong>3 dias grátis</strong> · sem cartão · começa sozinho na primeira abertura</span></div>
+    <h1>Chega de retrabalho e erros manuais <em>no AutoCAD.</em></h1>
+    <p class="sub">24 ferramentas que automatizam <strong>memorial descritivo</strong>, tabelas de coordenadas e confrontantes, divisão de área, locação de pontos e georreferenciamento — direto no seu desenho, a partir de uma aba no Ribbon.</p>
+    <div class="hero-acoes">
+      <a class="btn btn-wpp" href="https://wa.me/55981446647?text=Ol%C3%A1%2C%20quero%20testar%20o%20Urbano%20Tools%20por%203%20dias%20gr%C3%A1tis!" target="_blank" rel="noopener" onclick="gtag('event', 'click_whatsapp_hero', {'event_category': 'Conversion'});"><i class="ti ti-brand-whatsapp"></i> Quero testar 3 dias grátis</a>
+      <a class="btn btn-sec" href="#ferramentas" style="color:var(--header-texto);border-color:var(--borda-forte)">Ver ferramentas</a>
+    </div>
+    <div class="hero-meta">
+      <span><i class="ti ti-brand-windows"></i> Windows 10/11</span>
+      <span><i class="ti ti-building"></i> AutoCAD e Civil 3D</span>
+      <span><i class="ti ti-refresh"></i> Atualização automática</span>
+      <span><i class="ti ti-package"></i> Instalador completo: sem Python, sem bibliotecas</span>
+    </div>
+  </header>
+
+  <!-- NÚMEROS -->
+  <div class="numeros">
+    <div class="cartao numero"><b>24</b><span>ferramentas</span></div>
+    <div class="cartao numero"><b>4</b><span>painéis no Ribbon</span></div>
+    <div class="cartao numero"><b>3 dias</b><span>de teste grátis</span></div>
+    <div class="cartao numero"><b>R$15</b><span>por mês, tudo incluso</span></div>
+  </div>
+
+  <!-- PARA QUEM É / DOR -->
+  <section class="bloco">
+    <div class="cab-secao"><div class="rotulo">Para quem é</div></div>
+    <div class="grade g3 publico">
+      <div class="cartao"><i class="ti ti-map-2"></i><strong>Topógrafos</strong><p>Memorial descritivo, tabelas de coordenadas e confrontantes, numeração de vértices.</p></div>
+      <div class="cartao"><i class="ti ti-building"></i><strong>Engenheiros civis</strong><p>Divisão de área, locação de pontos, níveis e arbóreas com precisão.</p></div>
+      <div class="cartao"><i class="ti ti-vector-bezier-2"></i><strong>Projetistas CAD</strong><p>Menos cliques, menos erro — mais tempo para o que importa.</p></div>
+    </div>
+    <div class="cartao dor">
+      <h3><i class="ti ti-alert-triangle"></i> Você ainda faz isso manualmente?</h3>
+      <ul>
+        <li><i class="ti ti-x"></i> Montar memorial descritivo copiando vértice a vértice do desenho</li>
+        <li><i class="ti ti-x"></i> Calcular quadrantes e preencher a tabela de confrontantes na mão</li>
+        <li><i class="ti ti-x"></i> Calcular divisão de área na mão e depois redesenhar</li>
+        <li><i class="ti ti-x"></i> Numerar vértices e cotar cada segmento do polígono um por um</li>
+        <li><i class="ti ti-x"></i> Lançar níveis de terreno bloco por bloco, ponto a ponto</li>
+        <li><i class="ti ti-x"></i> Digitar no desenho a tabela do memorial do SIGEF</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- MEMORIAL -->
+  <section class="destaque">
+    <div>
+      <span class="chip"><i class="ti ti-star"></i> Destaque da assinatura</span>
+      <h2><span class="ico sm"><img src="assets/img/icones/memorial_descritivo.png" alt=""></span> Memorial Descritivo automático</h2>
+      <p>Gere a Tabela de Confrontantes do lote, selecione as linhas no desenho e o Urbano Tools monta uma página com a tabela analítica e o texto do memorial, pronto para copiar para o Word.</p>
+      <ul class="checks">
+        <li><i class="ti ti-circle-check"></i> <span>Distâncias, ângulos internos, confrontantes e quadrantes lidos da tabela</span></li>
+        <li><i class="ti ti-circle-check"></i> <span>Texto para <strong>Retificação</strong> ou <strong>Remembramento / Desmembramento</strong></span></li>
+        <li><i class="ti ti-circle-check"></i> <span>Conferência do fechamento angular (tolerância de 10 segundos)</span></li>
+        <li><i class="ti ti-circle-check"></i> <span>O que falta preencher aparece destacado; <strong>Copiar descrição</strong> e pronto</span></li>
+        <li><i class="ti ti-circle-check"></i> <span>Exportação em HTML — abre no navegador</span></li>
+      </ul>
+    </div>
+    <figure class="tela-fig">
+      <div class="janela"><div class="janela-barra"><img src="assets/img/icones/memorial_descritivo.png" alt="">Memorial Descritivo <small>página gerada</small></div><img class="tela" src="assets/img/telas/memorial_descricao.png" alt="Descrição do memorial montada, com o botão Copiar descrição" loading="lazy" width="640" height="347"></div>
+    </figure>
+  </section>
+
+  <!-- FERRAMENTAS -->
+  <section id="ferramentas" class="bloco" style="gap:30px">
+    <div class="cab-secao">
+      <div class="rotulo">O que está incluído</div>
+      <h2>24 ferramentas, organizadas no Ribbon como no programa.</h2>
+      <p class="sub">Cada botão resolve uma tarefa do seu dia a dia. Os ícones abaixo são os mesmos da aba Urbano Tools no AutoCAD.</p>
+    </div>
+
+    <div class="bloco">
+      <div class="painel-titulo"><span class="rotulo">Painel</span><h3>Ferramentas</h3><span class="chip neutro">9 comandos</span></div>
+      <div class="grade g2">
+        <div class="cartao ferr"><span class="ico"><img src="assets/img/icones/vertices_cotas.png" alt=""></span><div><h3>Vértices e Cotas</h3><p>Numera os vértices da polilinha (V1, V2…) e cota cada trecho de uma vez. As cotas ficam ligadas à polilinha.</p><span class="chip">Numeração automática</span></div></div>
+        <div class="cartao ferr"><span class="ico"><img src="assets/img/icones/tabela_confrontantes.png" alt=""></span><div><h3>Tabela de Confrontantes</h3><p>Monta no desenho a tabela do lote com distâncias, ângulos internos, confrontantes e quadrantes. É a base do Memorial.</p><span class="chip">Quadrantes automáticos</span></div></div>
+        <div class="cartao ferr"><span class="ico"><img src="assets/img/icones/tabela_coordenadas.png" alt=""></span><div><h3>Tabela de Coordenadas</h3><p>Tabela analítica com distâncias, ângulos internos, coordenadas UTM e geodésicas, sempre no sentido horário.</p><span class="chip">UTM · Geodésicas · SIRGAS 2000</span></div></div>
+        <div class="cartao ferr"><span class="ico"><img src="assets/img/icones/dividir_area.png" alt=""></span><div><h3>Dividir Área</h3><p>Janela dinâmica ao lado do desenho, com prévia ao vivo. Divide por área, percentual ou partes iguais, com corte paralelo, perpendicular, pela testada, por pivô ou por ângulo. A polilinha original não é alterada.</p><span class="chip">Paralela · Pivô · Ângulo · Testada</span></div></div>
+        <div class="cartao ferr"><span class="ico"><img src="assets/img/icones/niveis.png" alt=""></span><div><h3>Níveis</h3><p>Desenha o símbolo de nível com a cota (com vírgula) ao lado dos pontos COGO do Civil 3D — todos de uma vez pelo código ou ponto a ponto.</p><span class="chip">Pontos COGO</span></div></div>
+        <div class="cartao ferr"><span class="ico"><img src="assets/img/icones/arboreas.png" alt=""></span><div><h3>Arbóreas</h3><p>Importa o levantamento arbóreo de um TXT, insere os blocos, guarda copa, tronco e altura e gera a tabela completa, compacta ou em 2 colunas.</p><span class="chip">Levantamento arbóreo</span></div></div>
+        <div class="cartao ferr"><span class="ico"><img src="assets/img/icones/simplificar_pl.png" alt=""></span><div><h3>Simplificar Polilinha</h3><p>Tira os vértices desnecessários (Douglas-Peucker) com a tolerância que você escolher, com prévia e relatório do que mudou no perímetro e na área.</p><span class="chip">Curvas de nível · GPS · drone</span></div></div>
+        <div class="cartao ferr"><span class="ico"><img src="assets/img/icones/otimizar_tif.png" alt=""></span><div><h3>Otimizar TIF</h3><p>Grava uma cópia comprimida de ortofoto, imagem de satélite ou drone (até cerca de 85% menor), mantém o georreferenciamento e insere a imagem no lugar certo.</p><span class="chip">Sem perder georreferência</span></div></div>
+        <div class="cartao ferr largo"><span class="ico"><img src="assets/img/icones/memorial_descritivo.png" alt=""></span><div><h3>Memorial Descritivo</h3><p>Lê as linhas da Tabela de Confrontantes e gera a página do memorial, com o texto pronto para Retificação, Remembramento ou Desmembramento.</p><span class="chip">Exporta HTML</span></div></div>
+      </div>
+    </div>
+
+    <div class="bloco">
+      <div class="painel-titulo"><span class="rotulo">Painel</span><h3>Sistema de Locação de Pontos</h3><span class="chip neutro">12 comandos</span></div>
+      <p class="sub" style="margin-top:-6px">Pontos com nome, cota e descrição: criar, editar, buscar, listar, importar, exportar, rotular eixos e auditar erros.</p>
+      <div class="lista-pt">
+        <div class="item"><span class="ico sm"><img src="assets/img/icones/criar_pt.png" alt=""></span>Criar Ponto</div>
+        <div class="item"><span class="ico sm"><img src="assets/img/icones/criar_pt_vertices.png" alt=""></span>Criar Pontos nos Vértices</div>
+        <div class="item"><span class="ico sm"><img src="assets/img/icones/consultar_editar_pt.png" alt=""></span>Consultar | Editar Ponto</div>
+        <div class="item"><span class="ico sm"><img src="assets/img/icones/buscar_pt.png" alt=""></span>Buscar Ponto</div>
+        <div class="item"><span class="ico sm"><img src="assets/img/icones/listar_pt.png" alt=""></span>Listar Pontos</div>
+        <div class="item"><span class="ico sm"><img src="assets/img/icones/listar_selecionados.png" alt=""></span>Listar Selecionados</div>
+        <div class="item"><span class="ico sm"><img src="assets/img/icones/importar_pt.png" alt=""></span>Importar Pontos</div>
+        <div class="item"><span class="ico sm"><img src="assets/img/icones/exportar_pt.png" alt=""></span>Exportar Pontos</div>
+        <div class="item"><span class="ico sm"><img src="assets/img/icones/exportar_selecionados.png" alt=""></span>Exportar Selecionados</div>
+        <div class="item"><span class="ico sm"><img src="assets/img/icones/rotular_pt_eixo.png" alt=""></span>Rotular Pontos do Eixo</div>
+        <div class="item"><span class="ico sm"><img src="assets/img/icones/auditar_eixos.png" alt=""></span>Auditar Eixos</div>
+        <div class="item"><span class="ico sm"><img src="assets/img/icones/apagar_todos_pt.png" alt=""></span>Apagar Todos os Pontos</div>
+      </div>
+    </div>
+
+    <div class="bloco">
+      <div class="painel-titulo"><span class="rotulo">Painel</span><h3>Georreferenciamento</h3><span class="chip neutro">3 comandos</span></div>
+      <div class="grade g3">
+        <div class="cartao ferr" style="flex-direction:column"><span class="ico"><img src="assets/img/icones/area_local_sgl.png" alt=""></span><div><h3>Área Local (SGL)</h3><p>Calcula a área no Sistema Geodésico Local, do jeito que o SIGEF/INCRA calcula, e mostra lado a lado com a área UTM para conferir com a certificada.</p><span class="chip">UTM → SGL</span></div></div>
+        <div class="cartao ferr" style="flex-direction:column"><span class="ico"><img src="assets/img/icones/tabela_sigef.png" alt=""></span><div><h3>Tabela SIGEF (PDF)</h3><p>Lê o memorial descritivo do SIGEF em PDF e desenha a tabela de azimutes, distâncias e coordenadas, igual à do memorial, sem recálculo.</p><span class="chip">Certificação rural</span></div></div>
+        <div class="cartao ferr" style="flex-direction:column"><span class="ico"><img src="assets/img/icones/ondulacao_geoidal.png" alt=""></span><div><h3>Ondulação Geoidal</h3><p>Calcula o fator N pela grade oficial do IBGE (hgeoHNOR2020, Imbituba), com interpolação bicúbica, para converter altitude elipsoidal e ortométrica. A grade já vem no programa.</p><span class="chip">Grade IBGE inclusa</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VEJA POR DENTRO -->
+  <section class="bloco">
+    <div class="cab-secao">
+      <div class="rotulo">Veja por dentro</div>
+      <h2>Janelas claras, com prévia no desenho.</h2>
+      <p class="sub">As janelas seguem o tema do AutoCAD (claro ou escuro), mostram o resultado antes de aplicar e não travam o desenho.</p>
+    </div>
+    <div class="galeria">
+      <figure class="tela-fig">
+        <div class="janela"><div class="janela-barra"><img src="assets/img/icones/dividir_area.png" alt="">Dividir Área <small>janela dinâmica ligada ao AutoCAD</small></div><img class="tela" src="assets/img/telas/dividir_area_janela.png" alt="Janela Dividir Área dividindo um lote em quatro partes iguais" loading="lazy" width="640" height="540"></div>
+        <figcaption><strong>Dividir Área:</strong> escolha o método, clique na figura e confira área, percentual e perímetro de cada parte antes de aplicar.</figcaption>
+      </figure>
+      <div class="col">
+        <figure class="tela-fig">
+          <div class="janela"><div class="janela-barra"><img src="assets/img/icones/licenca.png" alt="">Licença e suporte</div><img class="tela" src="assets/img/telas/licenca_janela.png" alt="Janela Licença e suporte, com status, ID da máquina e ferramentas de suporte" loading="lazy" width="620" height="691"></div>
+          <figcaption><strong>Licença e suporte:</strong> status, validade, atualização e diagnóstico num só lugar.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- RIBBON -->
+  <section class="bloco ribbon-bloco">
+    <div class="cab-secao">
+      <div class="rotulo">Interface integrada</div>
+      <h2>Uma aba no Ribbon. Nada de comando para decorar.</h2>
+    </div>
+    <div class="janela ajusta"><div class="janela-barra"><img src="assets/img/urbano.svg" alt="">AutoCAD <small>aba Urbano Tools</small></div><img class="tela" src="assets/img/ribbon.png" alt="Aba Urbano Tools no Ribbon, com os painéis Ferramentas, Suporte, Sistema de Locação de Pontos e Georreferenciamento" width="604" height="420"></div>
+    <div class="ribbon-nota"><i class="ti ti-info-circle"></i><p>Depois de instalar, a aba <strong>Urbano Tools</strong> aparece sozinha, com quatro painéis: <strong>Ferramentas</strong>, <strong>Sistema de Locação de Pontos</strong>, <strong>Georreferenciamento</strong> e <strong>Suporte</strong> (Guia de Ajuda e Licença). Clique no botão e siga as instruções na linha de comando do AutoCAD.</p></div>
+    <div class="chips">
+      <span class="chip ok"><i class="ti ti-check"></i> AutoCAD</span>
+      <span class="chip ok"><i class="ti ti-check"></i> Civil 3D 2023 a 2027 configurado sozinho</span>
+      <span class="chip ok"><i class="ti ti-check"></i> Instalador automático</span>
+      <span class="chip ok"><i class="ti ti-check"></i> Guia de Ajuda dentro do AutoCAD</span>
+      <span class="chip ok"><i class="ti ti-check"></i> Atualização automática</span>
+    </div>
+  </section>
+
+  <!-- COMO COMEÇAR -->
+  <section class="bloco">
+    <div class="cab-secao">
+      <div class="rotulo">Como começar</div>
+      <h2>Do download ao primeiro comando em 5 minutos.</h2>
+    </div>
+    <div class="passos">
+      <div class="cartao passo"><span class="num grande">1</span><h3>Instalar</h3><p>Rode o <code>Setup_urbano-tools</code>. Tudo vem dentro: o motor Python e as bibliotecas já estão no instalador.</p></div>
+      <div class="cartao passo"><span class="num grande">2</span><h3>Abrir o AutoCAD</h3><p>A aba <strong>Urbano Tools</strong> aparece no Ribbon. No Civil 3D 2023 a 2027 o instalador configura tudo.</p></div>
+      <div class="cartao passo"><span class="num grande">3</span><h3>Usar e ativar</h3><p>Os <strong>3 dias grátis</strong> começam sozinhos. Para continuar, envie o ID da máquina pelo WhatsApp e ative.</p></div>
+    </div>
+    <div><a class="btn btn-sec" href="manual.html"><i class="ti ti-book-2"></i> Abrir o manual de instalação</a></div>
+  </section>
+
+  <!-- DEPOIMENTOS -->
+  <section class="bloco">
+    <div class="cab-secao"><div class="rotulo">Depoimentos</div><h2>Por que confiar no Urbano Tools</h2></div>
+    <div class="depo">
+      <div class="cartao">
+        <blockquote>"Comecei a programar essas rotinas porque cansei de perder horas fazendo na mão tarefas que o computador resolve em segundos. No início era só pra mim — hoje compartilho porque sei que outros topógrafos enfrentam o mesmo aperto que eu enfrentava."</blockquote>
+        <div class="autor"><div class="avatar"><i class="ti ti-user"></i></div><div><b>Luis Dambrowski</b><span>Criador do Urbano Tools</span></div></div>
+      </div>
+      <div class="cartao vazio"><div><i class="ti ti-message-circle"></i><strong>Seu depoimento aqui</strong><br>Experimente 3 dias grátis e conte como foi — publicamos aqui.</div></div>
+    </div>
+  </section>
+
+  <!-- PREÇO -->
+  <section id="pricing" class="preco">
+    <div>
+      <span class="chip">Acesso completo</span>
+      <h2 style="margin-top:12px">Urbano Tools</h2>
+      <p class="sub">Todas as ferramentas. Suporte incluído. Atualizações contínuas.</p>
+      <div class="valor"><span class="moeda">R$</span><span class="qtd">15</span><span class="per">/mês</span></div>
+      <div class="acoes">
+        <a class="btn btn-wpp btn-bloco" href="https://wa.me/55981446647?text=Ol%C3%A1%2C%20quero%20testar%20o%20Urbano%20Tools%20por%203%20dias%20gr%C3%A1tis!" target="_blank" rel="noopener" onclick="gtag('event', 'click_whatsapp_pricing', {'event_category': 'Conversion'});"><i class="ti ti-brand-whatsapp"></i> Começar agora — 3 dias grátis</a>
+        <a class="btn btn-sec btn-bloco" href="https://pay.hotmart.com/O106459363E" target="_blank" rel="noopener" onclick="gtag('event', 'click_hotmart_checkout', {'event_category': 'Conversion'});">Assinar direto por R$15/mês →</a>
+      </div>
+      <p class="garantia"><i class="ti ti-lock"></i> Instalação simples · Suporte incluído · Atualizações contínuas · Cancele a qualquer momento</p>
+    </div>
+    <ul>
+      <li><i class="ti ti-check"></i> Memorial Descritivo automático com exportação HTML</li>
+      <li><i class="ti ti-check"></i> Tabelas de confrontantes e de coordenadas (UTM e geodésicas, SIRGAS 2000)</li>
+      <li><i class="ti ti-check"></i> Divisão de área por paralela, perpendicular, testada, pivô ou ângulo</li>
+      <li><i class="ti ti-check"></i> Sistema completo de locação de pontos (12 comandos)</li>
+      <li><i class="ti ti-check"></i> Vértices e cotas, níveis, arbóreas e simplificação de polilinha</li>
+      <li><i class="ti ti-check"></i> Área Local (SGL), Tabela SIGEF (PDF) e Ondulação Geoidal (IBGE)</li>
+      <li><i class="ti ti-check"></i> Otimização de GeoTIFF sem perder o georreferenciamento</li>
+      <li><i class="ti ti-check"></i> Guia de Ajuda dentro do AutoCAD, em todas as ferramentas</li>
+    </ul>
+  </section>
+
+  <!-- FAQ -->
+  <section class="bloco">
+    <div class="cab-secao"><div class="rotulo">Dúvidas frequentes</div><h2>Perguntas antes de assinar</h2></div>
+    <div class="faq">
+      <details><summary><i class="ti ti-help-circle"></i> Funciona no meu AutoCAD?</summary><div class="resp">Funciona no AutoCAD e no Civil 3D para Windows 10/11 (64 bits). No <strong>Civil 3D 2023 a 2027</strong> o instalador configura tudo sozinho; no AutoCAD e em outras versões basta incluir a pasta no Support Path (2 minutos, passo a passo no <a href="manual.html#etapa2">manual</a>). O <strong>AutoCAD LT não é compatível</strong>: as ferramentas usam recursos (ActiveX e aplicativos VLX) que o LT não oferece.</div></details>
+      <details><summary><i class="ti ti-help-circle"></i> Como recebo o instalador e como funciona o teste grátis?</summary><div class="resp">Peça pelo WhatsApp que enviamos o instalador. O teste de <strong>3 dias</strong> começa sozinho na primeira vez que o AutoCAD abre com o Urbano Tools e com internet, sem cartão. Quem assina pela Hotmart recebe o acesso por e-mail logo após a confirmação do pagamento. Tudo explicado no <a href="manual.html">manual de instalação</a>.</div></details>
+      <details><summary><i class="ti ti-help-circle"></i> Preciso instalar Python ou algum programa extra?</summary><div class="resp">Não. O motor Python e as bibliotecas já vêm dentro do instalador. Você não precisa saber programar nem mexer em LISP: é só usar os botões da aba Urbano Tools.</div></details>
+      <details><summary><i class="ti ti-help-circle"></i> E se eu cancelar?</summary><div class="resp">Você mantém acesso até o fim do período já pago. Não há multa nem fidelidade — cancele quando quiser diretamente pela Hotmart.</div></details>
+      <details><summary><i class="ti ti-help-circle"></i> As ferramentas recebem atualizações?</summary><div class="resp">Sim, e automaticamente. Ao abrir o AutoCAD, o Urbano Tools verifica se há versão nova, baixa em segundo plano só o que mudou, e ela passa a valer na próxima abertura — sem reinstalar nada.</div></details>
+      <details><summary><i class="ti ti-help-circle"></i> Preciso de internet para usar?</summary><div class="resp">Só para ativar a licença e receber atualizações. Depois de verificada, a licença funciona por até 30 dias sem conexão. A licença é por computador: ao trocar de máquina, é só enviar o novo ID pelo WhatsApp.</div></details>
+      <details><summary><i class="ti ti-help-circle"></i> Tenho suporte se travar em algo?</summary><div class="resp">Sim, suporte direto via WhatsApp incluso na assinatura. Dentro do AutoCAD, o botão <strong>Licença e Suporte</strong> testa a conexão, faz o diagnóstico e repara a instalação, e gera um relatório para você colar no WhatsApp.</div></details>
+    </div>
+  </section>
+
+  <!-- SUPORTE -->
+  <section id="suporte" class="bloco">
+    <div class="cab-secao"><div class="rotulo">Suporte e desenvolvimento</div><h2>Encontrou um bug? Tem uma ideia? Precisa de algo sob medida?</h2></div>
+    <div class="suporte">
+      <div class="cartao"><span class="ico"><i class="ti ti-bug" style="font-size:24px;color:var(--acento)"></i></span><div><h3>Bugs, sugestões e melhorias</h3><p>Se encontrar algum comportamento inesperado ou tiver ideias de novas funcionalidades, é só avisar — fico feliz em atender. Se precisar adaptar alguma rotina ao padrão do seu escritório, resolvemos juntos.</p></div></div>
+      <div class="cartao"><span class="ico"><i class="ti ti-settings-automation" style="font-size:24px;color:var(--acento)"></i></span><div><h3>Tem uma rotina que quer automatizar?</h3><p>Se há algum processo repetitivo no AutoCAD ou no seu fluxo de trabalho que consome tempo, vamos conversar. Juntos criamos a automação certa e reduzimos o tempo gasto na sua operação.</p></div></div>
+    </div>
+    <div><a class="btn btn-wpp" href="https://wa.me/55981446647" target="_blank" rel="noopener"><i class="ti ti-brand-whatsapp"></i> Falar com o suporte</a></div>
+  </section>
+
+  <!-- YOUTUBE -->
+  <section class="cartao yt">
+    <span class="ico"><i class="ti ti-brand-youtube"></i></span>
+    <div class="corpo">
+      <span class="chip aviso"><i class="ti ti-clock"></i> Em breve</span>
+      <h3 style="margin-top:8px">Canal Urbano Tools no YouTube</h3>
+      <p>Tutoriais de cada ferramenta, a instalação completa do zero ao primeiro comando e as novidades a cada lançamento. Ative o sininho para saber quando o primeiro vídeo sair.</p>
+    </div>
+    <a class="btn btn-sec" href="https://www.youtube.com/@urbano_tools" target="_blank" rel="noopener" onclick="gtag('event', 'click_youtube', {'event_category': 'Social'});"><i class="ti ti-brand-youtube"></i> Se inscrever</a>
+  </section>
+
+</main>
+
+<footer class="rodape">
+  <div class="wrap">
+    <p><strong>Desenvolvido por topógrafo · Para o mercado brasileiro</strong></p>
+    <p>Criado por quem usa AutoCAD no dia a dia. Sem complicação.</p>
+    <p class="legal">Urbano Tools © 2026 · Todos os direitos reservados.<br>Este site e as ferramentas disponibilizadas de forma independente não possuem afiliação, patrocínio ou autorização da Autodesk Inc.</p>
+  </div>
+</footer>
+
+</body>
+</html>
