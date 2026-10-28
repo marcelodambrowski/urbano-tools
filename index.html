@@ -62,6 +62,10 @@
 <link rel="stylesheet" href="assets/css/urbano.css">
 <script src="assets/js/tema.js"></script>
 <style>
+  /* ---- barra superior: ocupa espaço próprio e nunca cobre o conteúdo ---- */
+  html { scroll-padding-top: 76px; }
+  body { padding-top: 0 !important; }
+  .topnav { position: sticky !important; top: 0 !important; z-index: 100; }
   /* ---- específico da página inicial ---- */
   .hero { background: var(--header); border: 1px solid var(--header-linha); border-radius: 18px; padding: 44px 40px 40px; position: relative; overflow: hidden; }
   .hero::before { content: ""; position: absolute; inset: 0 0 auto 0; height: 4px; background: var(--primario); }
@@ -318,7 +322,7 @@
       <div class="grade g3">
         <div class="cartao ferr" style="flex-direction:column"><span class="ico"><img src="assets/img/icones/area_local_sgl.png" alt=""></span><div><h3>Área Local (SGL)</h3><p>Calcula a área no Sistema Geodésico Local, do jeito que o SIGEF/INCRA calcula, e mostra lado a lado com a área UTM para conferir com a certificada.</p><span class="chip">UTM → SGL</span></div></div>
         <div class="cartao ferr" style="flex-direction:column"><span class="ico"><img src="assets/img/icones/tabela_sigef.png" alt=""></span><div><h3>Tabela SIGEF (PDF)</h3><p>Lê o memorial descritivo do SIGEF em PDF e desenha a tabela de azimutes, distâncias e coordenadas, igual à do memorial, sem recálculo.</p><span class="chip">Certificação rural</span></div></div>
-        <div class="cartao ferr" style="flex-direction:column"><span class="ico"><img src="assets/img/icones/ondulacao_geoidal.png" alt=""></span><div><h3>Ondulação Geoidal</h3><p>Calcula o fator N pela grade oficial do IBGE (hgeoHNOR2020, Imbituba), com interpolação bicúbica, para converter altitude elipsoidal e ortométrica. A grade já vem no programa.</p><span class="chip">Grade IBGE inclusa</span><p style="margin-top:12px"><a href="ondulacao-geoidal.html" style="font-weight:600">Abrir a versão web <i class="ti ti-arrow-right"></i></a></p></div></div>
+        <div class="cartao ferr" style="flex-direction:column"><span class="ico"><img src="assets/img/icones/ondulacao_geoidal.png" alt=""></span><div><h3>Ondulação Geoidal</h3><p>Calcula o fator N pela grade oficial do IBGE (hgeoHNOR2020, Imbituba), com interpolação bicúbica, para converter altitude elipsoidal e ortométrica. A grade já vem no programa.</p><span class="chip">Grade IBGE inclusa</span></div></div>
       </div>
     </div>
   </section>
