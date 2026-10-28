@@ -12,6 +12,10 @@
 <link rel="stylesheet" href="assets/css/urbano.css">
 <script src="assets/js/tema.js"></script>
 <style>
+  /* ---- barra superior: ocupa espaço próprio e nunca cobre o conteúdo ---- */
+  html { scroll-padding-top: 76px; }
+  body { padding-top: 0 !important; }
+  .topnav { position: sticky !important; top: 0 !important; z-index: 100; }
   .hero { background: var(--header); border: 1px solid var(--header-linha); border-radius: 18px; padding: 36px 36px 32px; position: relative; overflow: hidden; }
   .hero::before { content: ""; position: absolute; inset: 0 0 auto 0; height: 4px; background: var(--primario); }
   .hero-selo { display: inline-flex; align-items: center; gap: 8px; background: var(--tile); color: var(--header-sub); font-size: 13px; padding: 6px 14px; border-radius: 100px; margin-bottom: 20px; }
