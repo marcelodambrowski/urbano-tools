@@ -11,9 +11,9 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.19.0/dist/tabler-icons.min.css">
 <link rel="stylesheet" href="assets/css/urbano.css">
 <script src="assets/js/tema.js"></script>
+<script src="assets/js/nav.js" defer></script>
 <style>
   /* ---- barra superior: ocupa espaço próprio e nunca cobre o conteúdo ---- */
-  html { scroll-padding-top: 76px; }
   body { padding-top: 0 !important; }
   .topnav { position: sticky !important; top: 0 !important; z-index: 100; }
   .hero { background: var(--header); border: 1px solid var(--header-linha); border-radius: 18px; padding: 36px 36px 32px; position: relative; overflow: hidden; }
@@ -148,7 +148,7 @@
       <a href="manual.html" aria-current="page">Instalação</a>
       <a href="index.html#suporte">Suporte</a>
     </div>
-    <div class="nav-right">
+    <div class="nav-right"><button class="menu-btn" type="button" aria-label="Abrir menu" aria-expanded="false"><i class="ti ti-menu-2"></i></button>
       <div class="tema" role="group" aria-label="Tema">
         <button data-tema="auto" aria-pressed="true" title="Automático (segue o sistema)"><i class="ti ti-device-desktop"></i></button>
         <button data-tema="dark" aria-pressed="false" title="Escuro"><i class="ti ti-moon"></i></button>

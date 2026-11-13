@@ -48,9 +48,9 @@
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; scroll-padding-top: 76px; -webkit-text-size-adjust: 100%; }
+html { scroll-behavior: smooth; scroll-padding-top: 84px; -webkit-text-size-adjust: 100%; }
 body { font-family: var(--fonte); background: var(--fundo); color: var(--texto); line-height: 1.6; font-size: 16px; }
-img { max-width: 100%; display: block; }
+img { max-width: 100%; height: auto; display: block; }
 a { color: var(--link); }
 code, kbd { font-family: var(--mono); font-size: .88em; background: var(--entrada); border: 1px solid var(--linha); border-radius: 6px; padding: 1px 7px; color: var(--forte); overflow-wrap: anywhere; }
 kbd { border-bottom-width: 2px; }
@@ -58,7 +58,7 @@ strong { color: var(--forte); font-weight: 600; }
 :focus-visible { outline: 2px solid var(--primario); outline-offset: 2px; border-radius: 6px; }
 
 .wrap { max-width: 980px; margin: 0 auto; padding: 0 20px; }
-.page { padding: 76px 0 72px; display: flex; flex-direction: column; gap: 56px; }
+.page { padding: 28px 0 72px; display: flex; flex-direction: column; gap: 56px; }
 .bloco { display: flex; flex-direction: column; gap: 16px; }
 
 /* ---------- barra superior (cabeçalho da janela do programa) ---------- */
@@ -146,10 +146,18 @@ figure.tela-fig figcaption strong { color: var(--texto); }
 .rodape .legal { opacity: .7; font-size: 12px; max-width: 70ch; margin: 14px auto 0; line-height: 1.5; }
 
 /* ---------- responsivo ---------- */
+/* botão do menu (só aparece no celular) */
+.menu-btn { display: none; order: 5; width: 38px; height: 36px; border: 1px solid var(--header-linha); background: transparent; color: var(--header-texto); border-radius: 8px; cursor: pointer; place-items: center; font-size: 20px; }
+.menu-btn:hover { background: var(--icone-hover); }
+.topnav .wrap { position: relative; }
 @media (max-width: 860px) {
   .g4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .g3 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .nav-links a:not(.keep) { display: none; }
+  .menu-btn { display: grid; }
+  .nav-links { display: none; position: absolute; top: 100%; left: 0; right: 0; flex-direction: column; align-items: stretch; gap: 2px;
+    padding: 10px 16px 14px; background: var(--header); border-bottom: 1px solid var(--header-linha); box-shadow: 0 14px 24px rgba(0,0,0,.25); }
+  .nav-links.aberto { display: flex; }
+  .nav-links a { font-size: 16px; padding: 13px 12px; }
 }
 @media (max-width: 600px) {
   .g2, .g3, .g4 { grid-template-columns: 1fr; }
