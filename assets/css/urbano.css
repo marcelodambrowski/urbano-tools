@@ -172,3 +172,4 @@ figure.tela-fig figcaption strong { color: var(--texto); }
 .mos span { color: var(--muted); font-size: 13.5px; }
 @media (max-width: 860px) { .mosaico { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 520px) { .mosaico { grid-template-columns: 1fr; } }
+@media (max-width: 600px) { .painel-titulo .rotulo { display: none; } .painel-titulo .chip { white-space: nowrap; } }

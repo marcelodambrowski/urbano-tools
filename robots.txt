@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://marcelodambrowski.github.io/urbano-tools/sitemap.xml
